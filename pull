@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+cp ~/.config/nvim/init.vim init.vim
+cp ~/.config/nvim/zshrc zshrc
+cp ~/.config/nvim/i3config i3config 
+cp ~/.config/nvim/coc-settings.json coc-settings.json
+cp ~/.config/nvim/i3status i3status
+
+echo ''
+echo 'dotfiles pulled: '
+echo '  - init.vim'
+echo '  - zshrc'
+echo '  - coc-settings.json'
+echo '  - i3config'
+echo '  - i3status'
+echo ''

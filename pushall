@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+cp init.vim ~/.config/nvim/init.vim
+cp zshrc ~/.zshrc
+cp coc-settings.json ~/.config/nvim/coc-settings.json
+cp i3config ~/.config/i3/config
+sudo cp i3status /etc/i3status.conf
+
+echo 'dotfiles pushed/updated: '
+echo '  - init.vim'
+echo '  - zshrc'
+echo '  - coc-settings.json'
+echo '  - i3config'
+echo '  - i3status'
+echo ''
