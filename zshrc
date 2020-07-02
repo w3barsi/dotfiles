@@ -118,5 +118,6 @@ alias back='playerctl back'
 
 alias pulldot='~/dotfiles/pull'
 
-source /usr/share/nvm/init-nvm.sh
-export PATH=$PATH:~/.yarn/bin
+PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
+# source /usr/share/nvm/init-nvm.sh
+# export PATH=$PATH:~/.yarn/bin
