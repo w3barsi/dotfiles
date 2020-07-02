@@ -147,6 +147,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 assign [class="konsole"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="dota2"] $ws3
+assign [class="Mineacraft 1.8.9"] $ws3
 assign [class="discord"] $ws8
 assign [class="Steam"] $ws9
 assign [class="minecraft-launcher"] $ws9
