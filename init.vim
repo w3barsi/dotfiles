@@ -19,7 +19,14 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/sh', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
+"
 " Plug 'Valloric/YouCompleteMe' 
 " word completer -- has to be manually installed
 " to install navigate to plugin folder
@@ -93,6 +100,7 @@ nnoremap <leader>bl :ls<CR>
 nnoremap <Leader>ra :%s//g<Left><Left>
 nnoremap <Leader>rw :%s//gc<Left><Left><Left>
 nnoremap <C-i> gg=G
+" inoremap <C-j> <Esc>/<++><CR><Esc>cf>
 
 " YCM
 " nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
@@ -108,6 +116,7 @@ nmap <leader>b <Plug>(coc-diagnostic-prev)
 nmap <leader>n <Plug>(coc-diagnostic-next)
 nmap <leader>gb <Plug>(coc-diagnostic-prev-error)
 nmap <leader>gn <Plug>(coc-diagnostic-next-error)
+
 
 nnoremap <Leader>e :Emmet<SPACE>
 nmap <leader>p :CocCommand prettier.formatFile<CR>

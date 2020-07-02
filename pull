@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
-cp ~/.config/nvim/init.vim init.vim
-cp ~/.config/nvim/zshrc zshrc
-cp ~/.config/nvim/i3config i3config 
-cp ~/.config/nvim/coc-settings.json coc-settings.json
-cp ~/.config/nvim/i3status i3status
-cp ~/oxide.rasi oxide.rasi
+cp ~/.config/nvim/init.vim ~/dotfiles/init.vim
+cp ~/.zshrc ~/dotfiles/zshrc
+cp ~/.config/i3/config ~/dotfiles/i3config 
+cp ~/.config/nvim/coc-settings.json ~/dotfiles/coc-settings.json
+cp ~/.config/i3status/config ~/dotfiles/i3status
+cp ~/oxide.rasi ~/dotfiles/oxide.rasi
 
 echo ''
 echo 'dotfiles pulled: '

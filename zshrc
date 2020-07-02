@@ -116,6 +116,7 @@ alias pause='playerctl pause'
 alias next='playerctl next'
 alias back='playerctl back'
 
-setxkbmap -option "caps:swapescape"
+alias pulldot='~/dotfiles/pull'
 
-xinput set-prop 14 300 -0.6
+source /usr/share/nvm/init-nvm.sh
+export PATH=$PATH:~/.yarn/bin
