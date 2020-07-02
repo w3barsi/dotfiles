@@ -11,19 +11,25 @@ general {
         interval = 5
 }
 
-order += "disk /"
-order += "wireless _first_"
-order += "load"
+order += "volume master"
+order += "memory"
 order += "tztime local"
+order += "disk /"
+order += "load"
+order += "spacer"
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }
 
+memory {
+    format = "%used/%total"
+}
+
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "%m-%d %H:%M"
 }
 
 load {
@@ -32,3 +38,12 @@ load {
 
 disk "/" {
         format = "%avail"
+}
+
+volume master {
+        format = "♪ %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
