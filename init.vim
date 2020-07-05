@@ -19,14 +19,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/sh', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
-"
+
 " Plug 'Valloric/YouCompleteMe' 
 " word completer -- has to be manually installed
 " to install navigate to plugin folder
@@ -46,6 +39,7 @@ Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 
+set nohlsearch
 set nu rnu " Relative Line Number
 set encoding=UTF-8
 set noerrorbells

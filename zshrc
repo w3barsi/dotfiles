@@ -116,6 +116,8 @@ alias pause='playerctl pause'
 alias next='playerctl next'
 alias back='playerctl back'
 
+alias open='xdg-open'
+
 alias pulldot='~/dotfiles/pull'
 
 PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
