@@ -4,21 +4,25 @@ syntax on
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree' " better :Ec
+Plug 'jremmen/vim-ripgrep' " search tool
 Plug 'ryanoasis/vim-devicons'
 Plug 'mbbill/undotree' " undo history 
 Plug 'vim-airline/vim-airline' " status/tabline for vim
 Plug 'vim-airline/vim-airline-themes' " status/tabline for vim
-Plug 'preservim/nerdcommenter' " easy commenting
-Plug 'jiangmiao/auto-pairs' " finished quotes and brackets
-
-Plug 'jremmen/vim-ripgrep' " search tool
-Plug 'lyuts/vim-rtags' " something for C
-Plug 'tpope/vim-surround' " vim plugin to surround text with tag
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'preservim/nerdcommenter' " easy commenting
+Plug 'jiangmiao/auto-pairs' " finished quotes and brackets
+Plug 'lyuts/vim-rtags' " something for C
+Plug 'tpope/vim-surround' " vim plugin to surround text with tag
+
+Plug 'SirVer/ultisnips'
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
 
 " Plug 'Valloric/YouCompleteMe' 
 " word completer -- has to be manually installed
@@ -71,6 +75,7 @@ let g:netrw_browse_split=2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:ycm_always_populate_location_list = 1
+let g:UltiSnipsExpandTrigger="<C-s>"
 " let g:lightline = {
 " \ 'colorscheme': 'wombat',
 " \ }
