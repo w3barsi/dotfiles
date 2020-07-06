@@ -117,6 +117,8 @@ alias next='playerctl next'
 alias back='playerctl back'
 
 alias open='xdg-open'
+alias copy='cp'
+alias move='mv'
 
 alias pulldot='~/dotfiles/pull'
 
