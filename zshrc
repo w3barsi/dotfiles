@@ -121,7 +121,7 @@ alias open='xdg-open'
 alias copy='cp'
 alias move='mv'
 
-alias pulldot='~/dotfiles/pull'
+alias pulldot='~/dotfiles/scripts/pull'
 
 PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
 PATH=~/dotfiles/scripts:$PATH
