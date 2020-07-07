@@ -233,7 +233,7 @@ bar {
 # ========== CUSTOM KEYS START ================================================
 # =============================================================================
 
-bindsym $mod+p exec echo imba | sudo -S pamac-manager
+bindsym $mod+p exec echo sudo -S pamac-manager
 
 exec --no-startup-id nm-applet
 
@@ -261,4 +261,5 @@ exec_always setxkbmap -option "caps:swapescape"
 exec_always xinput set-prop 14 300 -0.6
 exec_always xinput set-prop 14 303 0, 1
 exec_always feh --bg-fill ~/Pictures/wallpaper.jpg
+
 exec compton

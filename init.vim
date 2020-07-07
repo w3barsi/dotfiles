@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround' " vim plugin to surround text with tag
 Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
+" Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
@@ -35,6 +36,7 @@ Plug 'digitaltoad/vim-pug' " html5 syntax plugin
 Plug 'mattn/emmet-vim' " emmet for html
 Plug 'turbio/bracey.vim' " vim plugin for live server 
 Plug 'alvan/vim-closetag' " auto close <tags> for html
+Plug 'ap/vim-css-color'
 
 " THEMES
 Plug 'gruvbox-community/gruvbox' " theme for vim
@@ -64,10 +66,13 @@ set laststatus=2
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+let mapleader = " "
 
+" let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_inver_selection='0'
 colorscheme gruvbox 
 set background=dark
-let mapleader = " "
+
 
 let g:airline_theme='gruvbox'
 let g:NERDSpaceDelims = 1
@@ -124,3 +129,5 @@ nmap <leader>p :CocCommand prettier.formatFile<CR>
 " COMPILE/RUN CODE
 " map <F8> :w <CR> :!gcc % -o %< && ./%< <CR>
 map <F8> :w <CR> :!node %<CR>
+
+
