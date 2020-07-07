@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+cp ~/.config/nvim/init.vim ~/dotfiles/init.vim
+cp ~/.zshrc ~/dotfiles/zshrc
+cp ~/.config/i3/config ~/dotfiles/i3config 
+cp ~/.config/nvim/coc-settings.json ~/dotfiles/coc-settings.json
+cp ~/.config/i3status/config ~/dotfiles/i3status
+cp ~/oxide.rasi ~/dotfiles/oxide.rasi
+cp ~/.alacritty.yml ~/dotfiles/alacritty.yml
+
+
+echo ''
+echo 'dotfiles pulled: '
+echo '  - init.vim'
+echo '  - zshrc'
+echo '  - coc-settings.json'
+echo '  - i3config'
+echo '  - i3status'
+echo '  - oxide.rasi'
+echo '  - alacritty.yml'
+echo ''
