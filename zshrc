@@ -8,10 +8,11 @@ export ZSH="/home/barsi/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="spaceship"
 ZSH_THEME="sorin"
 
 # Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
+# Setting this variable when ZSH_THEME="spaceship"
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
@@ -123,5 +124,8 @@ alias move='mv'
 alias pulldot='~/dotfiles/pull'
 
 PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
+PATH=~/dotfiles/scripts:$PATH
 # source /usr/share/nvm/init-nvm.sh
 # export PATH=$PATH:~/.yarn/bin
+
+# source "/home/barsi/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
