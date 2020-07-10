@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+sudo cp ./facebook /usr/bin/facebook
+sudo cp ./facebook /usr/bin/messsenger
+sudo cp ./youtube /usr/bin/youtube
+sudo cp ./twitter /usr/bin/twitter
+sudo cp ./github /usr/bin/github
+sudo cp ./pulldot /usr/bin/pulldot

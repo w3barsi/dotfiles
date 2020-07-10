@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+google-chrome-stable https://facebook.com/
+
