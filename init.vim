@@ -1,5 +1,4 @@
-syntax on
-
+syntax on 
 
 call plug#begin('~/.vim/plugged')
 
@@ -23,6 +22,10 @@ Plug 'epilande/vim-react-snippets'
 " Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plugins to install for CoC
+" :CocInstall coc-prettier coc-emmet coc-tsserver coc-sh coc-python coc-markdownlint coc-json coc-html coc-css coc-cland
+
+
 Plug 'sheerun/vim-polyglot'
 
 " Plug 'Valloric/YouCompleteMe' 
@@ -129,5 +132,4 @@ nmap <leader>p :CocCommand prettier.formatFile<CR>
 " COMPILE/RUN CODE
 " map <F8> :w <CR> :!gcc % -o %< && ./%< <CR>
 map <F8> :w <CR> :!node %<CR>
-
 
