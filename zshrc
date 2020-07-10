@@ -125,7 +125,6 @@ alias spamac='sudo pamac install'
 
 alias sshbarsi='ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119'
 
-alias pulldot='~/dotfiles/scripts/pull' 
 
 PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
 export PATH=~/dotfiles/scripts:$PATH
