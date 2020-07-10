@@ -121,10 +121,14 @@ alias open='xdg-open'
 alias copy='cp'
 alias move='mv'
 
-alias pulldot='~/dotfiles/scripts/pull'
+alias spamac='sudo pamac install'
+
+alias sshbarsi='ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119'
+
+alias pulldot='~/dotfiles/scripts/pull' 
 
 PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
-PATH=~/dotfiles/scripts:$PATH
+export PATH=~/dotfiles/scripts:$PATH
 # source /usr/share/nvm/init-nvm.sh
 # export PATH=$PATH:~/.yarn/bin
 

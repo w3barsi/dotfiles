@@ -19,8 +19,8 @@ set $text-color          #ebdbb2
 set $inactive-text-color #fbf1c7
 set $urgent-bg-color     #fe8019
 
-set $mon1 "DVI-I-o"
-set $mon2 "VGA-0"
+set $mon2 "DVI-I-0"
+set $mon1 "VGA-0"
 
 set $mod Mod4
 
@@ -121,6 +121,9 @@ bindsym $mod+tab focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -257,9 +260,27 @@ bindsym scrlk exec playerctl --player=spotify play
 bindsym $mod+Shift+period exec systemctl suspend
 
 
+bindsym $mod+period mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (.)shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3lock
+    bindsym s exec --no-startup-id systemctl suspend
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate
+    bindsym r exec --no-startup-id systemctl reboot
+    bindsym period exec --no-startup-id systemctl poweroff
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 exec_always setxkbmap -option "caps:swapescape"
 exec_always xinput set-prop 14 300 -0.6
 exec_always xinput set-prop 14 303 0, 1
 exec_always feh --bg-fill ~/Pictures/wallpaper.jpg
 
 exec compton
+exec xrandr --output DVI-I-0 --auto --right-of VGA-0
+exec xrandr --output VGA-0 --primary
