@@ -70,11 +70,27 @@ ZSH_THEME="sorin"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    fzf
     git
     extract
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# =============================================================================
+# ========== FZF ==============================================================
+# =============================================================================
+# Set fzf installation directory path
+export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fzf
+
+# Uncomment the following line to disable fuzzy completion
+# export DISABLE_FZF_AUTO_COMPLETION="true"
+
+# Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
+# export DISABLE_FZF_KEY_BINDINGS="true"
+
+
+# =============================================================================
 
 # User configuration
 
