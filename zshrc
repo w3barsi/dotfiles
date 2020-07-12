@@ -105,9 +105,9 @@ alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
 
-alias zshrc='vim ~/.zshrc'
-alias vimrc='vim ~/.config/nvim/init.vim'
-alias i3rc='vim ~/.config/i3/config'
+alias zshrc='nvim ~/.zshrc'
+alias vimrc='nvim ~/.config/nvim/init.vim'
+alias i3rc='nvim ~/.config/i3/config'
 
 alias cdc='cd && clear'
 alias cdb='cd ..'
@@ -123,7 +123,16 @@ alias move='mv'
 
 alias spamac='sudo pamac install'
 
-alias sshbarsi='ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119'
+# alias sshbarsi='ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119'
+#
+ssh() {
+    if [[ $@ == "barsi" ]]; then
+        command ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119
+    else
+        command ssh "$@"
+    fi
+}
+
 
 
 PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
