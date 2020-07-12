@@ -256,8 +256,6 @@ bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
 bindsym $mod+m move workspace to output left
 bindsym scrlk exec playerctl --player=spotify play
 
-# Suspend
-bindsym $mod+Shift+period exec systemctl suspend
 
 
 bindsym $mod+period mode "$mode_system"
@@ -281,6 +279,9 @@ exec_always xinput set-prop 14 300 -0.6
 exec_always xinput set-prop 14 303 0, 1
 exec_always feh --bg-fill ~/Pictures/wallpaper.jpg
 
+# Transparency App
 exec compton
+
+# Fixes Monitor Orientation
 exec xrandr --output DVI-I-0 --auto --right-of VGA-0
 exec xrandr --output VGA-0 --primary
