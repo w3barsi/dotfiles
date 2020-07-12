@@ -130,6 +130,19 @@ nnoremap <Leader>e :Emmet<SPACE>
 nmap <leader>p :CocCommand prettier.formatFile<CR>
 
 " COMPILE/RUN CODE
-" map <F8> :w <CR> :!gcc % -o %< && ./%< <CR>
-map <F8> :w <CR> :!node %<CR>
+function! UseNode()
+    map <buffer> <F8> :w <CR> :!node %<CR>
+endfunction
+
+function! UseGCC()
+    map <buffer> <F8> :w <CR> :!gcc % -o %< && ./%< <CR>
+endfunction
+
+function! UsePy()
+    map <buffer> <F8> :w <CR> :!python3 %<CR>
+endfunction
+
+autocmd FileType javascript,js,typescript,ts :call UseNode()
+autocmd FileType cpp,cxx,h,hpp,c :call UseGCC()
+autocmd FileType python :call UsePy()
 
