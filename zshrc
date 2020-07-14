@@ -70,7 +70,7 @@ ZSH_THEME="sorin"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    fzf
+    # fzf
     git
     extract
 )
@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 # ========== FZF ==============================================================
 # =============================================================================
 # Set fzf installation directory path
-export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fzf
+export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 
 # Uncomment the following line to disable fuzzy completion
 # export DISABLE_FZF_AUTO_COMPLETION="true"
@@ -148,6 +148,16 @@ ssh() {
         command ssh "$@"
     fi
 }
+
+git() {
+    if [[ $@ == "go" ]]; then
+        command git add . && git commit -m 'auto-commit' && git push
+    else
+        command git "$@"
+    fi
+}
+
+
 
 
 

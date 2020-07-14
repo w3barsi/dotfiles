@@ -16,10 +16,6 @@ Plug 'jiangmiao/auto-pairs' " finished quotes and brackets
 Plug 'lyuts/vim-rtags' " something for C
 Plug 'tpope/vim-surround' " vim plugin to surround text with tag
 
-Plug 'SirVer/ultisnips'
-Plug 'epilande/vim-es2015-snippets'
-Plug 'epilande/vim-react-snippets'
-" Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plugins to install for CoC
@@ -40,6 +36,11 @@ Plug 'mattn/emmet-vim' " emmet for html
 Plug 'turbio/bracey.vim' " vim plugin for live server 
 Plug 'alvan/vim-closetag' " auto close <tags> for html
 Plug 'ap/vim-css-color'
+
+Plug 'SirVer/ultisnips'
+Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-react-snippets'
+" Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
 
 " THEMES
 Plug 'gruvbox-community/gruvbox' " theme for vim
@@ -87,6 +88,8 @@ let g:UltiSnipsExpandTrigger="<C-s>"
 " let g:lightline = {
 " \ 'colorscheme': 'wombat',
 " \ }
+
+let g:UltiSnipsExpandTrigger="<tab>"
 
 
 " VIM SETTINGS

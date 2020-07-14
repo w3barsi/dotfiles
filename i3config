@@ -250,10 +250,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Alsa audio controls.
-bindsym $mod+Shift+comma exec ~/.config/i3/scripts/alsa restore
-bindsym $mod+semicolon exec ~/.config/i3/scripts/alsa down Headphone
-bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
 bindsym $mod+m move workspace to output left
+bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume 0 -5%
 
 
 
@@ -281,10 +280,9 @@ exec_always xinput set-prop 14 303 0, 1
 exec_always feh --bg-fill ~/Pictures/wallpaper.jpg
 
 # Transparency App
-exec compton
-exec dunst
+exec compton            # Adds transparency functionality
+exec dunst              # Adds notifications functionality
 
 
 # Fixes Monitor Orientation
-exec xrandr --output DVI-I-0 --auto --right-of VGA-0
-exec xrandr --output VGA-0 --primary
+exec xrandr --output VGA-0 --primary -left-of DVI-I-0
