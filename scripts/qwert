@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+if [[ $@ == "" ]]; then
+    echo 'No parameters passed'
+elif [[ $@ == "fb" ]]; then
+    cp ~/dotfiles/scripts/facebook ~/dotfiles/scripts/fb
+else
+    echo 'Dotfile not found'
+fi
+
+
