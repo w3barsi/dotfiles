@@ -285,4 +285,4 @@ exec dunst              # Adds notifications functionality
 
 
 # Fixes Monitor Orientation
-exec xrandr --output VGA-0 --primary -left-of DVI-I-0
+exec xrandr --output VGA-0 --primary --left-of DVI-I-0

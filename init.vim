@@ -49,6 +49,8 @@ Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 
+" set shell=
+
 set mouse=a
 set nohlsearch
 set nu rnu " Relative Line Number
