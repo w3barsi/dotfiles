@@ -69,6 +69,7 @@ set undofile
 set incsearch
 set colorcolumn=80
 set laststatus=2
+set signcolumn=yes:1
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -113,7 +114,9 @@ nnoremap <leader>bl :ls<CR>
 nnoremap <Leader>ra :%s//g<Left><Left>
 nnoremap <Leader>rw :%s//gc<Left><Left><Left>
 nnoremap <C-i> gg=G
-" inoremap <C-j> <Esc>/<++><CR><Esc>cf>
+nnoremap <C-j> <Esc>/<++><CR><Esc>cf>
+
+
 
 " YCM
 " nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
