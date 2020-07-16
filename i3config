@@ -117,7 +117,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+tab focus mode_toggle
+# bindsym $mod+tab focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -182,24 +182,24 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
+# same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
+# back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -219,17 +219,17 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    status_command i3status
         tray_output primary
         separator_symbol |
         colors {
-	    	background $bg-color
-	    	separator #757575
-	    	#                  border             background         text
-	    	focused_workspace  $inactive-bg-color   $inactive-bg-color     $text-color
-	    	inactive_workspace $bg-color $bg-color  $inactive-text-color
-	    	urgent_workspace   $urgent-bg-color     $urgent-bg-color       $text-color
-	}
+            background $bg-color
+                separator #757575
+#                  border             background         text
+                focused_workspace  $inactive-bg-color   $inactive-bg-color     $text-color
+                inactive_workspace $bg-color $bg-color  $inactive-text-color
+                urgent_workspace   $urgent-bg-color     $urgent-bg-color       $text-color
+        }
 }
 
 # =============================================================================
@@ -251,6 +251,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 
 # Alsa audio controls.
 bindsym $mod+m move workspace to output left
+# Uses mod+scrollwheel to change volume
 bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume 0 -5%
 
@@ -260,24 +261,24 @@ bindsym $mod+period mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (.)shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3lock
-    bindsym s exec --no-startup-id systemctl suspend
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id systemctl hibernate
-    bindsym r exec --no-startup-id systemctl reboot
-    bindsym period exec --no-startup-id systemctl poweroff
+        bindsym s exec --no-startup-id systemctl suspend
+        bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+        bindsym e exec --no-startup-id i3exit logout, mode "default"
+        bindsym h exec --no-startup-id systemctl hibernate
+        bindsym r exec --no-startup-id systemctl reboot
+        bindsym period exec --no-startup-id systemctl poweroff
 
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+# exit system mode: "Enter" or "Escape"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 
 bindsym --release Print exec flameshot gui
 
-exec_always setxkbmap -option "caps:swapescape"
-exec_always xinput set-prop 14 300 -0.6
-exec_always xinput set-prop 14 303 0, 1
-exec_always feh --bg-fill ~/Pictures/wallpaper.jpg
+exec_always setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
+exec_always xinput set-prop 14 300 -0.6             # Changes mouse speed
+exec_always xinput set-prop 14 303 0, 1             # Turns off mouse Accel
+exec_always feh --bg-fill ~/Pictures/wallpaper.jpg  # Sets wallpaper
 
 # Transparency App
 exec compton            # Adds transparency functionality
