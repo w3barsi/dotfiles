@@ -151,7 +151,7 @@ ssh() {
 
 git() {
     if [[ $@ == "go" ]]; then
-        command git add . && git commit -m 'auto-commit' && git push
+        command git add . && git commit -m 'auto-commit, probably only made minor changes' && git push
     elif [[ $@ == "open" ]]; then
         command google-chrome-stable https://github.com/barsi-dev 2>/dev/null
     else
