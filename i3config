@@ -283,6 +283,7 @@ exec_always feh --bg-fill ~/Pictures/wallpaper.jpg  # Sets wallpaper
 # Transparency App
 exec compton            # Adds transparency functionality
 exec dunst              # Adds notifications functionality
+exec imwheel            # Speeds up mouse wheel
 
 
 # Fixes Monitor Orientation
