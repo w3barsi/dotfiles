@@ -6,8 +6,8 @@
  - zsh
  - alacritty
  - nvim
-  - CoC (see vimrc in dotfiles for more info)
+        - CoC (see vimrc in dotfiles for more info)
  - Flameshot
-  - Dunst
+        - Dunst
  - compton
  - imwheel
