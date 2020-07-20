@@ -167,6 +167,7 @@ git() {
 
 PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
 export PATH=~/dotfiles/scripts:$PATH
+export PATH=$PATH:/home/barsi/dotfiles/scripts/
 # source /usr/share/nvm/init-nvm.sh
 # export PATH=$PATH:~/.yarn/bin
 
