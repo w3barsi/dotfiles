@@ -144,6 +144,8 @@ alias spamac='sudo pamac install'
 ssh() {
     if [[ $@ == "barsi" ]]; then
         command ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119
+    elif [[ $@ == "mc" ]]; then
+        command ssh -i ~/.ssh/mcserver darcybalaga@35.220.253.131
     else
         command ssh "$@"
     fi

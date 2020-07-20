@@ -51,6 +51,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+t exec alacritty
+bindsym $mod+Shift+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -161,6 +162,7 @@ assign [class="Alacritty"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="dota2"] $ws3
 assign [class="Mineacraft 1.8.9"] $ws3
+assign [class="Mineacraft 1.16.1"] $ws3
 assign [class="discord"] $ws8
 assign [class="Steam"] $ws9
 assign [class="minecraft-launcher"] $ws9
@@ -237,6 +239,7 @@ bar {
 # =============================================================================
 
 bindsym $mod+p exec echo sudo -S pamac-manager
+bindsym $mod+b exec google-chrome-stable
 
 exec --no-startup-id nm-applet
 
