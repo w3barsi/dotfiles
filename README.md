@@ -11,3 +11,4 @@
         - Dunst
  - compton
  - imwheel
+ - gnome disks
