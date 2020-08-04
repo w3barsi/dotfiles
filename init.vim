@@ -94,6 +94,10 @@ let g:UltiSnipsExpandTrigger="<C-s>"
 
 let g:UltiSnipsExpandTrigger="<tab>"
 
+let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.8} }
+let $FZF_DEFAULT_OPTS='--reverse'
+
+
 
 " VIM SETTINGS
 nnoremap <leader>h :wincmd h<CR>
@@ -143,7 +147,7 @@ function! UseNode()
 endfunction
 
 function! UseGCC()
-    map <buffer> <F8> :w <CR> :!gcc % -o %< && ./%< <CR>
+    map <buffer> <F8> :w <CR> :!gcc % -o %< && alacritty -e ./%< <CR>
 endfunction
 
 function! UsePy()
@@ -153,4 +157,3 @@ endfunction
 autocmd FileType javascript,js,typescript,ts :call UseNode()
 autocmd FileType cpp,cxx,h,hpp,c :call UseGCC()
 autocmd FileType python :call UsePy()
-

@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+ORANGE='\033[0;33m'
+BLUE='\033[0;36m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+USERNAME="barsi-dev"
+
+echo -e "\n${ORANGE}Provide repo name:${NC} "
+read -p "   " -r REPO_NAME
+
+git init
+git add .
+git commit -m 'initial commit'
+
+curl -u ${USERNAME} https://api.github.com/user/repos -d "{\"name\": \"${REPO_NAME}\"}"
+
+git remote add origin https://github.com/${USERNAME}/${REPO_NAME}.git
+git push -u origin master
+
+clear
+
+echo -e "\n${ORANGE}Done. Go to ${BLUE}https://github.com/$USERNAME/$REPO_NAME ${ORANGE}to see.\n" 

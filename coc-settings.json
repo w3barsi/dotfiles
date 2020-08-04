@@ -1,4 +1,6 @@
 {
+	"json.enable": true,
+	"json.format.enable": true,
 	"prettier.useTabs": true,
 	"prettier.singleQuote": true,
 	"suggest.noselect": false,

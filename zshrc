@@ -139,6 +139,9 @@ alias move='mv'
 
 alias spamac='sudo pamac install'
 
+alias ngrok='~/Downloads/ngrok'
+
+
 # alias sshbarsi='ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119'
 #
 ssh() {
@@ -153,9 +156,11 @@ ssh() {
 
 git() {
     if [[ $@ == "go" ]]; then
-        command git add . && git commit -m 'auto-commit, probably only made minor changes' && git push
+        command git add . && git commit -m 'auto-commit' && git push
     elif [[ $@ == "open" ]]; then
         command google-chrome-stable https://github.com/barsi-dev 2>/dev/null
+    elif [[ $@ == "create" ]]; then
+        command ~/dotfiles/scripts/gitcreate
     else
         command git "$@"
     fi
