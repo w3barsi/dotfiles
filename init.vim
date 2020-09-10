@@ -1,5 +1,6 @@
 syntax on 
 
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree' " better :Ec
