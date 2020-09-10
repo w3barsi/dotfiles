@@ -47,6 +47,7 @@ Plug 'gruvbox-community/gruvbox' " theme for vim
 Plug 'tomasiser/vim-code-dark' 
 
 
+
 call plug#end()
 
 " set shell=
@@ -147,13 +148,18 @@ function! UseNode()
 endfunction
 
 function! UseGCC()
-    map <buffer> <F8> :w <CR> :!gcc % -o %< && alacritty -e ./%< <CR>
+    map <buffer> <F8> :w <CR> :!gcc % -o %< && ./%<<CR>
 endfunction
 
 function! UsePy()
     map <buffer> <F8> :w <CR> :!python3 %<CR>
 endfunction
 
+function! UseJava()
+    map <buffer> <F8> :w <CR> :!javac % && java %<<CR>
+endfunction
+
 autocmd FileType javascript,js,typescript,ts :call UseNode()
 autocmd FileType cpp,cxx,h,hpp,c :call UseGCC()
 autocmd FileType python :call UsePy()
+autocmd FileType java :call UseJava()

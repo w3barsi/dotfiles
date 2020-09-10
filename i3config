@@ -2,16 +2,16 @@
 # ========== VARIABLES ========================================================
 # =============================================================================
 
-set $ws1 "1 Terminal |"
-set $ws2 "2 Chrome |"
-set $ws3 "3 |"
-set $ws4 "4 |"
-set $ws5 "5 |"
-set $ws6 "6 |"
-set $ws7 "7 |"
-set $ws8 "8 Discord |"
-set $ws9 "9 Steam |"
-set $ws10 "10 Spotify |"
+set $ws1 "1 Terminal"
+set $ws2 "2 Chrome"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8 Discord"
+set $ws9 "9 Steam"
+set $ws10 "10 Spotify"
 
 set $bg-color 	         #282828
 set $inactive-bg-color   #504945
@@ -31,7 +31,6 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 10
-
 
 for_window [class="^.*"] border pixel 2
 gaps inner 5
@@ -277,9 +276,9 @@ mode "$mode_system" {
 bindsym --release Print exec flameshot gui
 
 exec_always setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
-exec_always xinput set-prop 14 300 -0.6             # Changes mouse speed
-exec_always xinput set-prop 14 303 0, 1             # Turns off mouse Accel
-exec_always feh --bg-fill ~/Pictures/wallpaper.jpg  # Sets wallpaper
+exec_always xinput set-prop 8 297 -0.6             # Changes mouse speed
+exec_always xinput set-prop 8 300 0, 1             # Turns off mouse Accel
+exec_always feh --bg-fill ~/Pictures/download.jpeg  # Sets wallpaper
 
 # Transparency App
 exec compton            # Adds transparency functionality
@@ -289,4 +288,5 @@ exec imwheel            # Speeds up mouse wheel
 
 # Fixes Monitor Orientation
 exec xrandr --output VGA-0 --primary --left-of DVI-I-0
-exec sudo cp ~/dotfiles/resolv.conf /etc/resolv.conf
+
+exec sudo systemctl restart systemd-timesyncd.service

@@ -114,6 +114,8 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+# ALIAS
+#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -127,6 +129,7 @@ alias i3rc='nvim ~/.config/i3/config'
 
 alias cdc='cd && clear'
 alias cdb='cd ..'
+alias rtime='sudo systemctl restart systemd-timesyncd.service && i3-msg reload'
 
 alias play='playerctl play'
 alias pause='playerctl pause'
@@ -134,12 +137,22 @@ alias next='playerctl next'
 alias back='playerctl back'
 
 alias open='xdg-open'
-alias copy='cp'
+alias copy='xclip -sel c <'
 alias move='mv'
 
 alias spamac='sudo pamac install'
 
-alias ngrok='~/Downloads/ngrok'
+alias ngrok='~/Downloads/ngrok/ngrok'
+alias netbeans='~/netbeans-8.2/bin/netbeans'
+
+alias dns='sudo cp ~/dotfiles/resolv /etc/resolv.conf'
+alias dns1='sudo cp ~/dotfiles/resolv1 /etc/resolv.conf'
+
+
+alias oop='cd ~/Files/School/OOP/'
+alias web='cd ~/Files/School/WebDev/'
+alias ds='cd ~/Files/School/DataStructures'
+alias school='cd ~/Files/School/'
 
 
 # alias sshbarsi='ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119'
@@ -148,7 +161,7 @@ ssh() {
     if [[ $@ == "barsi" ]]; then
         command ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119
     elif [[ $@ == "mc" ]]; then
-        command ssh -i ~/.ssh/mcserver darcybalaga@35.220.253.131
+        command ssh -i ~/.ssh/mc darcybalaga@35.220.253.131
     else
         command ssh "$@"
     fi
@@ -170,7 +183,7 @@ git() {
 
 
 
-PATH=~/.nvm/versions/node/v14.5.0/bin:$PATH
+PATH=~/.nvm/versions/node/v14.8.0/bin:$PATH
 export PATH=~/dotfiles/scripts:$PATH
 export PATH=$PATH:/home/barsi/dotfiles/scripts/
 # source /usr/share/nvm/init-nvm.sh
