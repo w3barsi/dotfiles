@@ -391,10 +391,6 @@ exec_always --no-startup-id numlockx on
 #exec --no-startup-id pasystray
 exec --no-startup-id volumeicon
 
-
-#Conky
-exec --no-startup-id conky -c ~/.config/i3/system-overview
-
 #feh sets wallpaper
 exec --no-startup-id feh --bg-fill /home/barsi/Pictures/bg.jpg
 
