@@ -19,8 +19,8 @@ set $text-color          #ebdbb2
 set $inactive-text-color #fbf1c7
 set $urgent-bg-color     #fe8019
 
-set $mon2 "DVI-I-0"
-set $mon1 "VGA-0"
+set $mon2 "DP-2"
+set $mon1 "DP-0"
 
 set $mod Mod4
 
@@ -158,8 +158,6 @@ assign [class="Alacritty"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="dota2"] $ws3
 for_window [class="Minecraft* 1.16.1"] move to workspace $ws3
-assign [class="Mineacraft 1.8.9"] $ws3
-assign [class="Mineacraft* 1.16.1"] $ws3
 assign [class="discord"] $ws8
 assign [class="Steam"] $ws9
 assign [class="minecraft-launcher"] $ws9
@@ -235,8 +233,7 @@ bar {
 # ========== CUSTOM KEYS START ================================================
 # =============================================================================
 
-bindsym $mod+p exec echo sudo -S pamac-manager
-bindsym $mod+b exec google-chrome-stable
+bindsym $mod+b exec firefox
 
 exec --no-startup-id nm-applet
 
@@ -273,7 +270,6 @@ mode "$mode_system" {
         bindsym Escape mode "default"
 }
 
-bindsym --release Print exec flameshot gui
 
 exec_always setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
 exec_always xinput set-prop 8 297 -0.6             # Changes mouse speed
@@ -287,6 +283,5 @@ exec imwheel            # Speeds up mouse wheel
 
 
 # Fixes Monitor Orientation
-exec xrandr --output VGA-0 --primary --left-of DVI-I-0
-
+exec xrandr --output DP-2 --primary --left-of DP-0
 exec sudo systemctl restart systemd-timesyncd.service

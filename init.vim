@@ -70,8 +70,10 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set colorcolumn=80
+set scrolloff=8
 set laststatus=2
 set signcolumn=yes:1
+set clipboard+=unnamedplus
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -143,24 +145,4 @@ nmap <leader>gn <Plug>(coc-diagnostic-next-error)
 nnoremap <Leader>e :Emmet<SPACE>
 nmap <leader>p :CocCommand prettier.formatFile<CR>
 
-" COMPILE/RUN CODE
-function! UseNode()
-    map <buffer> <F8> :w <CR> :!node %<CR>
-endfunction
 
-function! UseGCC()
-    map <buffer> <F8> :w <CR> :!gcc % -o %< && ./%<<CR>
-endfunction
-
-function! UsePy()
-    map <buffer> <F8> :w <CR> :!python3 %<CR>
-endfunction
-
-function! UseJava()
-    map <buffer> <F8> :w <CR> :!javac % && java %<<CR>
-endfunction
-
-autocmd FileType javascript,js,typescript,ts :call UseNode()
-autocmd FileType cpp,cxx,h,hpp,c :call UseGCC()
-autocmd FileType python :call UsePy()
-autocmd FileType java :call UseJava()
