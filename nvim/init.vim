@@ -41,19 +41,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'BurntSushi/rnvim-treesitteripgrep'
-
-
-
 call plug#end()
 
-
-
-" set shell=
-
-
-
+" THEMES
 highlight ColorColumn ctermbg=0 guibg=lightgrey
-
 let mapleader = " "
 
 " 'default'             | 'palenight' 
@@ -62,7 +53,6 @@ let mapleader = " "
 " 'palenight-community' | 'ocean-community'
 " 'lighter-community'   | 'darker-community'
 let g:material_theme_style = 'default-community'
-
 let g:gruvbox_contrast_dark = 'normal' " normal | hard
 let g:gruvbox_inver_selection='0'
 colorscheme gruvbox
@@ -100,10 +90,13 @@ nnoremap <Leader>= :vertical resize +5<CR>
 " File Navigation
 nnoremap <C-p> :lua require('telescope.builtin').find_files()<cr>
 
+nmap <C-_> <plug>NERDCommenterToggle
+
 " REPLACEALL & REPLACEWORD
 nnoremap <Leader>ra :%s//g<Left><Left>
 nnoremap <Leader>rw :%s//gc<Left><Left><Left>
 
+" source init.vim
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " COC

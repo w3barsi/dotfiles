@@ -1,3 +1,4 @@
+set autoread
 set mouse=a
 set nohlsearch
 set nu rnu " Relative Line Number
@@ -19,3 +20,4 @@ set scrolloff=8
 set laststatus=2
 set signcolumn=yes:1
 set clipboard=unnamedplus
+set updatetime=300
