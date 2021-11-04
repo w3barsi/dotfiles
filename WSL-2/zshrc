@@ -114,7 +114,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias rc="cd ~/dotfiles && nvim ."
+alias rc="~/dotfiles/scripts/edit-dotfiles.sh"
 alias zshrc="nvim ~/.zshrc"
 alias t-rc="nvim ~/.tmux.conf"
 # alias vimrc="cd ~/dotfiles/nvim && nvim ."
