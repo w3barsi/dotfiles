@@ -122,6 +122,9 @@ vimrc() {
     if [[ $@ == "init" ]]; then
         cd ~/dotfiles/nvim
         command nvim init.vim
+    elif [[ $@ == "" ]]; then
+        cd ~/dotfiles/nvim
+        command nvim .
     else
         cd ~/dotfiles/nvim
         command nvim plugin/$1.vim
