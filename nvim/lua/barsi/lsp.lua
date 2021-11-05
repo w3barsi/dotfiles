@@ -81,3 +81,5 @@ require('lspconfig').cssls.setup{}
 
 -- TailWind CSS
 require('lspconfig').tailwindcss.setup{}
+
+require('lspconfig').eslint.setup{}
