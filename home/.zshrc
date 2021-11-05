@@ -131,7 +131,6 @@ vimrc() {
     fi
 }
 
-alias ls="exa"
 alias lsa="exa -a"
 alias la="exa -la"
 
