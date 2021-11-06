@@ -6,10 +6,12 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>p :NERDTreeFind<CR> 
+nnoremap <leader>p :NERDTreeToggle<CR> 
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>= :vertical resize +5<CR>
+nnoremap <leader>sf :w<CR>
+nnoremap <leader><Tab> :tabn<CR>
 
 "Yank to end of line
 nnoremap Y y$ 
@@ -29,7 +31,7 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . "j"
 nnoremap <leader>fd gg=G<C-o>
 
 " File Navigation
-nnoremap <C-p> :lua require('telescope.builtin').find_files()<cr>
+nnoremap <C-p> :lua require('telescope.builtin').find_files({hidden=true})<cr>
 let g:pear_tree_ft_disabled = ['TelescopePrompt']
 
 nmap <C-_> <plug>NERDCommenterToggle<cr>

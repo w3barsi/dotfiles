@@ -20,9 +20,8 @@ set scrolloff=8
 set laststatus=2
 set signcolumn=yes:1
 set clipboard=unnamedplus
-set updatetime=50
-set completeopt=menu,menuone
 set lazyredraw
+set updatetime=50
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 " 'default'             | 'palenight' 
@@ -32,22 +31,37 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 " 'lighter-community'   | 'darker-community'
 let g:material_theme_style = 'default-community'
 let g:gruvbox_contrast_dark = 'normal' " normal | hard
-let g:gruvbox_inver_selection='0'
+let g:gruvbox_invert_selection='1'
+let g:gruvbox_invert_tabline='1'
 colorscheme gruvbox
 set background=dark
 
-
-
 let g:airline_theme='gruvbox'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_min_count = 2
+
 let g:NERDSpaceDelims = 1
-let g:netrw_browse_split=2
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-let g:ycm_always_populate_location_list = 1
+let g:NERDTreeShowHidden=1
 let g:UltiSnipsExpandTrigger="<C-s>"
 " let g:lightline = {
 " \ 'colorscheme': 'wombat',
 " \ }
+
+
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.ts,*.jsx,*.xml'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+let g:closetag_filetypes = 'html,xhtml,phtml'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ 'typescriptreact': 'jsxRegion,tsxRegion',
+    \ 'javascriptreact': 'jsxRegion',
+    \ }
+let g:closetag_shortcut = '>'
 
 let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.8} }
 let $FZF_DEFAULT_OPTS='--reverse'
