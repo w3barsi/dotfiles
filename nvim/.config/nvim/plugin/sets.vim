@@ -1,3 +1,4 @@
+set hidden
 set autoread
 set nohlsearch
 set mouse=a
@@ -30,11 +31,14 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 " 'palenight-community' | 'ocean-community'
 " 'lighter-community'   | 'darker-community'
 let g:material_theme_style = 'default-community'
-let g:gruvbox_contrast_dark = 'normal' " normal | hard
+let g:gruvbox_contrast_dark = 'hard' " normal | hard
 let g:gruvbox_invert_selection='1'
-let g:gruvbox_invert_tabline='1'
+let g:gruvbox_invert_tabline='2'
 colorscheme gruvbox
 set background=dark
+
+
+let g:indentLine_char = "│"
 
 let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
@@ -49,6 +53,16 @@ let g:UltiSnipsExpandTrigger="<C-s>"
 " \ 'colorscheme': 'wombat',
 " \ }
 
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'js' : 1,
+    \ 'javascript' : 1,
+    \ 'javascriptreact' : 1,
+    \ 'javascript.jsx' : 1,
+    \}
 
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.ts,*.jsx,*.xml'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'

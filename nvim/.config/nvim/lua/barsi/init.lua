@@ -1,17 +1,14 @@
 require('barsi.telescope')
 require('barsi.lsp')
+require('barsi.terminal')
 require('nvim-autopairs').setup{}
-require'nvim-treesitter.configs'.setup{
-    indent = {
-        enable = true
-    }, 
-    highlight = {
-        enable = true
-    }, 
-    incremental_selection = {
-        enable = true
-    }, 
-    textobjects = {
-        enable = true
-    }
+
+
+require('lualine').setup{ 
+  options = {
+    theme = 'gruvbox_dark',
+    component_separators = { left = '', right = '│'},
+    section_separators = { left = '', right = ''},
+  },
 }
+
