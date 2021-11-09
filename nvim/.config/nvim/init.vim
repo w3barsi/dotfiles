@@ -3,7 +3,6 @@ filetype plugin on
 
 call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " better :Ec
-    Plug 'mbbill/undotree' " undo history 
     Plug 'preservim/nerdcommenter' " easy commenting
     Plug 'tpope/vim-surround' " vim plugin to surround text with tag
 
@@ -26,15 +25,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'mattn/emmet-vim' " emmet for html
     Plug 'ap/vim-css-color'
     Plug 'mlaursen/vim-react-snippets'
-    Plug 'SirVer/ultisnips'
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
     Plug 'quangnguyen30192/cmp-nvim-ultisnips'
     Plug 'windwp/nvim-autopairs'
     Plug 'Yggdroot/indentLine'
+    Plug 'alvan/vim-closetag' " Auto-close HTML Tags
 
     " THEMES
-    " Plug 'vim-airline/vim-airline' " status/tabline for vim
-    " Plug 'vim-airline/vim-airline-themes' " status/tabline for vim
-    Plug 'alvan/vim-closetag'
     Plug 'gruvbox-community/gruvbox' " theme for vim
     Plug 'tomasiser/vim-code-dark' 
     Plug 'kaicataldo/material.vim', { 'branch': 'main' }
@@ -46,7 +43,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'lewis6991/impatient.nvim'
     
     Plug 'akinsho/toggleterm.nvim'   
-    Plug 'akinsho/bufferline.nvim'
 
     " Outdated but saved for reference
     " Plug 'tpope/vim-surround' " vim plugin to surround text with tag
@@ -60,5 +56,4 @@ lua require('impatient')
 lua require('barsi')
 let mapleader = " "
 
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType lua setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript,lua setlocal shiftwidth=2 tabstop=2 softtabstop=2

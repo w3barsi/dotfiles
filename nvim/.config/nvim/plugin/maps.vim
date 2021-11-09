@@ -1,5 +1,4 @@
 "VIM SETTINGS
-
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <leader>h :wincmd h<CR>
@@ -9,7 +8,6 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>= :vertical resize +5<CR>
-nnoremap <leader>sf :w<CR>
 nnoremap <leader><Tab> :tabn<CR>
 
 "Yank to end of line
@@ -42,16 +40,8 @@ nmap <C-_> <plug>NERDCommenterToggle<cr>
 nnoremap <Leader>ra :%s//g<Left><Left>
 nnoremap <Leader>rw :%s//gc<Left><Left><Left>
 
-" source init.vim
-nnoremap <Leader>sv :source %<CR>
-
-" COC
-" nmap <Leader>gd <Plug>(coc-definition)
-" nmap <Leader>gr <Plug>(coc-references)
-" nmap <leader>b <Plug>(coc-diagnostic-prev)
-" nmap <leader>n <Plug>(coc-diagnostic-next)
-" nmap <leader>gb <Plug>(coc-diagnostic-prev-error)
-" nmap <leader>gn <Plug>(coc-diagnostic-next-error)
 
 nnoremap <Leader>e :Emmet<SPACE>
-" nmap <leader>p :CocCommand prettier.formatFile<CR>
+
+" source init.vim
+nnoremap <Leader>sv :source %<CR>

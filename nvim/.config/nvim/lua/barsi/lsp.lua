@@ -84,7 +84,9 @@ require('lspconfig').tailwindcss.setup{}
 
 require('lspconfig').eslint.setup{}
 
+require('lspconfig').pyright.setup{}
 
+require('lspconfig').ccls.setup{}
 
 require('nvim-treesitter.configs').setup{
   indent = {enable = true}, 

@@ -53,6 +53,7 @@ let g:UltiSnipsExpandTrigger="<C-s>"
 " \ 'colorscheme': 'wombat',
 " \ }
 
+" Filetypes for AutoTag
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
