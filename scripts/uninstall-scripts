@@ -1,7 +1,0 @@
-#!/usr/bin/bash
-
-sudo rm /usr/bin/facebook
-sudo rm /usr/bin/messsenger
-sudo rm /usr/bin/youtube
-sudo rm /usr/bin/twitter
-sudo rm /usr/bin/github

@@ -5,7 +5,7 @@ BLUE='\033[0;36m'
 WHITE='\033[1;37m'
 NC='\033[0m'
 
-USERNAME="barsi-dev"
+USERNAME="w3barsi"
 
 echo -e "\n${ORANGE}Provide repo name:${NC} "
 read -p "   " -r REPO_NAME

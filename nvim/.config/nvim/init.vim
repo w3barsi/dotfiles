@@ -43,6 +43,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'lewis6991/impatient.nvim'
     
     Plug 'akinsho/toggleterm.nvim'   
+    Plug 'kdheepak/lazygit.nvim'
 
     " Outdated but saved for reference
     " Plug 'tpope/vim-surround' " vim plugin to surround text with tag

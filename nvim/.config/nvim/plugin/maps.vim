@@ -34,6 +34,8 @@ nnoremap <silent> <leader>pb :lua require('telescope.builtin').buffers()<cr>
 nnoremap <silent> <C-p> :lua require('telescope.builtin').find_files({hidden=true})<cr>
 let g:pear_tree_ft_disabled = ['TelescopePrompt']
 
+nnoremap <silent> <leader>gg :LazyGit<CR>
+
 nmap <C-_> <plug>NERDCommenterToggle<cr>
 
 " REPLACEALL & REPLACEWORD
