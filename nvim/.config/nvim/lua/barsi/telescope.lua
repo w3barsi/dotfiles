@@ -5,7 +5,7 @@ require('telescope').setup{
     mappings = {
       i = {
         ["<C-h>"] = "which_key",
-        ["<C-x>"] = actions.select_vertical,
+        ["<C-v>"] = actions.select_vertical,
       }
     },
     file_ignore_patterns = {

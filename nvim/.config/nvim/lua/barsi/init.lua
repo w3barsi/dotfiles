@@ -3,6 +3,7 @@ require('barsi.lsp')
 require('barsi.terminal')
 require('nvim-autopairs').setup{}
 
+require('nvim-tree').setup{}
 
 require('lualine').setup{ 
   options = {

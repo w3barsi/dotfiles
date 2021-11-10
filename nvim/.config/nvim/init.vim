@@ -2,7 +2,7 @@ syntax on
 filetype plugin on
 
 call plug#begin('~/.vim/plugged')
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " better :Ec
+    " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " better :Ec
     Plug 'preservim/nerdcommenter' " easy commenting
     Plug 'tpope/vim-surround' " vim plugin to surround text with tag
 
@@ -34,7 +34,8 @@ call plug#begin('~/.vim/plugged')
     " THEMES
     Plug 'gruvbox-community/gruvbox' " theme for vim
     Plug 'tomasiser/vim-code-dark' 
-    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+    " Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+    Plug 'marko-cerovac/material.nvim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'nvim-lualine/lualine.nvim'
@@ -44,7 +45,7 @@ call plug#begin('~/.vim/plugged')
     
     Plug 'akinsho/toggleterm.nvim'   
     Plug 'kdheepak/lazygit.nvim'
-
+    Plug 'kyazdani42/nvim-tree.lua'
     " Outdated but saved for reference
     " Plug 'tpope/vim-surround' " vim plugin to surround text with tag
     " Plugins to install for CoC
@@ -52,9 +53,10 @@ call plug#begin('~/.vim/plugged')
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-lua require('impatient')
+"lua require('impatient')
 
 lua require('barsi')
 let mapleader = " "
 
 autocmd FileType javascript,lua setlocal shiftwidth=2 tabstop=2 softtabstop=2
+highlight NonText guifg=bg
