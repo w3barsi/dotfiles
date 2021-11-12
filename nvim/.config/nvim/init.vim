@@ -2,11 +2,12 @@ syntax on
 filetype plugin on
 
 call plug#begin('~/.vim/plugged')
-    " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " better :Ec
+    Plug 'nvim-lua/plenary.nvim'
+
     Plug 'preservim/nerdcommenter' " easy commenting
     Plug 'tpope/vim-surround' " vim plugin to surround text with tag
 
-
+    " LSP
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
@@ -14,16 +15,17 @@ call plug#begin('~/.vim/plugged')
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'onsails/lspkind-nvim'
-
-    " TELESCOPE
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-treesitter/playground'
+
+    " FILE NAVIGATION
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzy-native.nvim'
-
+    Plug 'kyazdani42/nvim-tree.lua'
     " VIM Plugins for Webdev
     Plug 'mattn/emmet-vim' " emmet for html
-    Plug 'ap/vim-css-color'
+    Plug 'norcalli/nvim-colorizer.lua'
+    "Plug 'ap/vim-css-color'
     Plug 'mlaursen/vim-react-snippets'
     Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
     Plug 'quangnguyen30192/cmp-nvim-ultisnips'
@@ -45,7 +47,6 @@ call plug#begin('~/.vim/plugged')
     
     Plug 'akinsho/toggleterm.nvim'   
     Plug 'kdheepak/lazygit.nvim'
-    Plug 'kyazdani42/nvim-tree.lua'
     " Outdated but saved for reference
     " Plug 'tpope/vim-surround' " vim plugin to surround text with tag
     " Plugins to install for CoC
@@ -54,6 +55,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 "lua require('impatient')
+set termguicolors
 
 lua require('barsi')
 let mapleader = " "

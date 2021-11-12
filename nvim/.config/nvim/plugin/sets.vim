@@ -1,3 +1,4 @@
+set fillchars=eob:\ 
 set hidden
 set autoread
 set nohlsearch
@@ -25,7 +26,7 @@ set lazyredraw
 set updatetime=50
 set termguicolors
 
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+"highlight ColorColumn ctermbg=0 guibg=lightgrey
 highlight NonText guifg=bg
 highlight NvimTreeFolderIcon guibg=blue
 " 'default'             | 'palenight' 
@@ -140,4 +141,4 @@ let g:nvim_tree_icons = {
                     \   }
                     \ }
 
-nnoremap <leader>pv :NvimTreeToggle<CR>
+nnoremap <silent> <leader>pv :NvimTreeToggle<CR>
