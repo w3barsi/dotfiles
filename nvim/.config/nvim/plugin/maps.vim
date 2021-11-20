@@ -8,6 +8,8 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>= :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <Leader>= :vertical resize +5<CR>
 nnoremap <leader><Tab> :tabn<CR>
 
 "Yank to end of line
@@ -30,9 +32,11 @@ nnoremap <leader>fd gg=G<C-o>
 " File Navigation
 " nnoremap <silent> <leader>pv :NERDTreeToggle<CR> 
 
+nnoremap <silent> <C-p> :lua require('telescope.builtin').find_files({hidden=true})<cr>
 nnoremap <silent> <leader>pg :lua require('telescope.builtin').live_grep({hidden=true})<cr>
 nnoremap <silent> <leader>pb :lua require('telescope.builtin').buffers()<cr>
-nnoremap <silent> <C-p> :lua require('telescope.builtin').find_files({hidden=true})<cr>
+nnoremap <silent> <leader>ph :lua require('telescope.builtin').help_tags()<cr>
+nnoremap <silent> <leader>pc :lua require('telescope.builtin').commands()<cr>
 let g:pear_tree_ft_disabled = ['TelescopePrompt']
 
 nnoremap <silent> <leader>gg :LazyGit<CR>
@@ -40,6 +44,7 @@ nnoremap <silent> <leader>gg :LazyGit<CR>
 nmap <C-_> <plug>NERDCommenterToggle<cr>
 
 " REPLACEALL & REPLACEWORD
+nnoremap <Leader>rl :s//g<Left><Left>
 nnoremap <Leader>ra :%s//g<Left><Left>
 nnoremap <Leader>rw :%s//gc<Left><Left><Left>
 
@@ -48,3 +53,4 @@ nnoremap <Leader>e :Emmet<SPACE>
 
 " source init.vim
 nnoremap <Leader>sv :source %<CR>
+nnoremap <Leader>pi :PlugInstall<CR>

@@ -5,7 +5,6 @@ require('telescope').setup{
     mappings = {
       i = {
         ["<C-h>"] = "which_key",
-        ["<C-v>"] = actions.select_vertical,
       }
     },
     file_ignore_patterns = {
@@ -31,3 +30,7 @@ require('telescope').setup{
   }
 }
 require('telescope').load_extension('fzy_native')
+
+require('nvim-tree').setup{
+    auto_close = false,
+}

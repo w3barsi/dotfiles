@@ -1,4 +1,4 @@
-set completeopt=menu,menuone,noinsert
+set completeopt=menu,menuone,noselect
 
 nnoremap <leader>gd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>gD :lua vim.lsp.buf.decleration()<CR>

@@ -9,9 +9,6 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<F12>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
@@ -20,7 +17,25 @@ cmp.setup({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm(),
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end,
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -62,35 +77,3 @@ cmp.setup.cmdline(':', {
       { name = 'cmdline' }
     })
 })
-
--- JavaScript/TypeScript
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('lspconfig').tsserver.setup{
-  capabilities = capabilities
-}
-
--- HTML
-local capabilities_html = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-require'lspconfig'.html.setup {
-  capabilities = capabilities_html,
-}
-
--- CSS
-require('lspconfig').cssls.setup{}
-
--- TailWind CSS
-require('lspconfig').tailwindcss.setup{}
-
-require('lspconfig').eslint.setup{}
-
-require('lspconfig').pyright.setup{}
-
-require('lspconfig').ccls.setup{}
-
-require('nvim-treesitter.configs').setup{
-  indent = {enable = true}, 
-  highlight = {enable = true}, 
-  incremental_selection = {enable = true}, 
-  textobjects = {enable = true}
-}
