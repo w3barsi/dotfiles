@@ -3,6 +3,7 @@ require('lualine').setup{
     theme = 'gruvbox_dark',
     component_separators = { left = '', right = '│'},
     section_separators = { left = '', right = ''},
+    disabled_filetypes = {'NvimTree'},
   },
 }
 
@@ -23,3 +24,9 @@ require('colorizer').setup{
 }
 
 
+require('notify').setup{
+  render = 'default',
+  stages = 'fade',
+  timeout = '1000',
+  background_colour = '#000000',
+}

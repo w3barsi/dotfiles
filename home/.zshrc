@@ -71,4 +71,4 @@ mkcd() {
 
 source ~/.nvm/nvm.sh
 
-alias luamake=/home/barsi/lua-language-server/3rd/luamake/luamake
+export PATH="/home/barsi/.local/bin:$PATH"

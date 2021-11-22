@@ -50,8 +50,9 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'dstein64/vim-startuptime'
     Plug 'lewis6991/impatient.nvim'
-    
     Plug 'akinsho/toggleterm.nvim'   
+
+    Plug 'rcarriga/nvim-notify'
 call plug#end()
 
 lua require('impatient')
@@ -61,3 +62,4 @@ lua require('barsi')
 let mapleader = " "
 
 autocmd FileType javascript,lua setlocal shiftwidth=2 tabstop=2 softtabstop=2
+highlight SignColumn guibg=bg

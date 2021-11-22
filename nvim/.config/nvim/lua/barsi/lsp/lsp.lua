@@ -24,4 +24,4 @@ require('lspconfig').pyright.setup{}
 
 require('lspconfig').ccls.setup{}
 
-
+require'lspconfig'.vimls.setup{}
