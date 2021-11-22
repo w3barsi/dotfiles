@@ -1,8 +1,9 @@
-require('lualine').setup{ 
+require('lualine').setup{
   options = {
     theme = 'gruvbox_dark',
     component_separators = { left = '', right = '│'},
     section_separators = { left = '', right = ''},
+    disabled_filetypes = {'NvimTree', 'toggleterm'},
   },
 }
 
@@ -21,5 +22,4 @@ require('colorizer').setup{
     mode     = 'background'; -- Set the display mode.
   }
 }
-
 

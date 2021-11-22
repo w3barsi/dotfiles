@@ -1,10 +1,11 @@
-set fillchars=eob:\ 
+set fillchars+=vert:\           " removes | vsplit separator
+set fillchars+=eob:\            " removes ~ end of file
 set hidden
 set autoread
-set nu rnu " Relative Line Number
-set nohlsearch
-set mouse=a
-set encoding=utf-8
+set nu rnu                      " Relative Line Number
+set nohlsearch                  " no highlight search
+set mouse=a                     " allows mouse control
+set encoding=utf-8              " allows UTF-8 characters
 set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -21,36 +22,33 @@ set incsearch
 set colorcolumn=80
 set scrolloff=8
 set laststatus=2
-set signcolumn=yes:1
-set clipboard=unnamedplus
-set lazyredraw
+set signcolumn=yes:1            " enables column for errors
+set clipboard=unnamedplus       " uses system clipbaord for yank
+set lazyredraw                  " removes flashing when using <silent> commands
 set updatetime=50
 set termguicolors
+set cursorline
+set splitright                  " vertical split opens to right
+set splitbelow                  " horizontal split opens bottom
+set completeopt=menu,menuone,noselect
 
-"highlight ColorColumn ctermbg=0 guibg=lightgrey
-highlight NonText guifg=bg
-highlight NvimTreeFolderIcon guibg=blue
-" 'default'             | 'palenight' 
-" 'ocean'               | 'lighter'             
-" 'darker'              | 'default-community' 
-" 'palenight-community' | 'ocean-community'
-" 'lighter-community'   | 'darker-community'
+let g:gruvbox_contrast_dark = 'normal' " soft | normal | hard
+let g:gruvbox_invert_selection='0'
+let g:gruvbox_invert_tabline='0'
 let g:material_style = 'darker'
 let g:tokyonight_style = 'night'
-let g:gruvbox_contrast_dark = 'normal' " soft | normal | hard
-let g:gruvbox_invert_selection='1'
-let g:gruvbox_invert_tabline='2'
+
 set background=dark
+
+colorscheme gruvbox
+highlight SignColumn guibg=bg
+highlight NvimTreeFolderIcon guibg=blue
+highlight NvimTreeNormal guibg=#1d2021
+highlight VertSplit guibg=bg  "#1d2021
 
 " Yggdroot/indentLine
 let g:indentLine_char = "│"
 
-" let g:NERDSpaceDelims = 1
-" let g:NERDTreeShowHidden=1
-
-" let g:lightline = {
-" \ 'colorscheme': 'wombat',
-" \ }
 
 " Filetypes for alvan/vim-closetag
 let g:mta_filetypes = {
@@ -76,5 +74,3 @@ let g:closetag_regions = {
     \ }
 let g:closetag_shortcut = '>'
 
-
-colorscheme gruvbox
