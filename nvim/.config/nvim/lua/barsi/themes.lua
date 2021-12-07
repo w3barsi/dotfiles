@@ -24,9 +24,3 @@ require('colorizer').setup{
 }
 
 
-require('notify').setup{
-  render = 'default',
-  stages = 'fade',
-  timeout = '1000',
-  background_colour = '#000000',
-}
