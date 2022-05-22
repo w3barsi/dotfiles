@@ -19,8 +19,8 @@ set $text-color          #ebdbb2
 set $inactive-text-color #fbf1c7
 set $urgent-bg-color     #fe8019
 
-set $mon2 "DP-2"
-set $mon1 "DP-0"
+set $mon2 "DP-0"
+set $mon1 "DP-2"
 
 set $mod Mod4
 
@@ -30,10 +30,10 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+font pango:Nerd NF 10
+for_window [class="^.*"] border pixel 1
 
-for_window [class="^.*"] border pixel 2
-gaps inner 5
+gaps inner 10
 gaps outer 5
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -47,7 +47,6 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+t exec alacritty
-bindsym $mod+Shift+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -233,9 +232,9 @@ bar {
 # ========== CUSTOM KEYS START ================================================
 # =============================================================================
 
-bindsym $mod+b exec firefox
+bindsym $mod+b exec google-chrome-stable
 
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
 # bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
@@ -274,14 +273,17 @@ mode "$mode_system" {
 exec_always setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
 exec_always xinput set-prop 8 297 -0.6             # Changes mouse speed
 exec_always xinput set-prop 8 300 0, 1             # Turns off mouse Accel
-exec_always feh --bg-fill ~/Pictures/download.jpeg  # Sets wallpaper
+exec_always feh --bg-fill ~/dotfiles/background.jpg  # Sets wallpaper
 
 # Transparency App
-exec compton            # Adds transparency functionality
-exec dunst              # Adds notifications functionality
-exec imwheel            # Speeds up mouse wheel
+exec picom            # Adds transparency functionality
+# exec dunst              # Adds notifications functionality
+# exec imwheel            # Speeds up mouse wheel
 
 
 # Fixes Monitor Orientation
-exec xrandr --output DP-2 --primary --left-of DP-0
-exec sudo systemctl restart systemd-timesyncd.service
+exec monset
+exec xset m 0
+
+
+exec_always "feh --bg-fill ~/dotfiles/background.jpg"

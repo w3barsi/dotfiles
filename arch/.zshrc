@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/usr/share/oh-my-zsh/
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -119,13 +119,13 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias v='nvim'
-alias vim='nvim'
-alias vi='nvim'
+# alias v='nvim'
+# alias vim='nvim'
+# alias vi='nvim'
 
-alias zshrc='nvim ~/.zshrc'
-alias vimrc='nvim ~/.config/nvim/init.vim'
-alias i3rc='nvim ~/.config/i3/config'
+alias zshrc='vim ~/.zshrc'
+alias i3rc='vim ~/.config/i3/config'
+alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 
 alias cdc='cd && clear'
 alias cdb='cd ..'
@@ -139,20 +139,6 @@ alias back='playerctl back'
 alias open='xdg-open'
 alias copy='xclip -sel c <'
 alias move='mv'
-
-alias spamac='sudo pamac install'
-
-alias ngrok='~/Downloads/ngrok/ngrok'
-alias netbeans='~/netbeans-8.2/bin/netbeans'
-
-alias dns='sudo cp ~/dotfiles/resolv /etc/resolv.conf'
-alias dns1='sudo cp ~/dotfiles/resolv1 /etc/resolv.conf'
-
-
-alias oop='cd ~/Files/School/OOP/'
-alias web='cd ~/Files/School/WebDev/'
-alias ds='cd ~/Files/School/DataStructures'
-alias school='cd ~/Files/School/'
 
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
@@ -179,6 +165,12 @@ git() {
     else
         command git "$@"
     fi
+}
+
+monset () {
+	command xrandr --output DP-2 --mode 2560x1440 --rate 165 --primary
+	sleep(1)
+	command xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of DP-2 --rotate left
 }
 
 
@@ -211,8 +203,8 @@ ex ()
 
 
 
-export PATH=~/dotfiles/scripts:$PATH
-export PATH=$PATH:/home/barsi/dotfiles/scripts/
+# export PATH=~/dotfiles/scripts:$PATH
+# export PATH=$PATH:/home/barsi/dotfiles/scripts/
 # source /usr/share/nvm/init-nvm.sh
 # export PATH=$PATH:~/.yarn/bin
 
