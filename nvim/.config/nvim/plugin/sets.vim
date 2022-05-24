@@ -1,3 +1,4 @@
+set encoding=UTF-8
 set fillchars+=vert:\           " removes | vsplit separator
 set fillchars+=eob:\            " removes ~ end of file
 set hidden
@@ -23,7 +24,7 @@ set colorcolumn=80
 set scrolloff=8
 set laststatus=2
 set signcolumn=yes:1            " enables column for errors
-set clipboard=unnamedplus       " uses system clipbaord for yank
+set clipboard+=unnamedplus       " uses system clipbaord for yank
 set lazyredraw                  " removes flashing when using <silent> commands
 set updatetime=50
 set termguicolors

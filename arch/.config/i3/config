@@ -11,7 +11,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8 Discord"
 set $ws9 "9 Steam"
-set $ws10 "10 Spotify"
+set $ws10 "10"
 
 set $bg-color 	         #282828
 set $inactive-bg-color   #504945
@@ -30,7 +30,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Nerd NF 10
+font pango:Hack NF 15
 for_window [class="^.*"] border pixel 1
 
 gaps inner 10
@@ -55,8 +55,8 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 # Use rofi instead of dmenu for     a e s t e t h i c s
 # also uses theme oxide.rafi that is found in dotfiles folder
-bindsym $mod+d exec rofi -show run -theme "oxide"
-bindsym $mod+space exec rofi -show run -theme "oxide"
+bindsym $mod+d exec rofi -show run -theme "gruvbox-dark" -font "Hack NF 12"
+bindsym $mod+space exec rofi -show run -theme "gruvbox-dark" -font "Hack NF 20" 
 bindsym $mod+g exec rofi -show window -theme "oxide"
 
 
@@ -105,8 +105,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -130,7 +130,7 @@ for_window [urgent=latest] focus
 # =============================================================================
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
+bindsym $mod+1 workspace $ws1 
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
@@ -160,8 +160,9 @@ for_window [class="Minecraft* 1.16.1"] move to workspace $ws3
 assign [class="discord"] $ws8
 assign [class="Steam"] $ws9
 assign [class="minecraft-launcher"] $ws9
-assign [class="Spotify"] $ws10
-for_window [class="Spotify"] move to workspace $ws10
+assign [class="Spotify"] $ws8
+assign [class="Caprine"] $ws8
+for_window [class="Spotify"] move to workspace $ws8
 
 workspace $ws1 output $mon1
 workspace $ws3 output $mon1
@@ -214,19 +215,19 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command i3status
-        tray_output primary
-        separator_symbol |
-        colors {
-            background $bg-color
-                separator #757575
-#                  border             background         text
-                focused_workspace  $inactive-bg-color   $inactive-bg-color     $text-color
-                inactive_workspace $bg-color $bg-color  $inactive-text-color
-                urgent_workspace   $urgent-bg-color     $urgent-bg-color       $text-color
-        }
-}
+#bar {
+    #status_command i3status
+        #tray_output primary
+        #separator_symbol |
+        #colors {
+            #background $bg-color
+                #separator #757575
+##                  border             background         text
+                #focused_workspace  $inactive-bg-color   $inactive-bg-color     $text-color
+                #inactive_workspace $bg-color $bg-color  $inactive-text-color
+                #urgent_workspace   $urgent-bg-color     $urgent-bg-color       $text-color
+        #}
+#}
 
 # =============================================================================
 # ========== CUSTOM KEYS START ================================================
@@ -256,7 +257,6 @@ bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink
 bindsym $mod+period mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (.)shutdown
 mode "$mode_system" {
-        bindsym l exec --no-startup-id i3lock
         bindsym s exec --no-startup-id systemctl suspend
         bindsym u exec --no-startup-id i3exit switch_user, mode "default"
         bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -270,20 +270,20 @@ mode "$mode_system" {
 }
 
 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
-exec_always xinput set-prop 8 297 -0.6             # Changes mouse speed
-exec_always xinput set-prop 8 300 0, 1             # Turns off mouse Accel
+exec_always xinput set-prop 8 302 0.1            # Changes mouse speed
+exec_always xinput set-prop 8 'libinput Accel Profile Enabled' 0 1            # Turns off mouse Accel
 exec_always feh --bg-fill ~/dotfiles/background.jpg  # Sets wallpaper
 
 # Transparency App
 exec picom            # Adds transparency functionality
 # exec dunst              # Adds notifications functionality
-# exec imwheel            # Speeds up mouse wheel
+exec imwheel            # Speeds up mouse wheel
 
 
 # Fixes Monitor Orientation
-exec monset
-exec xset m 0
-
+exec "xrandr --output DP-2 --mode 2560x1440 --rate 165 --primary"
+exec "xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of DP-2 --rotate left"
 
 exec_always "feh --bg-fill ~/dotfiles/background.jpg"

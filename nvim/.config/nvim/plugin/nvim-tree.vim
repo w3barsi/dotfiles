@@ -1,9 +1,8 @@
 lua << EOF
 
 require('nvim-tree').setup{
-  auto_close = false,
   view = {
-    side = 'right',
+    side = 'left',
   }
 }
 

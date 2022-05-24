@@ -6,25 +6,26 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'preservim/nerdcommenter'                                  " easy commenting
     Plug 'tpope/vim-surround'                                       " vim plugin to surround text with tag
-    Plug 'windwp/nvim-autopairs'                                    " Uses treesitter to add pairs like ",',{,[,(
+    Plug 'windwp/nvim-autopairs'    
+
     Plug 'norcalli/nvim-colorizer.lua'                              " Adds colors to color codes
     Plug 'Yggdroot/indentLine'
     Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
 
     " LSP
-    Plug 'neovim/nvim-lspconfig'
+    "Plug 'neovim/nvim-lspconfig'
     Plug 'kabouzeid/nvim-lspinstall'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-nvim-lua'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'onsails/lspkind-nvim'
+    "Plug 'hrsh7th/nvim-cmp'
+    "Plug 'hrsh7th/cmp-buffer'
+    "Plug 'hrsh7th/cmp-path'
+    "Plug 'hrsh7th/cmp-nvim-lua'
+    "Plug 'hrsh7th/cmp-nvim-lsp'
+    "Plug 'onsails/lspkind-nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " We recommend updating the parsers on update
-    Plug 'nvim-treesitter/playground'
+    "Plug 'nvim-treesitter/playground'
 
-    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'             " Snippets engine
-    Plug 'quangnguyen30192/cmp-nvim-ultisnips'                  
+    " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    " Plug 'quangnguyen30192/cmp-nvim-ultisnips'                  
 
     " FILE NAVIGATION
     Plug 'nvim-telescope/telescope.nvim'
@@ -59,8 +60,8 @@ call plug#end()
 lua require('impatient')
 set termguicolors
 
+let mapleader=" "
 lua require('barsi')
-let mapleader = " "
 
 autocmd FileType javascript,lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
 

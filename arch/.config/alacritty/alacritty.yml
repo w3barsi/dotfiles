@@ -298,7 +298,6 @@ window.opacity: 0.5
   #   - _ Underline
   #   - | Beam
   #style: Block
-
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   #unfocused_hollow: true

@@ -28,7 +28,7 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . "j"
 nnoremap <leader>fd gg=G<C-o>
 
 " File Navigation
-" nnoremap <silent> <leader>pv :NERDTreeToggle<CR> 
+nnoremap <silent> <leader>pv :NERDTreeToggle<CR> 
 
 nnoremap <silent> <C-p> :lua require('telescope.builtin').find_files({hidden=true})<cr>
 nnoremap <silent> <leader>pg :lua require('telescope.builtin').live_grep({hidden=true})<cr>

@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # I you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -119,13 +126,14 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias v='nvim'
-# alias vim='nvim'
-# alias vi='nvim'
+ alias v='nvim'
+ alias vim='nvim'
+ alias vi='nvim'
 
 alias zshrc='vim ~/.zshrc'
 alias i3rc='vim ~/.config/i3/config'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
+alias cdcfg='cd ~/dotfiles/arch/.config/'
 
 alias cdc='cd && clear'
 alias cdb='cd ..'
@@ -143,8 +151,18 @@ alias move='mv'
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 
-# alias sshbarsi='ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119'
-#
+alias t-ls="tmux ls"
+alias t-att="tmux attach -t"
+alias t-new="tmux new -s"
+alias t-kill="tmux kill-session -t"
+t-rnm() {
+    command tmux rename-session -t "$1" "$2"
+}
+
+mkcd() {
+	command mkdir "$1" && cd "$1"
+}
+
 ssh() {
     if [[ $@ == "barsi" ]]; then
         command ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119
@@ -168,9 +186,11 @@ git() {
 }
 
 monset () {
+    sleep 1
 	command xrandr --output DP-2 --mode 2560x1440 --rate 165 --primary
-	sleep(1)
+	sleep 1
 	command xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of DP-2 --rotate left
+    command feh --bg-fill ~/dotfiles/background.jpg
 }
 
 
@@ -209,3 +229,11 @@ ex ()
 # export PATH=$PATH:~/.yarn/bin
 
 # source "/home/barsi/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
