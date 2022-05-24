@@ -51,6 +51,7 @@ call plug#begin('~/.vim/plugged')
 
 
 
+    Plug 'xiyaowong/nvim-transparent'
     Plug 'dstein64/vim-startuptime'
     Plug 'lewis6991/impatient.nvim'
     Plug 'akinsho/toggleterm.nvim'   

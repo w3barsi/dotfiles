@@ -134,6 +134,7 @@ alias zshrc='vim ~/.zshrc'
 alias i3rc='vim ~/.config/i3/config'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias cdcfg='cd ~/dotfiles/arch/.config/'
+alias nvimrc='vim ~/dotfiles/nvim/.config'
 
 alias cdc='cd && clear'
 alias cdb='cd ..'
@@ -186,11 +187,10 @@ git() {
 }
 
 monset () {
-    sleep 1
 	command xrandr --output DP-2 --mode 2560x1440 --rate 165 --primary
 	sleep 1
 	command xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of DP-2 --rotate left
-    command feh --bg-fill ~/dotfiles/background.jpg
+    command feh --bg-fill ~/dotfiles/gruv.jpg
 }
 
 
