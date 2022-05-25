@@ -170,6 +170,8 @@ workspace $ws8 output $mon2
 workspace $ws9 output $mon2
 workspace $ws10 output $mon2
 
+bindsym $mod+m move workspace to output left
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -233,24 +235,15 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # ========== CUSTOM KEYS START ================================================
 # =============================================================================
 
+bindsym $mod+` exec --no-startup-id ~/.config/i3/scripts/i3-master-layout.py
 bindsym $mod+b exec google-chrome-stable
 
-# exec --no-startup-id nm-applet
 
 # bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
 # bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
 
 # FKeys
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# Alsa audio controls.
-bindsym $mod+m move workspace to output left
-# Uses mod+scrollwheel to change volume
-bindsym --whole-window --border $mod+button4 exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym --whole-window --border $mod+button5 exec --no-startup-id pactl set-sink-volume 0 -5%
 
 
 
@@ -269,19 +262,19 @@ mode "$mode_system" {
         bindsym Escape mode "default"
 }
 
-
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always   --no-startup-id setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
-exec_always   --no-startup-id xinput set-prop 8 302 0.1            # Changes mouse speed
-exec_always   --no-startup-id xinput set-prop 8 'libinput Accel Profile Enabled' 0 1            # Turns off mouse Accel
-
-# Transparency App
-exec_always   --no-startup-id picom            # Adds transparency functionality
-# exec dunst              # Adds notifications functionality
-exec   --no-startup-id imwheel            # Speeds up mouse wheel
+exec            --no-startup-id discord
+exec            --no-startup-id caprine
+exec            --no-startup-id spotify
 
 
+exec_always     --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always     --no-startup-id setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
+exec_always     --no-startup-id xinput set-prop 8 302 0.1            # Changes mouse speed
+exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Profile Enabled' 0 1            # Turns off mouse Accel
+exec_always     --no-startup-id picom            # Adds transparency functionality
+exec            --no-startup-id imwheel            # Speeds up mouse wheel
 # Fixes Monitor Orientation
-exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --pos 0x0 --rotate left --rate 144 --output DP-2 --primary --mode 2560x1440 --pos 1080x480 --rotate normal --rate 165
+exec            --no-startup-id xrandr --output DP-0 --mode 1920x1080 --pos 0x0 --rotate left --rate 144 --output DP-2 --primary --mode 2560x1440 --pos 1080x480 --rotate normal --rate 165
+exec            --no-startup-id alsactl --file ~/.config/asound.state restore
+exec_always     --no-startup-id "feh --bg-fill ~/dotfiles/gruv.png"
 
-exec_always   --no-startup-id "feh --bg-fill ~/dotfiles/gruv.png"

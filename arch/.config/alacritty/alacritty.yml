@@ -315,10 +315,10 @@ colors:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 #shell:
-#  program: /bin/bash
-#  args:
-#    - --login
-#/bin/zsh --login
+  #program: /bin/zsh
+  #args:
+    #- --login
+    #- -c tmux
 
 # Startup directory
 #
