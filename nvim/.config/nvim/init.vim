@@ -2,6 +2,7 @@ syntax on
 filetype plugin on
 
 call plug#begin('~/.vim/plugged')
+    " Dependencies
     Plug 'nvim-lua/plenary.nvim'
 
     Plug 'preservim/nerdcommenter'                                  " easy commenting
@@ -13,19 +14,19 @@ call plug#begin('~/.vim/plugged')
     Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
 
     " LSP
-    "Plug 'neovim/nvim-lspconfig'
-    Plug 'kabouzeid/nvim-lspinstall'
-    "Plug 'hrsh7th/nvim-cmp'
-    "Plug 'hrsh7th/cmp-buffer'
-    "Plug 'hrsh7th/cmp-path'
-    "Plug 'hrsh7th/cmp-nvim-lua'
-    "Plug 'hrsh7th/cmp-nvim-lsp'
-    "Plug 'onsails/lspkind-nvim'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/nvim-lsp-installer'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-nvim-lua'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'onsails/lspkind-nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " We recommend updating the parsers on update
     "Plug 'nvim-treesitter/playground'
 
-    " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-    " Plug 'quangnguyen30192/cmp-nvim-ultisnips'                  
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    Plug 'quangnguyen30192/cmp-nvim-ultisnips'                  
 
     " FILE NAVIGATION
     Plug 'nvim-telescope/telescope.nvim'
@@ -55,6 +56,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'dstein64/vim-startuptime'
     Plug 'lewis6991/impatient.nvim'
     Plug 'akinsho/toggleterm.nvim'   
+    Plug 'CRAG666/code_runner.nvim'
 
 call plug#end()
 

@@ -1,9 +1,10 @@
---require('barsi.lsp.cmp')
---require('barsi.lsp.lsp')
---require('barsi.lsp.treesitter')
+require('barsi.lsp.lsp')
+require('barsi.lsp.cmp')
+require('barsi.lsp.treesitter')
 require('barsi.file_nav')
 require('barsi.terminal')
 require('barsi.themes')
+require('barsi.code_runner')
 require('nvim-autopairs').setup{}
 
 require("transparent").setup({

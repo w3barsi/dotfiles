@@ -34,8 +34,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-   x: 10
-   y: 10
+   x: 0
+   y: 0
   opacity: 1
 
   # Spread additional padding evenly around the terminal content.
@@ -137,7 +137,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 15
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -502,16 +502,16 @@ colors:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 key_bindings:
-   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance } 
+   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
   # (Windows, Linux, and BSD only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }
   #- { key: Insert,   mods: Shift,         action: PasteSelection   }
   #- { key: Key0,     mods: Control,       action: ResetFontSize    }
   #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  #- { key: Add,      mods: Control,       action: IncreaseFontSize }
-  #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
-  #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
+ #- { key: Add,      mods: Control,       action: IncreaseFontSize }
+ #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
+ #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }

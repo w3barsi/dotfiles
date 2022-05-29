@@ -31,10 +31,13 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Hack NF 15
+
 for_window [class="^.*"] border pixel 1
+hide_edge_borders smart
 
 gaps inner 20
 gaps outer 7
+smart_gaps on
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -55,9 +58,11 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 # Use rofi instead of dmenu for     a e s t e t h i c s
 # also uses theme oxide.rafi that is found in dotfiles folder
-bindsym $mod+d exec rofi -show run -theme "gruvbox-dark" -font "Hack NF 12"
-bindsym $mod+space exec rofi -show run -theme "gruvbox-dark" -font "Hack NF 20" 
-bindsym $mod+g exec rofi -show window -theme "oxide"
+bindsym $mod+d exec rofi -show run -theme "gruvbox-dark"
+bindsym $mod+space exec rofi -show run -theme "gruvbox-dark"
+bindsym $mod+period exec rofi -show emoji -theme "gruvbox-dark"
+bindsym $mod+Shift+Return exec rofi -show calc -theme "gruvbox-dark"
+bindsym $mod+Shift+period exec ~/.config/rofi/Scripts/power.sh -theme "gruvbox-dark"
 
 
 # =============================================================================
@@ -107,7 +112,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
 # bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -155,6 +160,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 assign [class="Alacritty"] $ws1
 assign [class="Google-chrome"] $ws2
+for_window [class="Google-chrome"] focus
 assign [class="dota2"] $ws3
 for_window [class="Minecraft* 1.16.1"] move to workspace $ws3
 assign [class="discord"] $ws8
@@ -170,7 +176,7 @@ workspace $ws8 output $mon2
 workspace $ws9 output $mon2
 workspace $ws10 output $mon2
 
-bindsym $mod+m move workspace to output left
+#bindsym $mod+m move workspace to output left
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -231,23 +237,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
         #}
 #}
 
-# =============================================================================
-# ========== CUSTOM KEYS START ================================================
-# =============================================================================
-
-bindsym $mod+` exec --no-startup-id ~/.config/i3/scripts/i3-master-layout.py
-bindsym $mod+b exec google-chrome-stable
-
-
-# bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
-# bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
-
-# FKeys
-
-
-
-
-bindsym $mod+period mode "$mode_system"
+bindsym $mod+Ctrl+period mode "$mode_system"
 set $mode_system (e)xit, switch_(u)ser, (s)uspend, (r)eboot, (.)shutdown
 mode "$mode_system" {
         bindsym s exec --no-startup-id systemctl suspend
@@ -262,6 +252,26 @@ mode "$mode_system" {
         bindsym Escape mode "default"
 }
 
+# =============================================================================
+# ========== CUSTOM KEYS START ================================================
+# =============================================================================
+
+
+
+# bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
+# bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
+
+# FKeys
+
+
+
+
+
+
+bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/i3-master-layout.py
+bindsym $mod+b exec --no-startup-id google-chrome-stable
+bindsym $mod+e exec --no-startup-id thunar
+
 exec            --no-startup-id discord
 exec            --no-startup-id caprine
 exec            --no-startup-id spotify
@@ -269,12 +279,13 @@ exec            --no-startup-id spotify
 
 exec_always     --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always     --no-startup-id setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
-exec_always     --no-startup-id xinput set-prop 8 302 0.1            # Changes mouse speed
+exec_always     --no-startup-id xinput set-prop 8 302 -0.1            # Changes mouse speed
 exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Profile Enabled' 0 1            # Turns off mouse Accel
 exec_always     --no-startup-id picom            # Adds transparency functionality
 exec            --no-startup-id imwheel            # Speeds up mouse wheel
+exec            --no-startup-id flameshot
 # Fixes Monitor Orientation
 exec            --no-startup-id xrandr --output DP-0 --mode 1920x1080 --pos 0x0 --rotate left --rate 144 --output DP-2 --primary --mode 2560x1440 --pos 1080x480 --rotate normal --rate 165
-exec            --no-startup-id alsactl --file ~/.config/asound.state restore
+exec            --no-startup-id "alsactl --file ~/.config/asound.state restore"
 exec_always     --no-startup-id "feh --bg-fill ~/dotfiles/gruv.png"
 

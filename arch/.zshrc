@@ -133,8 +133,8 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 alias zshrc='vim ~/.zshrc'
 alias i3rc='vim ~/.config/i3/config'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
-alias cdcfg='cd ~/dotfiles/arch/.config/'
-alias nvimrc='vim ~/dotfiles/nvim/.config'
+alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
+alias vimrc='vim ~/dotfiles/nvim/.config'
 
 alias cdc='cd && clear'
 alias cdb='cd ..'
@@ -144,10 +144,13 @@ alias play='playerctl play'
 alias pause='playerctl pause'
 alias next='playerctl next'
 alias back='playerctl back'
+alias alsa="alsamixer"
 
 alias open='xdg-open'
 alias copy='xclip -sel c <'
 alias move='mv'
+alias btm="btm --color gruvbox"
+alias cat="bat --theme gruvbox-dark"
 
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
@@ -169,6 +172,7 @@ ssh() {
         command ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119
     elif [[ $@ == "mc" ]]; then
         command ssh -i ~/.ssh/mc darcybalaga@35.220.253.131
+
     else
         command ssh "$@"
     fi

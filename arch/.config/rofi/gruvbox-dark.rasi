@@ -11,6 +11,16 @@
    Modified: Mon Feb 12 2018 04:08:43 PST -0800
    ========================================================================== */
 
+configuration {
+  drun-display-format: "";
+  font: "Hack NF 20";
+  modi: "run,calc";
+  show-icons: true;
+  icon-theme: "Papirus";
+}
+
+@theme "/dev/null"
+
 * {
     /* Theme settings */
     highlight: bold italic;
@@ -29,12 +39,26 @@
     gruvbox-dark-gray:         #a89984;
 
     /* Theme colors */
-    background:                  @gruvbox-dark-bg0;
+    background:                  @gruvbox-dark-bg0-soft;
     background-color:            @background;
     foreground:                  @gruvbox-dark-fg1;
     border-color:                @gruvbox-dark-gray;
     separatorcolor:              @border-color;
     scrollbar-handle:            @border-color;
+
+
+    bg: @background;
+    bg-alt: @gruvbox-dark-bg3;
+
+    fg: @foreground;
+    fg-alt: @gruvbox-dark-fg1;
+
+    background-color: @bg;
+    
+    border: 0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
 
     normal-background:           @background;
     normal-foreground:           @foreground;
@@ -58,5 +82,61 @@
     selected-urgent-foreground:  @urgent-foreground;
 }
 
-@import "gruvbox-common.rasi"
+/*@import "gruvbox-common.rasi"*/
 
+
+
+
+window {
+  width: 30%;
+}
+
+element {
+  padding: 8 0;
+  text-color: @fg-alt;
+}
+
+element selected {
+  text-color: @fg;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element-icon {
+  size: 30;
+}
+
+entry {
+  background-color: @bg-alt;
+  padding: 12;
+  text-color: @fg;
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+listview {
+  padding: 8 12;
+  background-color: @bg;
+  columns: 1;
+  lines: 8;
+}
+
+mainbox {
+  background-color: @bg;
+  children: [inputbar, listview];
+}
+
+prompt {
+  background-color: @bg-alt;
+  enabled: true;
+  padding: 12 0 0 12;
+  text-color: @fg;
+}
+
+/* vim: ft=sass

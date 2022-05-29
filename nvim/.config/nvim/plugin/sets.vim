@@ -45,7 +45,7 @@ colorscheme gruvbox
 highlight SignColumn guibg=bg
 highlight NvimTreeFolderIcon guibg=blue
 highlight NvimTreeNormal guibg=#1d2021
-highlight VertSplit guibg=bg  "#1d2021
+highlight VertSplit guibg=#1d2021
 
 " Yggdroot/indentLine
 let g:indentLine_char = "│"
