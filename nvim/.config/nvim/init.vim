@@ -37,7 +37,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'kyazdani42/nvim-web-devicons'
-    
+
     " COLORS
     Plug 'gruvbox-community/gruvbox' " theme for vim
     Plug 'tomasiser/vim-code-dark' 
@@ -50,8 +50,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'kdheepak/monochrome.nvim'
     Plug 'folke/tokyonight.nvim'
 
-
-
+    Plug 'kdheepak/lazygit.nvim'   
     Plug 'xiyaowong/nvim-transparent'
     Plug 'dstein64/vim-startuptime'
     Plug 'lewis6991/impatient.nvim'
@@ -66,5 +65,6 @@ set termguicolors
 let mapleader=" "
 lua require('barsi')
 
-autocmd FileType javascript,lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
 

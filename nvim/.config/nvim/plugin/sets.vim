@@ -43,7 +43,6 @@ set background=dark
 
 colorscheme gruvbox
 highlight SignColumn guibg=bg
-highlight NvimTreeFolderIcon guibg=blue
 highlight NvimTreeNormal guibg=#1d2021
 highlight VertSplit guibg=#1d2021
 
