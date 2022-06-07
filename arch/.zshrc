@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+
 # I you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -16,7 +20,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="spaceship"
-ZSH_THEME="sorin"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME="spaceship"
@@ -126,9 +130,10 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
- alias v='nvim'
- alias vim='nvim'
- alias vi='nvim'
+alias v='nvim'
+alias vim='nvim'
+alias vi='nvim'
+alias src="source ~/.zshrc"
 
 alias zshrc='vim ~/.zshrc'
 alias i3rc='vim ~/.config/i3/config'
@@ -150,15 +155,19 @@ alias open='xdg-open'
 alias copy='xclip -sel c <'
 alias move='mv'
 alias btm="btm --color gruvbox"
-alias cat="bat --theme gruvbox-dark"
+alias catt="bat --theme gruvbox-dark"
+alias xclip="xclip -selection c"
 
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
+
+alias monset="xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --rate 144 --pos 0x0 --rotate left --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 2560x1440 --rate 165 --pos 1080x240 --rotate normal --output DP-3 --off"
 
 alias t-ls="tmux ls"
 alias t-att="tmux attach -t"
 alias t-new="tmux new -s"
 alias t-kill="tmux kill-session -t"
+
 t-rnm() {
     command tmux rename-session -t "$1" "$2"
 }
@@ -166,6 +175,7 @@ t-rnm() {
 mkcd() {
 	command mkdir "$1" && cd "$1"
 }
+
 
 ssh() {
     if [[ $@ == "barsi" ]]; then
@@ -190,12 +200,6 @@ git() {
     fi
 }
 
-monset () {
-	command xrandr --output DP-2 --mode 2560x1440 --rate 165 --primary
-	sleep 1
-	command xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of DP-2 --rotate left
-    command feh --bg-fill ~/dotfiles/gruv.png
-}
 
 
 ex ()
@@ -223,6 +227,11 @@ ex ()
   fi
 }
 
+runc ()
+{
+    command gcc $@.c -o $@ && ./$@
+}
+
 
 
 
@@ -237,7 +246,12 @@ ex ()
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ~/.zshrc
+#
+export SUDO_EDITOR="nvim"
+
+
