@@ -6,12 +6,15 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-lua/plenary.nvim'
 
     Plug 'preservim/nerdcommenter'                                  " easy commenting
+
     Plug 'tpope/vim-surround'                                       " vim plugin to surround text with tag
     Plug 'windwp/nvim-autopairs'    
 
     Plug 'norcalli/nvim-colorizer.lua'                              " Adds colors to color codes
     Plug 'Yggdroot/indentLine'
+
     Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
+    Plug 'leafOfTree/vim-matchtag'
 
     " LSP
     Plug 'neovim/nvim-lspconfig'
@@ -50,7 +53,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'kdheepak/monochrome.nvim'
     Plug 'folke/tokyonight.nvim'
 
+    Plug 'xiyaowong/nvim-transparent'
+
     Plug 'kdheepak/lazygit.nvim'   
+    Plug 'lewis6991/gitsigns.nvim'
+
     Plug 'xiyaowong/nvim-transparent'
     Plug 'dstein64/vim-startuptime'
     Plug 'lewis6991/impatient.nvim'
@@ -66,5 +73,6 @@ let mapleader=" "
 lua require('barsi')
 
 autocmd FileType lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
 

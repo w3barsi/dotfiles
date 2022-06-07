@@ -18,9 +18,9 @@ on_attach = function()
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0})
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0})
     vim.keymap.set("n", "gr", vim.lsp.buf.references, {buffer=0})
-    vim.keymap.set("n", "gf", vim.lsp.buf.formatting, {buffer=0})
+    vim.keymap.set("n", "gf", vim.lsp.buf.format, {buffer=0})
     vim.keymap.set("n", "gca", vim.lsp.buf.code_action, {buffer=0})
-    vim.keymap.set("n", "R", vim.lsp.buf.rename, {buffer=0})
+    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, {buffer=0})
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {buffer=0})
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
     vim.keymap.set("n", "<leader>dp", "<cmd>Telescope diagnostics<cr>", {buffer=0})
@@ -38,7 +38,15 @@ require('lspconfig').bashls.setup{
 
 require('lspconfig').sumneko_lua.setup{
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+
+    }
 }
 
 require('lspconfig').vimls.setup{
@@ -71,5 +79,17 @@ require('lspconfig').html.setup{
     capabilities = capabilities
 }
 
+require('lspconfig').intelephense.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+}
 
+require('lspconfig').eslint.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+}
 
+require('lspconfig').vimls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+}

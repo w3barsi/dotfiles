@@ -46,6 +46,13 @@ highlight SignColumn guibg=bg
 highlight NvimTreeNormal guibg=#1d2021
 highlight VertSplit guibg=#1d2021
 
+highlight GitSignsAdd guibg=NONE
+highlight GitSignsAdd guifg=#b8bb26
+highlight GitSignsChange guibg=NONE
+highlight GitSignsChange guifg=#fe8019
+highlight GitSignsDelete guibg=NONE
+highlight GitSignsDelete guifg=#fb4934
+
 " Yggdroot/indentLine
 let g:indentLine_char = "│"
 

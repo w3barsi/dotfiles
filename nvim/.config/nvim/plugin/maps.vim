@@ -45,6 +45,9 @@ nmap <C-_> <plug>NERDCommenterToggle<cr>
 nnoremap <Leader>rl :s//g<Left><Left>
 nnoremap <Leader>ra :%s//g<Left><Left>
 nnoremap <Leader>rw :%s//gc<Left><Left><Left>
+nnoremap <Leader>css :colorscheme 
+nnoremap <Leader>csg :colorscheme gruvbox<cr>
+nnoremap <Leader>csm :colorscheme material<cr>
 
 
 nnoremap <Leader>e :Emmet<SPACE>
