@@ -33,15 +33,18 @@ set splitright                  " vertical split opens to right
 set splitbelow                  " horizontal split opens bottom
 set completeopt=menu,menuone,noselect
 
+
+set background=dark
+
+colorscheme gruvbox
+
 let g:gruvbox_contrast_dark = 'normal' " soft | normal | hard
 let g:gruvbox_invert_selection='0'
 let g:gruvbox_invert_tabline='0'
 let g:material_style = 'darker'
 let g:tokyonight_style = 'night'
 
-set background=dark
-
-colorscheme gruvbox
+"highlight Normal guibg=black
 highlight SignColumn guibg=bg
 highlight NvimTreeNormal guibg=#1d2021
 highlight VertSplit guibg=#1d2021
