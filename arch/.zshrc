@@ -126,37 +126,39 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 # For a full list of active aliases, run `alias`.
 #
 # ALIAS
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+ 
+# System Stuff
+alias pacman="sudo pacman" 
+alias src="source ~/.zshrc"
+ 
+# Vim aliases
 alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
-alias src="source ~/.zshrc"
 
+#RC Aliases
 alias zshrc='vim ~/.zshrc'
 alias i3rc='vim ~/.config/i3/config'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
 alias vimrc='vim ~/dotfiles/nvim/.config'
 
+
+alias move='mv'
 alias cdc='cd && clear'
 alias cdb='cd ..'
-alias rtime='sudo systemctl restart systemd-timesyncd.service && i3-msg reload'
+alias ls='exa'
 
 alias play='playerctl play'
 alias pause='playerctl pause'
 alias next='playerctl next'
 alias back='playerctl back'
-alias alsa="alsamixer"
 
-alias open='xdg-open'
-alias copy='xclip -sel c <'
-alias move='mv'
+
+# Terminal Apps Shortcut
+alias alsa="alsamixer"
 alias btm="btm --color gruvbox"
 alias catt="bat --theme gruvbox-dark"
-alias xclip="xclip -selection c"
 
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
@@ -177,16 +179,6 @@ mkcd() {
 }
 
 
-ssh() {
-    if [[ $@ == "barsi" ]]; then
-        command ssh -i ~/.ssh/barsime_gcp darcybalaga@34.96.215.119
-    elif [[ $@ == "mc" ]]; then
-        command ssh -i ~/.ssh/mc darcybalaga@35.220.253.131
-
-    else
-        command ssh "$@"
-    fi
-}
 
 git() {
     if [[ $@ == "go" ]]; then
