@@ -172,6 +172,7 @@ assign [class="minecraft-launcher"] $ws9
 assign [class="blueman-applet"] $ws0
 
 for_window [class="Google-chrome"] focus
+for_window [class="Spotify"] move container to $ws8
 
 workspace $ws1 output $mon1
 workspace $ws2 output $mon1
