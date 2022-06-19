@@ -84,6 +84,7 @@ plugins=(
     # fzf
     git
     extract
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -136,12 +137,16 @@ alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
 
+alias nnpm="npm"
+alias npm="pnpm"
+
 #RC Aliases
 alias zshrc='vim ~/.zshrc'
 alias i3rc='vim ~/.config/i3/config'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
 alias vimrc='vim ~/dotfiles/nvim/.config'
+
 
 
 alias move='mv'
@@ -159,9 +164,8 @@ alias back='playerctl back'
 alias alsa="alsamixer"
 alias btm="btm --color gruvbox"
 alias catt="bat --theme gruvbox-dark"
+alias mangal="~/go/bin/mangal"
 
-alias ssn="sudo shutdown now"
-alias sr="sudo reboot"
 
 alias monset="xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --rate 144 --pos 0x0 --rotate left --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 2560x1440 --rate 165 --pos 1080x240 --rotate normal --output DP-3 --off"
 
@@ -247,3 +251,8 @@ export NVM_DIR="$HOME/.nvm"
 export SUDO_EDITOR="nvim"
 
 
+
+# pnpm
+export PNPM_HOME="/home/barsi/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
