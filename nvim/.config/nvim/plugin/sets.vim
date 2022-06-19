@@ -33,6 +33,8 @@ set splitright                  " vertical split opens to right
 set splitbelow                  " horizontal split opens bottom
 set completeopt=menu,menuone,noselect
 
+set backspace=indent,eol,start
+
 
 set background=dark
 
@@ -83,4 +85,5 @@ let g:closetag_regions = {
     \ 'javascriptreact': 'jsxRegion',
     \ }
 let g:closetag_shortcut = '>'
+
 

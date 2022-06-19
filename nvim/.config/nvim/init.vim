@@ -14,7 +14,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Yggdroot/indentLine'
 
     Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
-    Plug 'leafOfTree/vim-matchtag'
+    " Plug 'leafOfTree/vim-matchtag'
 
     " LSP
     Plug 'neovim/nvim-lspconfig'
