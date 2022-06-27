@@ -13,7 +13,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'norcalli/nvim-colorizer.lua'                              " Adds colors to color codes
     Plug 'Yggdroot/indentLine'
 
-    Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
+    Plug 'windwp/nvim-ts-autotag'                                       " Auto-close HTML Tags
+    "Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
     " Plug 'leafOfTree/vim-matchtag'
 
     " LSP

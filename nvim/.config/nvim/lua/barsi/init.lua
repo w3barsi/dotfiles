@@ -2,6 +2,7 @@ require('barsi.lsp.lsp')
 require('barsi.lsp.cmp')
 require('barsi.lsp.treesitter')
 
+require('barsi.autotag')
 require('barsi.git')
 require('barsi.code_runner')
 require('barsi.nvim-tree')
