@@ -40,6 +40,9 @@ gaps outer 5
 gaps inner 10
 smart_gaps on
 
+workspace $ws8 gaps inner 0
+workspace $ws8 gaps outer 0
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
@@ -174,6 +177,7 @@ assign [class="blueman-applet"] $ws0
 for_window [class="Google-chrome"] focus
 for_window [class="Spotify"] move to workspace $ws8
 
+
 workspace $ws1 output $mon1
 workspace $ws2 output $mon1
 workspace $ws3 output $mon1
@@ -277,9 +281,9 @@ exec_always     --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 exec_always     --no-startup-id setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
-exec_always     --no-startup-id xinput set-prop 8 302 0.1            # Changes mouse speed
+exec_always     --no-startup-id xinput set-prop 8 302 -0.8            # Changes mouse speed
 exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Profile Enabled' 0 1            # Turns off mouse Accel
 # Fixes Monitor Orientation
-exec			--no-startup-id xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --rate 144 --pos 0x0 --rotate left --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 2560x1440 --rate 165 --pos 1080x240 --rotate normal --output DP-3 --off
+exec			--no-startup-id xandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --rate 144 --pos 0x0 --rotate left --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 2560x1440 --rate 165 --pos 1080x240 --rotate normal --output DP-3 --off
 
 exec_always     --no-startup-id "feh --bg-fill ~/dotfiles/bg-black.png"
