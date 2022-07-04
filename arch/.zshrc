@@ -37,7 +37,7 @@ alias i3rc='vim ~/.config/i3/config'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
 alias vimrc='vim ~/dotfiles/nvim/.config'
-
+alias time="tty-clock -c -S -C 3"
 
 
 alias move='mv'
