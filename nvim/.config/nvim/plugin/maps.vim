@@ -16,16 +16,19 @@ nnoremap Y y$
 inoremap , ,<C-g>u
 inoremap . .<C-g>u
 " MOVING TEXT
-vnoremap <silent> J :m '>+1<CR>gv=gv
-vnoremap <silent> K :m '<-2<CR>gv=gv
+"vnoremap <silent> K :m '<-2<CR>gv=gv
+"vnoremap <silent> J :m '>+1<CR>gv=gv
 inoremap <silent> <C-j> <esc>:m .+1<CR>==
 inoremap <silent> <C-k> <esc>:m .-2<CR>==
-" nnoremap <leader>j :m .+1<CR>==
-" nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . "k"
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . "j"
 "fd=format document
 nnoremap <leader>fd gg=G<C-o>
+" Ctrl-BS to delete previows word in insert mode
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
 
 
 " File Navigation

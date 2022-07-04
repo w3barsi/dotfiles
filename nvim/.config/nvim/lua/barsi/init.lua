@@ -12,3 +12,4 @@ require('barsi.themes')
 require('barsi.transparent')
 require('nvim-autopairs').setup{}
 
+
