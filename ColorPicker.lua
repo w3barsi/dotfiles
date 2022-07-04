@@ -1,9 +1,9 @@
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local sorters = require "telescope.sorters"
-local dropdown = require "telescope.themes".get_dropdown()
+local actions = test "telescope.actions"
+local action_state = test "telescope.actions.state"
+local pickers = test "telescope.pickers"
+local finders = test "telescope.finders"
+local sorters = test "telescope.sorters"
+local dropdown = test "telescope.themes".get_dropdown()
 
 function enter(prompt_bufnr)
     local selected = action_state.get_selected_entry()
