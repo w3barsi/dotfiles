@@ -28,8 +28,6 @@ alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
 
-alias nnpm="npm"
-alias npm="pnpm"
 
 #RC Aliases
 alias zshrc='vim ~/.zshrc'

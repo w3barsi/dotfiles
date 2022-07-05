@@ -1,3 +1,4 @@
+
 require("nvim-lsp-installer").setup {
     ui = {
         icons = {
@@ -100,3 +101,19 @@ require('lspconfig').jsonls.setup{
     capabilities = capabilities
 }
 
+require('lspconfig').yamlls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+
+ local cfg = {
+  floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+
+  hint_enable = false, -- virtual hint enable
+  handler_opts = {
+    border = "single"   -- double, rounded, single, shadow, none
+  },
+}
+
+--require('lsp_signature').setup(cfg)

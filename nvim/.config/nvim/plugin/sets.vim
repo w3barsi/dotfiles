@@ -36,9 +36,9 @@ set completeopt=menu,menuone,noselect
 set backspace=indent,eol,start
 
 
-set background=dark
+"set background=dark
 
-colorscheme gruvbox
+colorscheme vscode
 
 let g:gruvbox_contrast_dark = 'normal' " soft | normal | hard
 let g:gruvbox_invert_selection='0'
@@ -85,5 +85,4 @@ let g:closetag_regions = {
     \ 'javascriptreact': 'jsxRegion',
     \ }
 let g:closetag_shortcut = '>'
-
 

@@ -1,7 +1,7 @@
 window:
   padding:
-   x: 0
-   y: 0
+    x: 0
+    y: 0
   opacity: 1
 
 font:
@@ -9,7 +9,36 @@ font:
     family: Hack Nerd Font
   size: 15
 
+
 schemes:
+  code: &vscode  
+    primary:
+      background: '#1e1e1e'
+      foreground: '#d4d4d4'
+
+    cursor:
+      text: '#d4d4d4'
+      cursor: '#d4d4d4'
+
+    normal:
+      black:   '#1e1e1e'
+      red:     '#f44747'
+      green:   '#608b4e'
+      yellow:  '#dcdcaa'
+      blue:    '#569cd6'
+      magenta: '#c678dd'
+      cyan:    '#56b6c2'
+      white:   '#d4d4d4'
+
+    bright:
+      black:   '#545454'
+      red:     '#f44747'
+      green:   '#608b4e'
+      yellow:  '#dcdcaa'
+      blue:    '#569cd6'
+      magenta: '#c678dd'
+      cyan:    '#56b6c2'
+      white:   '#d4d4d4'
   gruvbox_material_hard_dark: &gruvbox_material_hard_dark
     primary:
       background: '0x1d2021'
@@ -143,7 +172,7 @@ schemes:
       cyan:    '0x4c7a5d'
       white:   '0xe6d5ae'
 
-colors: *gruvbox_material_medium_dark
+colors: *vscode
 #
 # Shell
 #

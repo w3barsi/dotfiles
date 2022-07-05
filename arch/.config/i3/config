@@ -287,3 +287,6 @@ exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Profile Enable
 exec			--no-startup-id xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --rate 144 --pos 0x0 --rotate left --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 2560x1440 --rate 165 --pos 1080x240 --rotate normal --output DP-3 --off
 
 exec_always     --no-startup-id "feh --bg-fill ~/dotfiles/bg-black.png"
+
+#DAEMONS
+exec            --no-startup-id xfsettingsd

@@ -20,12 +20,17 @@ call plug#begin('~/.vim/plugged')
     " LSP
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
+
     Plug 'hrsh7th/cmp-nvim-lua'
     Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'onsails/lspkind-nvim'
+    Plug 'ray-x/lsp_signature.nvim'
+    
+
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " We recommend updating the parsers on update
     "Plug 'nvim-treesitter/playground'
 
@@ -45,6 +50,7 @@ call plug#begin('~/.vim/plugged')
     " COLORS
     Plug 'gruvbox-community/gruvbox' " theme for vim
     Plug 'tomasiser/vim-code-dark' 
+    Plug 'Mofiqul/vscode.nvim'
     Plug 'marko-cerovac/material.nvim'
     Plug 'NTBBloodbath/doom-one.nvim'
     Plug 'dracula/vim'
@@ -73,7 +79,8 @@ set termguicolors
 let mapleader=" "
 lua require('barsi')
 
-autocmd FileType lua setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType lua setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
 
+autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc

@@ -34,14 +34,15 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'snippy' }, -- For snippy users.
   }, {
-      { name = 'buffer' },
-    }),
+    { name = 'buffer' },
+  }),
   formatting = {
     format = lspkind.cmp_format({
       with_text = true,
@@ -70,6 +71,6 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
-      { name = 'cmdline' }
-    })
+    { name = 'cmdline' }
+  })
 })
