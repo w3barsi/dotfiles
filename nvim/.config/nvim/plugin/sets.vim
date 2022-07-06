@@ -60,6 +60,8 @@ highlight GitSignsDelete guifg=#fb4934
 
 " Yggdroot/indentLine
 let g:indentLine_char = "│"
+let g:vim_json_conceal=0
+let g:markdown_syntax_conceal=0
 
 
 " Filetypes for alvan/vim-closetag
