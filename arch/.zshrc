@@ -21,6 +21,7 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 # =============================================================================
 # System Stuff
 alias pacman="sudo pacman" 
+alias paruu="paru -S --noconfirm"
 alias src="source ~/.zshrc"
  
 # Vim aliases
@@ -36,6 +37,7 @@ alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
 alias vimrc='vim ~/dotfiles/nvim/.config'
 alias time="tty-clock -c -S -C 3"
+alias Notes="vim ~/Notes"
 
 
 alias move='mv'
@@ -54,6 +56,7 @@ alias alsa="alsamixer"
 alias btm="btm --color gruvbox"
 alias catt="bat --theme gruvbox-dark"
 alias mangal="~/go/bin/mangal"
+alias tb="nc termbin.com 9999"
 
 
 alias monset="xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --rate 144 --pos 0x0 --rotate left --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 2560x1440 --rate 165 --pos 1080x240 --rotate normal --output DP-3 --off"
