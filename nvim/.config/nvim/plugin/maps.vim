@@ -46,9 +46,6 @@ nnoremap <silent> <leader>gg :LazyGit<CR>
 nmap <C-_> <plug>NERDCommenterToggle<cr>
 
 " REPLACEALL & REPLACEWORD
-nnoremap <Leader>rl :s//g<Left><Left>
-nnoremap <Leader>ra :%s//g<Left><Left>
-nnoremap <Leader>rw :%s//gc<Left><Left><Left>
 nnoremap <Leader>css :lua require('telescope.builtin').colorscheme()<cr>
 
 nnoremap <Leader>e :Emmet<SPACE>
@@ -63,6 +60,6 @@ nnoremap <silent>co :copen<CR>
 nnoremap <silent>cj :cnext<CR>
 nnoremap <silent>ck :cprev<CR>
 
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
 
 nnoremap <leader>n :RunFile toggleterm<CR>

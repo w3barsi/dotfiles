@@ -6,16 +6,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-lua/plenary.nvim'
 
     Plug 'preservim/nerdcommenter'                                  " easy commenting
-
     Plug 'tpope/vim-surround'                                       " vim plugin to surround text with tag
     Plug 'windwp/nvim-autopairs'    
-
     Plug 'norcalli/nvim-colorizer.lua'                              " Adds colors to color codes
-    Plug 'Yggdroot/indentLine'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+    " Plug 'Yggdroot/indentLine'
+    Plug 'lukas-reineke/indent-blankline.nvim'
 
-    Plug 'windwp/nvim-ts-autotag'                                       " Auto-close HTML Tags
-    "Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
-    " Plug 'leafOfTree/vim-matchtag'
 
     " LSP
     Plug 'neovim/nvim-lspconfig'
@@ -29,9 +26,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'onsails/lspkind-nvim'
     Plug 'ray-x/lsp_signature.nvim'
+
+    Plug 'jose-elias-alvarez/null-ls.nvim'
     
+    Plug 'windwp/nvim-ts-autotag'                                       " Auto-close HTML Tags
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " We recommend updating the parsers on update
+    Plug 'p00f/nvim-ts-rainbow'
     "Plug 'nvim-treesitter/playground'
 
     Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -71,17 +72,25 @@ call plug#begin('~/.vim/plugged')
     Plug 'akinsho/toggleterm.nvim'   
     Plug 'CRAG666/code_runner.nvim'
 
+    " Old plugins
+        " Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
+        " Plug 'leafOfTree/vim-matchtag'
+
 call plug#end()
 
 lua require('impatient')
+lua require('barsi.options')
 set termguicolors
 
 let mapleader=" "
 lua require('barsi')
 
-autocmd FileType lua setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType lua setlocal shiftwidth=4 tabstop=4 softtabstop=5
 autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType jsonc setlocal shiftwidth=2 tabstop=2 expandtab
 

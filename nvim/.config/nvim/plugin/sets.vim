@@ -59,9 +59,9 @@ highlight GitSignsDelete guibg=NONE
 highlight GitSignsDelete guifg=#fb4934
 
 " Yggdroot/indentLine
-let g:indentLine_char = "│"
-let g:vim_json_conceal=0
-let g:markdown_syntax_conceal=0
+"let g:indentLine_char = "│"
+"let g:indentLine_conceallevel = 1
+
 
 
 " Filetypes for alvan/vim-closetag
@@ -87,4 +87,5 @@ let g:closetag_regions = {
     \ 'javascriptreact': 'jsxRegion',
     \ }
 let g:closetag_shortcut = '>'
+
 
