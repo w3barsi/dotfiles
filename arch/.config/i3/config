@@ -267,6 +267,7 @@ mode "$mode_system" {
 bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/i3-master-layout.py
 bindsym $mod+b exec --no-startup-id google-chrome-stable
 bindsym $mod+e exec --no-startup-id nautilus
+bindsym Print exec --no-startup-id flameshot gui
 
 
 exec            --no-startup-id discord
