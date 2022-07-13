@@ -142,7 +142,8 @@ export NVM_DIR="$HOME/.nvm"
 #
 export SUDO_EDITOR="nvim"
 
-
+export USER_BIN="/home/barsi/bin/"
+export PATH="$USER_BIN:$PATH"
 
 # pnpm
 export PNPM_HOME="/home/barsi/.local/share/pnpm"
