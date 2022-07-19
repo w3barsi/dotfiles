@@ -120,6 +120,11 @@ runc ()
     command gcc $@.c -o $@ && ./$@
 }
 
+mount () {
+        command sudo mount /dev/sdb1 /mnt/Kuya
+        command sudo mount /dev/sda2 /mnt/Papa
+}
+
 
 
 
