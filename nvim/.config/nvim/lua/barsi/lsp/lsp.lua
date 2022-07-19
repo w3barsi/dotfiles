@@ -11,6 +11,14 @@ require("nvim-lsp-installer").setup {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local open_float = function()
+        local opts = {
+            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            border = 'rounded',
+    }
+    vim.api.nvim_command('lua vim.diagnostic.open_float(nil, {close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" }, border = "rounded",})')
+end
+
 local on_attach = function()
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
@@ -20,6 +28,7 @@ local on_attach = function()
     vim.keymap.set("n", "gf", vim.lsp.buf.format, { buffer = 0 })
     vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 })
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { buffer = 0 })
+    vim.keymap.set("n", "?", open_float, { buffer = 0 })
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
     vim.keymap.set("n", "<leader>dp", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
