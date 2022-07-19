@@ -63,7 +63,7 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 # Use rofi instead of dmenu for     a e s t e t h i c s
 # also uses theme oxide.rafi that is found in dotfiles folder
-bindsym $mod+d exec rofi -show run -theme "gruvbox-dark"
+#bindsym $mod+d exec rofi -show run -theme "gruvbox-dark"
 bindsym $mod+space exec rofi -show drun -theme "gruvbox-dark"
 bindsym $mod+period exec rofi -show emoji -theme "gruvbox-dark"
 bindsym $mod+Shift+Return exec rofi -show calc -theme "gruvbox-dark"
@@ -126,7 +126,7 @@ bindsym $mod+Shift+space floating toggle
 # bindsym $mod+tab focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -164,7 +164,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 #assign [class="Alacritty"] $ws1
-assign [class="Google-chrome"] $ws2
+#assign [class="Google-chrome"] $ws2
 assign [class="dota2"] $ws3
 assign [class="qbittorrent"] $ws3
 assign [class="discord"] $ws8
@@ -196,31 +196,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-
-# Pressing left will shrink the window’s width.
-# Pressing right will grow the window’s width.
-# Pressing up will shrink the window’s height.
-# Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-# same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-# back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
 
 # =============================================================================
 # ========== WINDOW AND BAR ===================================================
@@ -252,24 +227,14 @@ mode "$mode_system" {
 # ========== CUSTOM KEYS START ================================================
 # =============================================================================
 
-
-
-# bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
-# bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
-
-# FKeys
-
-
-
-
-
-
-bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/i3-master-layout.py  -e ws1
+#bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/i3-master-layout.py  -e ws1
 bindsym $mod+b exec --no-startup-id google-chrome-stable
 bindsym $mod+e exec --no-startup-id nemo
 bindsym Print exec --no-startup-id flameshot gui
-bindsym --release $mod+shift+a exec --no-startup-id i3-move-window
-
+#bindsym $mod+a exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1200 -mt -tatc -- caprine
+bindsym $mod+a exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1408 -mt -tatc -- google-chrome-stable --app=https://facebook.com/messages/
+#bindsym $mod+c exec --no-startup-id i3-scratchpad -s DP-2 -d580x1408 -mr -tatr -- brave --app=https://www.twitch.tv/popout/w3barsi/chat?popout=
+bindsym $mod+d exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1408 -mt -tatc -- google-chrome-stable --new-window www.google.com
 
 exec            --no-startup-id discord
 exec            --no-startup-id caprine
@@ -279,8 +244,8 @@ exec_always     --no-startup-id picom
 #exec_always     --no-startup-id dunst
 exec            --no-startup-id imwheel
 exec            --no-startup-id flameshot
+exec            --no-startup-id numlockx on
 exec_always     --no-startup-id $HOME/.config/polybar/launch.sh
-
 
 exec_always     --no-startup-id setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
 exec_always     --no-startup-id xinput set-prop 8 302 1            # Changes mouse speed
