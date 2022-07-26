@@ -10,8 +10,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'windwp/nvim-autopairs'    
     Plug 'norcalli/nvim-colorizer.lua'                              " Adds colors to color codes
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-    " Plug 'Yggdroot/indentLine'
     Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 
     " LSP
@@ -32,8 +32,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'windwp/nvim-ts-autotag'                                       " Auto-close HTML Tags
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " We recommend updating the parsers on update
-    Plug 'p00f/nvim-ts-rainbow'
     "Plug 'nvim-treesitter/playground'
+    "
+    Plug 'p00f/nvim-ts-rainbow'
 
     Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
     Plug 'quangnguyen30192/cmp-nvim-ultisnips'                  
@@ -50,23 +51,13 @@ call plug#begin('~/.vim/plugged')
 
     " COLORS
     Plug 'gruvbox-community/gruvbox' " theme for vim
-    Plug 'tomasiser/vim-code-dark' 
-    Plug 'Mofiqul/vscode.nvim'
-    Plug 'marko-cerovac/material.nvim'
-    Plug 'NTBBloodbath/doom-one.nvim'
-    Plug 'dracula/vim'
-    Plug 'olimorris/onedarkpro.nvim'
-    Plug 'shaunsingh/nord.nvim'
-    Plug 'ishan9299/nvim-solarized-lua'
-    Plug 'kdheepak/monochrome.nvim'
-    Plug 'folke/tokyonight.nvim'
+    Plug 'martinsione/darkplus.nvim'
 
     Plug 'xiyaowong/nvim-transparent'
 
     Plug 'kdheepak/lazygit.nvim'   
     Plug 'lewis6991/gitsigns.nvim'
 
-    Plug 'xiyaowong/nvim-transparent'
     Plug 'dstein64/vim-startuptime'
     Plug 'lewis6991/impatient.nvim'
     Plug 'akinsho/toggleterm.nvim'   
@@ -79,19 +70,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 lua require('impatient')
-lua require('barsi.options')
 set termguicolors
 
 let mapleader=" "
 lua require('barsi')
-
-autocmd FileType lua setlocal shiftwidth=4 tabstop=4 softtabstop=5
-autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType jsonc setlocal shiftwidth=2 tabstop=2 expandtab
-
-autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
