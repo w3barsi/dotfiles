@@ -18,10 +18,11 @@ inoremap . .<C-g>u
 " MOVING TEXT
 "vnoremap <silent> K :m '<-2<CR>gv=gv
 "vnoremap <silent> J :m '>+1<CR>gv=gv
+"nnoremap <leader>j :m .+1<CR>==
+"nnoremap <leader>k :m .-2<CR>==
+
 inoremap <silent> <C-j> <esc>:m .+1<CR>==
 inoremap <silent> <C-k> <esc>:m .-2<CR>==
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . "k"
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . "j"
 "fd=format document
