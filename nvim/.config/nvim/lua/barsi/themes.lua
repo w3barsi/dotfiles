@@ -22,5 +22,3 @@ require('colorizer').setup{
     mode     = 'background'; -- Set the display mode.
   }
 }
-
-
