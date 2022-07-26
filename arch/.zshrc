@@ -30,13 +30,21 @@ alias vim='nvim'
 alias vi='nvim'
 
 
+# cloudflare
+alias cf-on='warp-cli connect'
+alias cf-off='warp-cli disconnect'
+alias cf-dns='warp-cli set-mode doh'
+alias cf-vpn='warp-cli set-mode warp+doh'
+
+
+
 #RC Aliases
 alias zshrc='vim ~/.zshrc'
 alias i3rc='vim ~/.config/i3/config'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
 alias vimrc='vim ~/dotfiles/nvim/.config'
-alias time="tty-clock -c -S -C 3"
+alias tty-clock="tty-clock -c -S -C 3"
 alias Notes="vim ~/Notes"
 
 
@@ -123,6 +131,10 @@ runc ()
 mount () {
         command sudo mount /dev/sdb1 /mnt/Kuya
         command sudo mount /dev/sda2 /mnt/Papa
+}
+
+rmv () {
+        command rm -rv $1 | pv -l -s $( du -a $1 | wc -l ) > /dev/null
 }
 
 
