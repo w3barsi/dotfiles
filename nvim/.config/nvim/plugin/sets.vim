@@ -36,7 +36,7 @@ set backspace=indent,eol,start
 
 "set background=dark
 
-colorscheme vscode
+colorscheme darkplus
 
 let g:gruvbox_contrast_dark = 'normal' " soft | normal | hard
 let g:gruvbox_invert_selection='0'
