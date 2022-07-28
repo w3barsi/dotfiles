@@ -44,6 +44,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-telescope/telescope-fzy-native.nvim'
     Plug 'kyazdani42/nvim-tree.lua'
 
+
     " THEMES
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'ryanoasis/vim-devicons'
@@ -52,6 +53,9 @@ call plug#begin('~/.vim/plugged')
     " COLORS
     Plug 'gruvbox-community/gruvbox' " theme for vim
     Plug 'martinsione/darkplus.nvim'
+    Plug 'shaunsingh/nord.nvim'
+    " Plug 'sainnhe/gruvbox-material'
+    " Plug 'projekt0n/github-nvim-theme'
 
     Plug 'xiyaowong/nvim-transparent'
 
