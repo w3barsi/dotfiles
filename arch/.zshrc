@@ -44,14 +44,15 @@ alias i3rc='vim ~/.config/i3/config'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
 alias vimrc='vim ~/dotfiles/nvim/.config'
-alias tty-clock="tty-clock -c -S -C 3"
-alias Notes="vim ~/Notes"
 
 
 alias move='mv'
 alias cdc='cd && clear'
 alias cdb='cd ..'
 alias ls='exa'
+alias tty-clock="tty-clock -c -S -C 3"
+alias Notes="vim ~/Notes"
+alias dl="youtube-dl"
 
 alias play='playerctl play'
 alias pause='playerctl pause'
