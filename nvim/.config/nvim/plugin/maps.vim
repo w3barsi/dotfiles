@@ -40,14 +40,13 @@ nnoremap <silent> <leader>pg :lua require('telescope.builtin').live_grep({hidden
 nnoremap <silent> <leader>pb :lua require('telescope.builtin').buffers()<cr>
 nnoremap <silent> <leader>ph :lua require('telescope.builtin').help_tags()<cr>
 nnoremap <silent> <leader>pc :lua require('telescope.builtin').commands()<cr>
+nnoremap <silent> <Leader>css :lua require('telescope.builtin').colorscheme(require('telescope.themes').get_dropdown({}))<cr>
 let g:pear_tree_ft_disabled = ['TelescopePrompt']
 
 nnoremap <silent> <leader>gg :LazyGit<CR>
 
 nmap <C-_> <plug>NERDCommenterToggle<cr>
 
-" REPLACEALL & REPLACEWORD
-nnoremap <Leader>css :lua require('telescope.builtin').colorscheme()<cr>
 
 nnoremap <Leader>e :Emmet<SPACE>
 

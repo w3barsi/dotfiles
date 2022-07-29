@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'onsails/lspkind-nvim'
     Plug 'ray-x/lsp_signature.nvim'
+    Plug 'github/copilot.vim'
 
     Plug 'jose-elias-alvarez/null-ls.nvim'
     
@@ -74,7 +75,9 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 lua require('impatient')
-set termguicolors
 
-let mapleader=" "
 lua require('barsi')
+
+
+imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
