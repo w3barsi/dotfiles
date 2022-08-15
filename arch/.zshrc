@@ -4,7 +4,7 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
     # fzf
@@ -74,6 +74,15 @@ alias tls="tmux ls"
 alias tatt="tmux attach -t"
 alias tnew="tmux new -s"
 alias tkill="tmux kill-session -t"
+
+
+#ArcoLinux Stuff
+
+
+
+# =============================================================================
+# ========== Functions ========================================================
+# =============================================================================
 
 t-rnm() {
     command tmux rename-session -t "$1" "$2"
@@ -149,10 +158,9 @@ rmv () {
 
 # source "/home/barsi/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

@@ -192,7 +192,6 @@ for_window [class="Nitrogen"] floating disable
 for_window [class="Pavucontrol"] floating disable
 for_window [class="Peek"] floating enable
 for_window [class="^Skype$"] floating enable
-for_window [class="^Spotify$"] floating disable
 for_window [class="System-config-printer.py"] floating enable
 for_window [class="Unetbootin.elf"] floating enable
 for_window [class="Usb-creator-gtk"] floating enable
@@ -284,6 +283,7 @@ bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+a exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1408 -mt -tatc -- google-chrome-stable --app=https://facebook.com/messages/
 #bindsym $mod+c exec --no-startup-id i3-scratchpad -s DP-2 -d580x1408 -mr -tatr -- brave --app=https://www.twitch.tv/popout/w3barsi/chat?popout=
 bindsym $mod+d exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1408 -mt -tatc -- google-chrome-stable --new-window www.google.com 
+bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 
 exec            --no-startup-id discord
 exec            --no-startup-id caprine
@@ -291,13 +291,13 @@ exec            --no-startup-id spotify
 exec 			--no-startup-id nm-applet
 #exec_always     --no-startup-id picom
 #exec_always     --no-startup-id dunst
-#exec            --no-startup-id imwheel
+exec            --no-startup-id imwheel
 exec            --no-startup-id flameshot
 exec            --no-startup-id numlockx on
 exec_always     --no-startup-id $HOME/.config/polybar/launch.sh &
 
 exec_always     --no-startup-id setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
-exec_always     --no-startup-id xinput set-prop 8 302 1            # Changes mouse speed
+exec_always     --no-startup-id xinput set-prop 8 302 2           # Changes mouse speed
 exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Profile Enabled' 0 1            # Turns off mouse Accel
 
 # Fixes Monitor Orientation
