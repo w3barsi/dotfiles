@@ -174,8 +174,57 @@ assign [class="Steam"] $ws9
 assign [class="minecraft-launcher"] $ws9
 assign [class="blueman-applet"] $ws0
 
-for_window [class="Google-chrome"] focus
-for_window [class="Spotify"] move to workspace $ws8
+for_window [class="Arcolinux-welcome-app.py"] floating enable
+# for_window [class="Archlinux-tweak-tool.py"] floating enable
+for_window [class="Arcolinux-calamares-tool.py"] floating enable
+for_window [class="Bleachbit"] floating disable
+for_window [class="Blueberry.py"] floating enable
+for_window [class="Brasero"] floating disable
+for_window [class="Galculator"] floating enable
+for_window [class="Gnome-disks"] floating disable
+for_window [class="^Gnome-font-viewer$"] floating enable
+for_window [class="^Gpick$"] floating enable
+for_window [class="Hexchat"] floating disable
+for_window [class="Imagewriter"] floating enable
+for_window [class="Font-manager"] floating enable
+# for_window [class="qt5ct|Lxappearance] floating enable
+for_window [class="Nitrogen"] floating disable
+for_window [class="Pavucontrol"] floating disable
+for_window [class="Peek"] floating enable
+for_window [class="^Skype$"] floating enable
+for_window [class="^Spotify$"] floating disable
+for_window [class="System-config-printer.py"] floating enable
+for_window [class="Unetbootin.elf"] floating enable
+for_window [class="Usb-creator-gtk"] floating enable
+for_window [class="^Vlc$"] floating disable
+for_window [class="Wine"] floating disable
+for_window [class="Xfburn"] floating disable
+for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="Xfce4-settings-manager"] floating disable
+for_window [class="Xfce4-taskmanager"] floating enable
+
+# for_window [instance="gimp"] floating disable
+for_window [instance="script-fu"] border normal
+for_window [instance="variety"] floating disable
+
+for_window [title="Copying"] floating enable
+for_window [title="Deleting"] floating enable
+for_window [title="Moving"] floating enable
+for_window [title="^Terminator Preferences$"] floating enable
+
+# for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="^Preferences$"] floating enable
+for_window [window_role="setup"] floating enable
+
+################# give focus to applications       
+
+for_window [class="Gnome-terminal"] focus
+for_window [class="Termite"] focus
+for_window [class="Terminator"] focus
+for_window [class="Urxvt"] focus
+for_window [class="Alacritty"] focus
+
 
 
 workspace $ws1 output $mon1
@@ -229,7 +278,7 @@ mode "$mode_system" {
 
 #bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/i3-master-layout.py  -e ws1
 bindsym $mod+b exec --no-startup-id google-chrome-stable
-bindsym $mod+e exec --no-startup-id nemo
+bindsym $mod+e exec --no-startup-id pcmanfm
 bindsym Print exec --no-startup-id flameshot gui
 #bindsym $mod+a exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1200 -mt -tatc -- caprine
 bindsym $mod+a exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1408 -mt -tatc -- google-chrome-stable --app=https://facebook.com/messages/
@@ -240,20 +289,28 @@ exec            --no-startup-id discord
 exec            --no-startup-id caprine
 exec            --no-startup-id spotify
 exec 			--no-startup-id nm-applet
-exec_always     --no-startup-id picom
+#exec_always     --no-startup-id picom
 #exec_always     --no-startup-id dunst
-exec            --no-startup-id imwheel
+#exec            --no-startup-id imwheel
 exec            --no-startup-id flameshot
 exec            --no-startup-id numlockx on
-exec_always     --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always     --no-startup-id $HOME/.config/polybar/launch.sh &
 
 exec_always     --no-startup-id setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
 exec_always     --no-startup-id xinput set-prop 8 302 1            # Changes mouse speed
 exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Profile Enabled' 0 1            # Turns off mouse Accel
+
 # Fixes Monitor Orientation
-exec			--no-startup-id xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --rate 144 --pos 0x0 --rotate left --output DP-1 --off --output HDMI-1 --off --output DP-2 --mode 2560x1440 --rate 165 --pos 1080x240 --rotate normal --output DP-3 --off
+exec			--no-startup-id $HOME/.screenlayout/main.sh &
 
 exec_always     --no-startup-id "feh --bg-fill ~/dotfiles/bg-black.png"
 
 #DAEMONS
-exec            --no-startup-id xfsettingsd
+#exec            --no-startup-id xfsettingsd
+
+# ARCO STUFF
+exec_always --no-startup-id autotiling
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id conky -c ~/.config/i3/system-overview
+
+bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
