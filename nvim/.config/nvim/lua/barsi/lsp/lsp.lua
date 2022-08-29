@@ -8,6 +8,9 @@ require("nvim-lsp-installer").setup {
     }
 }
 
+local saga = require('lspsaga')
+saga.init_lsp_saga()
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -20,14 +23,16 @@ local open_float = function()
 end
 
 local on_attach = function()
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+    --vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, buffer = 0 })
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
     vim.keymap.set("n", "gf", vim.lsp.buf.format, { buffer = 0 })
     vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 })
-    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { buffer = 0 })
+    --vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { buffer = 0 })
+    vim.keymap.set("n", "<F2>", "<cmd>Lspsaga rename<CR>", { silent = true, buffer = 0 })
     vim.keymap.set("n", "?", open_float, { buffer = 0 })
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
@@ -35,12 +40,17 @@ local on_attach = function()
 
 end
 
--- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls
+-- vimls html sumneko_lua bashls yamlls prismals ccls clangd eslint intelephense jsonls tailwindcss tsserver cssls
 
 require('lspconfig').clangd.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
+
+--require('lspconfig').ccls.setup {
+    --on_attach = on_attach,
+    --capabilities = capabilities
+--}
 
 require('lspconfig').bashls.setup {
     on_attach = on_attach,

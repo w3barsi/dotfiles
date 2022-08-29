@@ -84,6 +84,15 @@ alias tkill="tmux kill-session -t"
 # ========== Functions ========================================================
 # =============================================================================
 
+pretty() {
+    echo '{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true
+}' > .prettierrc.json
+}
+
 t-rnm() {
     command tmux rename-session -t "$1" "$2"
 }
@@ -139,8 +148,8 @@ runc ()
 }
 
 mount () {
-        command sudo mount /dev/sdb1 /mnt/Kuya
-        command sudo mount /dev/sda2 /mnt/Papa
+        command sudo mount /dev/sdb1 /mnt/kuya
+        command sudo mount /dev/sda2 /mnt/papa
 }
 
 rmv () {
@@ -175,3 +184,7 @@ export PATH="$USER_BIN:$PATH"
 export PNPM_HOME="/home/barsi/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# fnm
+export PATH=/home/barsi/.fnm:$PATH
+eval "`fnm env`"

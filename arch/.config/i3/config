@@ -1,3 +1,4 @@
+
 # =============================================================================
 # ========== VARIABLES ========================================================
 # =============================================================================
@@ -18,8 +19,7 @@ set $inactive-bg-color      #282828
 set $text-color             #ebdbb2
 set $inactive-text-color    #fbf1c7
 set $urgent-bg-color        #fe8019
-set $focus-color            #665c54
-
+set $focus-color            #56b6c2
 set $mon1 "DP-2"
 set $mon2 "DP-0"
 
@@ -35,6 +35,8 @@ font pango:Hack Nerd Font 15
 
 for_window [class="^.*"] border pixel 2
 hide_edge_borders smart
+
+#set $border_radius 4
 
 gaps outer 5
 gaps inner 10
@@ -65,9 +67,11 @@ bindsym $mod+q kill
 # also uses theme oxide.rafi that is found in dotfiles folder
 #bindsym $mod+d exec rofi -show run -theme "gruvbox-dark"
 bindsym $mod+space exec rofi -show drun -theme "gruvbox-dark"
-bindsym $mod+period exec rofi -show emoji -theme "gruvbox-dark"
+#bindsym $mod+period exec rofi -show emoji -theme "gruvbox-dark"
 bindsym $mod+Shift+Return exec rofi -show calc -theme "gruvbox-dark"
 bindsym $mod+Shift+period exec ~/.config/rofi/Scripts/power.sh -theme "gruvbox-dark"
+
+bindsym $mod+period exec archlinux-logout
 
 
 # =============================================================================
@@ -167,8 +171,11 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 #assign [class="Google-chrome"] $ws2
 assign [class="dota2"] $ws3
 assign [class="qbittorrent"] $ws3
+assign [class="nvtop"] $ws6
+assign [class="htop"] $ws6
 assign [class="discord"] $ws8
-assign [class="Spotify"] $ws8
+assign [class="Spotify"] $ws9
+assign [class="spotify"] $ws9
 assign [class="Caprine"] $ws8
 assign [class="Steam"] $ws9
 assign [class="minecraft-launcher"] $ws9
@@ -284,24 +291,26 @@ bindsym $mod+a exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1408 -mt -tatc 
 #bindsym $mod+c exec --no-startup-id i3-scratchpad -s DP-2 -d580x1408 -mr -tatr -- brave --app=https://www.twitch.tv/popout/w3barsi/chat?popout=
 bindsym $mod+d exec --no-startup-id i3-scratchpad -s DP-2 -d1400x1408 -mt -tatc -- google-chrome-stable --new-window www.google.com 
 bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+#bindsym $mod+F1 --no-startup-id $HOME/.screenlayout/main.sh &
 
 exec            --no-startup-id discord
-exec            --no-startup-id caprine
+#exec           --no-startup-id caprine
 exec            --no-startup-id spotify
 exec 			--no-startup-id nm-applet
-#exec_always     --no-startup-id picom
-#exec_always     --no-startup-id dunst
+#exec_always    --no-startup-id picom
+#exec_always    --no-startup-id dunst
 exec            --no-startup-id imwheel
 exec            --no-startup-id flameshot
 exec            --no-startup-id numlockx on
 exec_always     --no-startup-id $HOME/.config/polybar/launch.sh &
 
-exec_always     --no-startup-id setxkbmap -option "caps:swapescape"     # Swaps capslock and escape
-exec_always     --no-startup-id xinput set-prop 8 302 2           # Changes mouse speed
-exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Profile Enabled' 0 1            # Turns off mouse Accel
+exec_always     --no-startup-id setxkbmap -option "caps:swapescape"                                     # Swaps capslock and escape
+exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Speed' 0                              # Changes mouse speed
+exec_always     --no-startup-id xinput set-prop 8 'libinput Accel Profile Enabled' 0 1                  # Turns off mouse Accel
+exec            --no-startup-id alacritty --class nvtop,nvtop -e nvtop
+exec            --no-startup-id alacritty --class htop,htop -e htop
 
 # Fixes Monitor Orientation
-exec			--no-startup-id $HOME/.screenlayout/main.sh &
 
 exec_always     --no-startup-id "feh --bg-fill ~/dotfiles/bg-black.png"
 
@@ -311,6 +320,8 @@ exec_always     --no-startup-id "feh --bg-fill ~/dotfiles/bg-black.png"
 # ARCO STUFF
 exec_always --no-startup-id autotiling
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id conky -c ~/.config/i3/system-overview
+#exec --no-startup-id conky -c ~/.config/i3/system-overview
 
 bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
+
+exec_always			--no-startup-id $HOME/.screenlayout/main.sh &

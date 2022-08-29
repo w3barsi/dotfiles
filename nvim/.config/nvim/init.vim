@@ -4,6 +4,7 @@ filetype plugin on
 call plug#begin('~/.vim/plugged')
     " Dependencies
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'tpope/vim-sleuth'
 
     Plug 'preservim/nerdcommenter'                                  " easy commenting
     Plug 'tpope/vim-surround'                                       " vim plugin to surround text with tag
@@ -26,14 +27,17 @@ call plug#begin('~/.vim/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
     Plug 'onsails/lspkind-nvim'
     Plug 'ray-x/lsp_signature.nvim'
-    Plug 'github/copilot.vim'
+    Plug 'glepnir/lspsaga.nvim'
+    "Plug 'github/copilot.vim'
+    
+    Plug 'rhysd/vim-clang-format'
 
     Plug 'jose-elias-alvarez/null-ls.nvim'
     
     Plug 'windwp/nvim-ts-autotag'                                       " Auto-close HTML Tags
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " We recommend updating the parsers on update
-    "Plug 'nvim-treesitter/playground'
+    Plug 'nvim-treesitter/playground'
     "
     Plug 'p00f/nvim-ts-rainbow'
 
@@ -55,6 +59,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'gruvbox-community/gruvbox' " theme for vim
     Plug 'martinsione/darkplus.nvim'
     Plug 'shaunsingh/nord.nvim'
+    Plug 'w3barsi/poimandres.nvim'
+    "Plug 'olivercederborg/poimandres.nvim'
     " Plug 'sainnhe/gruvbox-material'
     " Plug 'projekt0n/github-nvim-theme'
 

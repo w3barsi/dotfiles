@@ -1,3 +1,7 @@
+--vim.cmd[[colorscheme darkplus]]
+--vim.cmd[[colorscheme nord]]
+vim.cmd[[colorscheme poimandres]]
+
 vim.g.nord_contrast = false
 vim.g.nord_borders = true
 vim.g.nord_disable_background = false
