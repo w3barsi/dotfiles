@@ -299,7 +299,7 @@ exec            --no-startup-id spotify
 exec 			--no-startup-id nm-applet
 #exec_always    --no-startup-id picom
 #exec_always    --no-startup-id dunst
-exec            --no-startup-id imwheel
+exec_always     --no-startup-id imwheel
 exec            --no-startup-id flameshot
 exec            --no-startup-id numlockx on
 exec_always     --no-startup-id $HOME/.config/polybar/launch.sh &
