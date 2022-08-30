@@ -20,7 +20,6 @@ vim.opt.hlsearch = false
 vim.opt.mouse= "a"
 vim.opt.mousefocus = true
 
-vim.opt.encoding= "utf-8"
 
 vim.opt.errorbells = false
 vim.opt.expandtab = true
@@ -35,6 +34,7 @@ vim.opt.undofile = true
 vim.opt.incsearch = true
 --vim.opt.colorcolumn=80
 vim.opt.scrolloff=8
+
 vim.opt.laststatus=2
 vim.opt.signcolumn= "yes:1"
 vim.opt.clipboard = "unnamedplus"
@@ -48,9 +48,9 @@ vim.opt.completeopt = "menu,menuone,noselect"
 
 vim.opt.backspace = "indent,eol,start"
 
-vim.cmd[[highlight GitSignsAdd guibg=NONE]]
-vim.cmd[[highlight GitSignsAdd guifg=#b8bb26]]
-vim.cmd[[highlight GitSignsChange guibg=NONE]]
-vim.cmd[[highlight GitSignsChange guifg=#fe8019]]
-vim.cmd[[highlight GitSignsDelete guibg=NONE]]
-vim.cmd[[highlight GitSignsDelete guifg=#fb4934]]
+--vim.cmd[[highlight GitSignsAdd guibg=NONE]]
+--vim.cmd[[highlight GitSignsAdd guifg=#b8bb26]]
+--vim.cmd[[highlight GitSignsChange guibg=NONE]]
+--vim.cmd[[highlight GitSignsChange guifg=#fe8019]]
+--vim.cmd[[highlight GitSignsDelete guibg=NONE]]
+--vim.cmd[[highlight GitSignsDelete guifg=#fb4934]]
