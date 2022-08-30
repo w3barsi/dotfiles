@@ -19,6 +19,6 @@ require("null-ls").setup({
   debug = false,
   sources = {
     null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.clang_format
+    --null_ls.builtins.formatting.clang_format
   },
 })
