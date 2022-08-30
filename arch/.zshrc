@@ -1,6 +1,3 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -10,7 +7,7 @@ plugins=(
     # fzf
     git
     extract
-    zsh-autosuggestions
+    #zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -180,6 +177,9 @@ export SUDO_EDITOR="nvim"
 export USER_BIN="/home/barsi/bin/"
 export PATH="$USER_BIN:$PATH"
 
+export LOCAL_USER_BIN="/home/barsi/.local/bin/"
+export PATH="$LOCAL_USER_BIN:$PATH"
+
 # pnpm
 export PNPM_HOME="/home/barsi/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
@@ -188,3 +188,11 @@ export PATH="$PNPM_HOME:$PATH"
 # fnm
 export PATH=/home/barsi/.fnm:$PATH
 eval "`fnm env`"
+
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
