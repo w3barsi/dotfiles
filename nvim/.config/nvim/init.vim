@@ -29,17 +29,17 @@ call plug#begin('~/.vim/plugged')
     Plug 'ray-x/lsp_signature.nvim'
     Plug 'glepnir/lspsaga.nvim'
     "Plug 'github/copilot.vim'
-    
-    Plug 'rhysd/vim-clang-format'
 
+    " Formatting
     Plug 'jose-elias-alvarez/null-ls.nvim'
+    Plug 'rhysd/vim-clang-format'
     
-    Plug 'windwp/nvim-ts-autotag'                                       " Auto-close HTML Tags
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " We recommend updating the parsers on update
     Plug 'nvim-treesitter/playground'
-    "
+
     Plug 'p00f/nvim-ts-rainbow'
+    Plug 'windwp/nvim-ts-autotag'                                       " Auto-close HTML Tags
 
     Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
     Plug 'quangnguyen30192/cmp-nvim-ultisnips'                  
@@ -59,8 +59,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'gruvbox-community/gruvbox' " theme for vim
     Plug 'martinsione/darkplus.nvim'
     Plug 'shaunsingh/nord.nvim'
-    Plug 'w3barsi/poimandres.nvim'
-    "Plug 'olivercederborg/poimandres.nvim'
+    Plug 'w3barsi/poimandress.nvim'
+    Plug 'olivercederborg/poimandres.nvim'
     " Plug 'sainnhe/gruvbox-material'
     " Plug 'projekt0n/github-nvim-theme'
 
@@ -73,10 +73,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'lewis6991/impatient.nvim'
     Plug 'akinsho/toggleterm.nvim'   
     Plug 'CRAG666/code_runner.nvim'
+    Plug 'andweeb/presence.nvim'
 
     " Old plugins
         " Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
-        " Plug 'leafOfTree/vim-matchtag'
+        " Plug 'leafOfTree/vim-matchtag'init
 
 call plug#end()
 
