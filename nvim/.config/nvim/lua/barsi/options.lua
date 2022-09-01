@@ -5,7 +5,7 @@ vim.opt.background = 'dark'
 
 vim.opt.encoding = "UTF-8"
 vim.opt.fillchars = {
-    vert = " ",
+    vert = "│",
     eob = " "
 }
 vim.opt.tabstop = 4
@@ -32,7 +32,7 @@ vim.opt.backup = false
 vim.opt.undodir= vim.fn.stdpath("data") .. "undo"
 vim.opt.undofile = true
 vim.opt.incsearch = true
---vim.opt.colorcolumn=80
+vim.opt.colorcolumn="80"
 vim.opt.scrolloff=8
 
 vim.opt.laststatus=2
