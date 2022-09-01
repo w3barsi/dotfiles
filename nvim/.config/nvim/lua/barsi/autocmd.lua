@@ -1,3 +1,4 @@
+local autocmd = vim.api.nvim_create_autocmd
 --vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --pattern = { "*" },
 --command = "lua vim.lsp.buf.format()"
@@ -17,3 +18,10 @@
 --vim.cmd[[autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2 expandtab]]
 --vim.cmd[[autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab]]
 --vim.cmd[[autocmd FileType jsonc setlocal shiftwidth=2 tabstop=2 expandtab]]
+--
+
+autocmd('BufWritePost', {
+  group = vim.api.nvim_create_augroup('packer_user_config', {clear = true}),
+  pattern = 'plugins.lua',
+  command = 'source <afile> | PackerSync'
+})

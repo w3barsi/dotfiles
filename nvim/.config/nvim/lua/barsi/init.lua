@@ -1,3 +1,4 @@
+require('impatient')
 -- User Settings
 require('barsi.options')
 require('barsi.remap')
@@ -22,6 +23,7 @@ require('barsi.terminal')
 require('barsi.themes')
 require('barsi.transparent')
 
-
+--vim.keymap.set("i", "<C-c>", [[copilot#Accept("\<CR>")]])
+--vim.g['copilot_no_tab_map'] = "v:true"
 
 
