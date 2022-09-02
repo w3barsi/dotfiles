@@ -3,15 +3,24 @@ local inoremap = require('barsi.keymaps').inoremap
 local vnoremap = require('barsi.keymaps').vnoremap
 local L = {}
 
+
 nnoremap("<leader>n", ":RunFile toggleterm<CR>")
+nnoremap("<leader><Tab>", ":TSHi<cr>", {silent = true});
 
 nnoremap("<leader>u", "<cmd>UndotreeShow<CR>")
-nnoremap("<leader><Tab>", "<cmd>tabn<CR>") -- go to next tab
+--nnoremap("<leader><Tab>", "<cmd>tabn<CR>") -- go to next tab
 nnoremap("Y", "y$") -- yank to eol
+-- Rename all in buffer
+nnoremap("<leader><F2>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
+
+-- [[NAVIGATION]]
 -- Jumps to End or Beginning of Paragraph
 nnoremap("<C-j>", [[:keepjumps normal! j}k<cr>]], { noremap = true, silent = true })
 nnoremap("<C-k>", [[:keepjumps normal! k{j<cr>]], { noremap = true, silent = true })
+-- Centers C-d and C-u
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
 
 -- Make new line above or below current line
 inoremap("<S-CR>", "<Esc>O")
@@ -72,6 +81,7 @@ nnoremap("<leader>l", "<cmd>wincmd l <CR>")
 vim.g['UltiSnipsJumpForwardTrigger'] = "<C-j>"
 vim.g['UltiSnipsJumpBackwordTrigger'] = "<C-k>"
 
+-- [[ LSP ]]
 local open_float = function()
   local opts = {
     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
