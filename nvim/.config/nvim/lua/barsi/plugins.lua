@@ -17,7 +17,8 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'nvim-lua/plenary.nvim'
-  use 'tpope/vim-sleuth'
+  use 'tpope/vim-sleuth' -- .editrconfig parser
+
 
   -- Easy Commenting
   use 'preservim/nerdcommenter'
@@ -57,6 +58,7 @@ require('packer').startup(function(use)
 
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   use 'p00f/nvim-ts-rainbow'
   use 'windwp/nvim-ts-autotag'
@@ -84,6 +86,7 @@ require('packer').startup(function(use)
   use 'olivercederborg/poimandres.nvim'
   use 'sainnhe/gruvbox-material'
   use 'projekt0n/github-nvim-theme'
+  --use 'laureanray/poimandres.nvim'
 
   use 'xiyaowong/nvim-transparent'
 
@@ -96,10 +99,15 @@ require('packer').startup(function(use)
   use 'CRAG666/code_runner.nvim'
   use 'andweeb/presence.nvim'
 
+  
   -- Old plugins
   -- Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
   -- Plug 'leafOfTree/vim-matchtag'init
   --
+  -- Plugisn to keep an eyeo n
+  -- https://github.com/hkupty/iron.nvim
+  -- 'ThePrimeagen/harpoon'
+  -- 'simrat39/symbols-outline.nvim'
   if is_bootstrap then
     require('packer').sync()
   end
