@@ -1,5 +1,11 @@
-require('telescope').setup{
+require('telescope').setup {
   defaults = {
+    borderchars = {
+      { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+      prompt = { "─", "│", "─", "│", '┌', '┐', "┘", "└" },
+      results = { "─", "│", "─", "│", '┌', '┐', "┘", "└" },
+      preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+    },
     mappings = {
       i = {
         ["<C-h>"] = "which_key",
@@ -20,9 +26,9 @@ require('telescope').setup{
       "--smart-case"
     },
     layout_config = {
-          horizontal = {
-            preview_width = 0.60,
-          },
+      horizontal = {
+        preview_width = 0.60,
+      },
     }
   },
   extensions = {
@@ -33,4 +39,3 @@ require('telescope').setup{
   }
 }
 require('telescope').load_extension('fzy_native')
-

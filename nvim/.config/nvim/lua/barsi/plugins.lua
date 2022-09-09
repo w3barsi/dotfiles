@@ -26,7 +26,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'windwp/nvim-autopairs'
   -- Adds colors to color codes
-  use 'norcalli/nvim-colorizer.lua'
+  use 'NvChad/nvim-colorizer.lua'
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
@@ -85,8 +85,13 @@ require('packer').startup(function(use)
   use 'w3barsi/poimandress.nvim'
   use 'olivercederborg/poimandres.nvim'
   use 'sainnhe/gruvbox-material'
-  use 'projekt0n/github-nvim-theme'
   --use 'laureanray/poimandres.nvim'
+  use 'projekt0n/github-nvim-theme'
+  --use 'ldelossa/vimdark'
+  use 'olimorris/onedarkpro.nvim'
+  use 'kvrohit/substrata.nvim'
+  use 'w3barsi/barstrata.nvim'
+  use 'NTBBloodbath/doom-one.nvim'
 
   use 'xiyaowong/nvim-transparent'
 
@@ -97,9 +102,9 @@ require('packer').startup(function(use)
   use 'lewis6991/impatient.nvim'
   use 'akinsho/toggleterm.nvim'
   use 'CRAG666/code_runner.nvim'
-  use 'andweeb/presence.nvim'
+  --use 'andweeb/presence.nvim'
 
-  
+
   -- Old plugins
   -- Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
   -- Plug 'leafOfTree/vim-matchtag'init

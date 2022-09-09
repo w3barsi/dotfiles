@@ -3,9 +3,10 @@ local inoremap = require('barsi.keymaps').inoremap
 local vnoremap = require('barsi.keymaps').vnoremap
 local L = {}
 
+nnoremap(";;", "A;<Esc>")
 
 nnoremap("<leader>n", ":RunFile toggleterm<CR>")
-nnoremap("<leader><Tab>", ":TSHi<cr>", {silent = true});
+nnoremap("<leader><Tab>", ":TSHi<cr>", {silent = true})
 
 nnoremap("<leader>u", "<cmd>UndotreeShow<CR>")
 --nnoremap("<leader><Tab>", "<cmd>tabn<CR>") -- go to next tab
@@ -13,11 +14,12 @@ nnoremap("Y", "y$") -- yank to eol
 -- Rename all in buffer
 nnoremap("<leader><F2>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
-
 -- [[NAVIGATION]]
 -- Jumps to End or Beginning of Paragraph
 nnoremap("<C-j>", [[:keepjumps normal! j}k<cr>]], { noremap = true, silent = true })
 nnoremap("<C-k>", [[:keepjumps normal! k{j<cr>]], { noremap = true, silent = true })
+vnoremap("<C-j>", [[j}k]], { noremap = true, silent = true })
+vnoremap("<C-k>", [[k{j]], { noremap = true, silent = true })
 -- Centers C-d and C-u
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
@@ -81,13 +83,20 @@ nnoremap("<leader>l", "<cmd>wincmd l <CR>")
 vim.g['UltiSnipsJumpForwardTrigger'] = "<C-j>"
 vim.g['UltiSnipsJumpBackwordTrigger'] = "<C-k>"
 
+-- REFACTORING
+vnoremap("<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+vnoremap("<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
+vnoremap("<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
+vnoremap("<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+
+
 -- [[ LSP ]]
 local open_float = function()
   local opts = {
     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
     border = 'rounded',
   }
-  vim.api.nvim_command('lua vim.diagnostic.open_float(nil, {close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" }, border = "rounded",})')
+  vim.api.nvim_command('lua vim.diagnostic.open_float(nil, {close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" }, border = "single",})')
 end
 
 local on_attach = function()
