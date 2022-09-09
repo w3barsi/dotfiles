@@ -1,4 +1,5 @@
 require('impatient')
+
 -- User Settings
 require('barsi.plugins')
 require('barsi.options')
@@ -18,6 +19,7 @@ require('barsi.code_runner')
 require('barsi.git')
 require('barsi.indentline')
 require('barsi.lualine')
+--require('barsi.presence')
 require('barsi.nvim-tree')
 require('barsi.telescope')
 require('barsi.terminal')
