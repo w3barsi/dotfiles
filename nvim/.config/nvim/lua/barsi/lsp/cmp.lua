@@ -1,6 +1,28 @@
 local lspkind = require('lspkind')
 local cmp = require('cmp')
 
+-- local border = {
+--     { "┏", "FloatBorder" },
+--     { "━", "FloatBorder" },
+--     { "┓", "FloatBorder" },
+--     { "┃", "FloatBorder" },
+--     { "┛", "FloatBorder" },
+--     { "━", "FloatBorder" },
+--     { "┗", "FloatBorder" },
+--     { "┃", "FloatBorder" },
+-- }
+
+local border = {
+    { "┌", "CmpBorder" },
+    { "─", "CmpBorder" },
+    { "┐", "CmpBorder" },
+    { "│", "CmpBorder" },
+    { "┘", "CmpBorder" },
+    { "─", "CmpBorder" },
+    { "└", "CmpBorder" },
+    { "│", "CmpBorder" },
+}
+		
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -8,10 +30,10 @@ cmp.setup({
       -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
+  --window = {
+    ----completion = { border = border,},
+    ----documentation = { border = border },
+  --},
   mapping = {
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),

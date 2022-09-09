@@ -9,8 +9,16 @@ require('nvim-treesitter.configs').setup {
   },
 
   rainbow = {
-    enable = true,
-    extended_mode = false
+    enable = false,
+    extended_mode = false,
+    --colors = {
+      --'#FFD700',
+      --'#179FFF',
+      --'#DA70D6',
+      --'#FFD700',
+      --'#179FFF',
+      --'#DA70D6',
+    --}
   },
 
   incremental_selection = { enable = true },
