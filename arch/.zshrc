@@ -1,4 +1,4 @@
-
+export DISCORD=false
 export ZSH="$HOME/.oh-my-zsh"
 
 #ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -47,6 +47,7 @@ alias move='mv'
 alias cdc='cd && clear'
 alias cdb='cd ..'
 alias ls='exa'
+alias la='ls -la'
 alias tty-clock="tty-clock -c -S -C 3"
 alias Notes="vim ~/Notes"
 alias dl="youtube-dl"
@@ -59,7 +60,7 @@ alias back='playerctl back'
 
 # Terminal Apps Shortcut
 alias alsa="alsamixer"
-alias btm="btm --color gruvbox"
+#alias btm="btm --color gruvbox"
 alias catt="bat --theme gruvbox-dark"
 alias mangal="~/go/bin/mangal"
 alias tb="nc termbin.com 9999"
