@@ -4,6 +4,15 @@ vim.g.github_function_style = "italic"
 vim.g.github_variable_style = "NONE"
 vim.g.github_dark_sidbar = 1
 
+vim.g.barstrata_italic_comments = true
+vim.g.barstrata_italic_keywords = false
+vim.g.barstrata_italic_booleans = false
+vim.g.barstrata_italic_functions = false
+vim.g.barstrata_italic_variables = false
+vim.g.barstrata_italic_types = true
+vim.g.barstrata_transparent = false
+vim.g.barstrata_variant = "default"
+
 vim.g.nord_contrast = true
 vim.g.nord_borders = false
 vim.g.nord_disable_background = false
@@ -35,5 +44,5 @@ require('colorizer').setup {
 --vim.cmd[[colorscheme github_dark_default]]
 --vim.cmd[[colorscheme vimdark]]
 --vim.cmd[[colorscheme onedarkpro]]
-vim.cmd [[colorscheme substrata]]
+vim.cmd [[colorscheme barstrata]]
 --vim.cmd[[colorscheme nord]]
