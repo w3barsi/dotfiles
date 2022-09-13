@@ -1,4 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
+local nnoremap = require('barsi.keymaps').nnoremap
 --vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --pattern = { "*" },
 --command = "lua vim.lsp.buf.format()"
@@ -25,3 +26,16 @@ autocmd('BufWritePost', {
   pattern = 'plugins.lua',
   command = 'source <afile> | PackerSync'
 })
+
+autocmd('FileType', {
+  pattern = 'c',
+  command = [[nnoremap <buffer><silent> <leader>n :RunFile toggleterm<CR> ]]
+
+})
+
+autocmd('FileType', {
+  pattern = 'rust',
+  command = [[nnoremap <buffer><silent> <leader>n :! tmux send-keys -t 1 "cargo run" Enter <CR>]]
+
+})
+
