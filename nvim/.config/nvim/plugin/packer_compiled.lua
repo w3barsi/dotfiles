@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["auto-save.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/auto-save.nvim",
+    url = "https://github.com/Pocco81/auto-save.nvim"
+  },
   ["barstrata.nvim"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/barstrata.nvim",
@@ -159,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["last-color.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/last-color.nvim",
+    url = "https://github.com/raddari/last-color.nvim"
+  },
   ["lazygit.nvim"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
@@ -188,6 +198,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
+  ["material.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/material.nvim",
+    url = "https://github.com/marko-cerovac/material.nvim"
+  },
+  neovim = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/neovim",
+    url = "https://github.com/rose-pine/neovim"
   },
   nerdcommenter = {
     loaded = true,
@@ -259,6 +279,11 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
     url = "https://github.com/p00f/nvim-ts-rainbow"
   },
+  ["nvim-tundra"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-tundra",
+    url = "https://github.com/sam4llis/nvim-tundra"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -293,6 +318,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/poimandress.nvim",
     url = "https://github.com/w3barsi/poimandress.nvim"
+  },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
   },
   ["substrata.nvim"] = {
     loaded = true,
