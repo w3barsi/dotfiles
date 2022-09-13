@@ -13,16 +13,16 @@ local cmp = require('cmp')
 -- }
 
 local border = {
-    { "┌", "CmpBorder" },
-    { "─", "CmpBorder" },
-    { "┐", "CmpBorder" },
-    { "│", "CmpBorder" },
-    { "┘", "CmpBorder" },
-    { "─", "CmpBorder" },
-    { "└", "CmpBorder" },
-    { "│", "CmpBorder" },
+  { "┌", "CmpBorder" },
+  { "─", "CmpBorder" },
+  { "┐", "CmpBorder" },
+  { "│", "CmpBorder" },
+  { "┘", "CmpBorder" },
+  { "─", "CmpBorder" },
+  { "└", "CmpBorder" },
+  { "│", "CmpBorder" },
 }
-		
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -31,8 +31,8 @@ cmp.setup({
     end,
   },
   --window = {
-    ----completion = { border = border,},
-    ----documentation = { border = border },
+  ----completion = { border = border,},
+  ----documentation = { border = border },
   --},
   mapping = {
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -61,12 +61,15 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'path' },
+    { name = 'buffer' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'ultisnips' }, -- For ultisnips users.
-  }, {
-    { name = 'buffer' },
-  }),
+  }
+    --{
+      --{ name = 'buffer' },
+    --}
+  ),
   formatting = {
     format = lspkind.cmp_format({
       with_text = true,
