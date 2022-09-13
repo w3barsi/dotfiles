@@ -44,5 +44,8 @@ require('colorizer').setup {
 --vim.cmd[[colorscheme github_dark_default]]
 --vim.cmd[[colorscheme vimdark]]
 --vim.cmd[[colorscheme onedarkpro]]
-vim.cmd [[colorscheme barstrata]]
+--vim.cmd [[colorscheme barstrata]]
 --vim.cmd[[colorscheme nord]]
+--
+local theme = require('last-color').recall() or 'barstrata'
+vim.cmd(('colorscheme %s'):format(theme))
