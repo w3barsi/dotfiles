@@ -16,7 +16,31 @@ saga.init_lsp_saga()
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- vimls html sumneko_lua bashls yamlls prismals ccls clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls
+-- vimls html sumneko_lua bashls yamlls prismals ccls clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo
+
+require('lspconfig').rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      on_attach()
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+
+require('lspconfig').taplo.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
 
 require('lspconfig').clangd.setup {
   on_attach = on_attach,
@@ -105,12 +129,12 @@ require('lspconfig').prismals.setup {
 
 
 --local cfg = {
-  --floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+--floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
 
-  --hint_enable = false, -- virtual hint enable
-  --handler_opts = {
-    --border = "single" -- double, rounded, single, shadow, none
-  --},
+--hint_enable = false, -- virtual hint enable
+--handler_opts = {
+--border = "single" -- double, rounded, single, shadow, none
+--},
 --}
 
 --require('lsp_signature').setup(cfg)

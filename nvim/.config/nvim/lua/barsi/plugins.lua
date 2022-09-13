@@ -8,16 +8,15 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
-
-require('barsi')
-
-
 require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
   use 'nvim-lua/plenary.nvim'
-  use 'tpope/vim-sleuth' -- .editrconfig parser
+  use 'tpope/vim-sleuth' -- .editorconfig parser
+  use 'Pocco81/auto-save.nvim'
+
+
 
 
   -- Easy Commenting
@@ -27,6 +26,7 @@ require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
   -- Adds colors to color codes
   use 'NvChad/nvim-colorizer.lua'
+
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
@@ -52,6 +52,9 @@ require('packer').startup(function(use)
   use 'glepnir/lspsaga.nvim'
   -- use 'github/copilot.vim'
 
+  -- LANGUAGE SPECIFIC
+  use 'simrat39/rust-tools.nvim'
+
   -- Formatting
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'rhysd/vim-clang-format'
@@ -73,12 +76,9 @@ require('packer').startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
 
 
-  -- THEMES
-  use 'nvim-lualine/lualine.nvim'
-  use 'ryanoasis/vim-devicons'
-  use 'kyazdani42/nvim-web-devicons'
 
-  -- COLORS
+  use 'raddari/last-color.nvim'
+  -- COLORS/THEME
   use 'gruvbox-community/gruvbox'
   use 'martinsione/darkplus.nvim'
   use 'shaunsingh/nord.nvim'
@@ -92,8 +92,14 @@ require('packer').startup(function(use)
   use 'kvrohit/substrata.nvim'
   use 'w3barsi/barstrata.nvim'
   use 'NTBBloodbath/doom-one.nvim'
+  use 'rose-pine/neovim'
+  use 'marko-cerovac/material.nvim'
+  use 'sam4llis/nvim-tundra'
 
   use 'xiyaowong/nvim-transparent'
+  use 'nvim-lualine/lualine.nvim'
+  use 'ryanoasis/vim-devicons'
+  use 'kyazdani42/nvim-web-devicons'
 
   use 'kdheepak/lazygit.nvim'
   use 'lewis6991/gitsigns.nvim'

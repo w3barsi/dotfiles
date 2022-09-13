@@ -1,3 +1,4 @@
+local actions = require('telescope.actions')
 require('telescope').setup {
   defaults = {
     borderchars = {
@@ -8,7 +9,7 @@ require('telescope').setup {
     },
     mappings = {
       i = {
-        ["<C-h>"] = "which_key",
+        ["<esc>"] = actions.close
       }
     },
     file_ignore_patterns = {

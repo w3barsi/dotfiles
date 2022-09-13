@@ -1,12 +1,18 @@
 local nnoremap = require('barsi.keymaps').nnoremap
 local inoremap = require('barsi.keymaps').inoremap
 local vnoremap = require('barsi.keymaps').vnoremap
+local xnoremap = require('barsi.keymaps').xnoremap
 local L = {}
 
+-- Add semicolon to end
 nnoremap(";;", "A;<Esc>")
+inoremap(";;", "<Esc>A;<Esc>")
 
-nnoremap("<leader>n", ":RunFile toggleterm<CR>")
-nnoremap("<leader><Tab>", ":TSHi<cr>", {silent = true})
+xnoremap("<leader>p", "\"_dP")
+
+--nnoremap("<leader>n", ":RunFile toggleterm<CR>")
+nnoremap("<leader>n", [[:! tmux send-keys -t 1 "cargo run" Enter <CR>]])
+nnoremap("<leader><Tab>", ":TSHi<cr>", { silent = true })
 
 nnoremap("<leader>u", "<cmd>UndotreeShow<CR>")
 --nnoremap("<leader><Tab>", "<cmd>tabn<CR>") -- go to next tab
@@ -84,10 +90,14 @@ vim.g['UltiSnipsJumpForwardTrigger'] = "<C-j>"
 vim.g['UltiSnipsJumpBackwordTrigger'] = "<C-k>"
 
 -- REFACTORING
-vnoremap("<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
-vnoremap("<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
-vnoremap("<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
-vnoremap("<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+vnoremap("<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
+  { noremap = true, silent = true, expr = false })
+vnoremap("<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
+  { noremap = true, silent = true, expr = false })
+vnoremap("<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
+  { noremap = true, silent = true, expr = false })
+vnoremap("<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+  { noremap = true, silent = true, expr = false })
 
 
 -- [[ LSP ]]
