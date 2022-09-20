@@ -16,7 +16,12 @@ saga.init_lsp_saga()
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- vimls html sumneko_lua bashls yamlls prismals ccls clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo
+-- vimls html sumneko_lua bashls yamlls prismals ccls clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro
+
+require('lspconfig').astro.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
 
 require('lspconfig').rust_analyzer.setup {
   on_attach = on_attach,

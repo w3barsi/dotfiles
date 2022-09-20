@@ -13,8 +13,10 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'nvim-lua/plenary.nvim'
-  use 'tpope/vim-sleuth' -- .editorconfig parser
+  --use 'tpope/vim-sleuth' -- .editorconfig parser
   use 'Pocco81/auto-save.nvim'
+  use 'Darazaki/indent-o-matic'
+  use 'RRethy/vim-illuminate'
 
 
 
@@ -55,6 +57,16 @@ require('packer').startup(function(use)
   -- LANGUAGE SPECIFIC
   use 'simrat39/rust-tools.nvim'
 
+  -- Snippets stuff
+  ---- Ultisnips
+  --use 'SirVer/ultisnips'
+  --use 'honza/vim-snippets'
+  --use 'quangnguyen30192/cmp-nvim-ultisnips'
+  ---- luasnips
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'rafamadriz/friendly-snippets'
+
   -- Formatting
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'rhysd/vim-clang-format'
@@ -66,14 +78,12 @@ require('packer').startup(function(use)
   use 'p00f/nvim-ts-rainbow'
   use 'windwp/nvim-ts-autotag'
 
-  use 'SirVer/ultisnips'
-  use 'honza/vim-snippets'
-  use 'quangnguyen30192/cmp-nvim-ultisnips'
 
   -- FILE NAVIGATION
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'kyazdani42/nvim-tree.lua'
+  use 'ThePrimeagen/harpoon'
 
 
 
@@ -117,7 +127,6 @@ require('packer').startup(function(use)
   --
   -- Plugisn to keep an eyeo n
   -- https://github.com/hkupty/iron.nvim
-  -- 'ThePrimeagen/harpoon'
   -- 'simrat39/symbols-outline.nvim'
   if is_bootstrap then
     require('packer').sync()

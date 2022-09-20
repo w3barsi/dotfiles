@@ -1,2 +1,4 @@
-require('nvim-ts-autotag').setup()
-require('nvim-autopairs').setup{}
+require('nvim-ts-autotag').setup({
+  filetypes = { "astro" },
+})
+require('nvim-autopairs').setup {}
