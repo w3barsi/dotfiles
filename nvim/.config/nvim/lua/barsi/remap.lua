@@ -4,6 +4,10 @@ local vnoremap = require('barsi.keymaps').vnoremap
 local xnoremap = require('barsi.keymaps').xnoremap
 local L = {}
 
+-- 
+nnoremap("<C-j>", ":lua require('illuminate').goto_next_reference(wrap)<CR>", { silent = true })
+nnoremap("<C-k>", ":lua require('illuminate').goto_prev_reference(wrap)<CR>", { silent = true })
+
 -- Add semicolon to end
 nnoremap(";;", "A;<Esc>")
 inoremap(";;", "<Esc>A;<Esc>")
@@ -22,8 +26,8 @@ nnoremap("<leader><F2>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- [[NAVIGATION]]
 -- Jumps to End or Beginning of Paragraph
-nnoremap("<C-j>", [[:keepjumps normal! j}k<cr>]], { noremap = true, silent = true })
-nnoremap("<C-k>", [[:keepjumps normal! k{j<cr>]], { noremap = true, silent = true })
+--nnoremap("<C-j>", [[:keepjumps normal! j}k<cr>]], { noremap = true, silent = true })
+--nnoremap("<C-k>", [[:keepjumps normal! k{j<cr>]], { noremap = true, silent = true })
 vnoremap("<C-j>", [[j}k]], { noremap = true, silent = true })
 vnoremap("<C-k>", [[k{j]], { noremap = true, silent = true })
 -- Centers C-d and C-u
@@ -78,6 +82,7 @@ nnoremap("<leader>h", "<cmd>wincmd h <CR>")
 nnoremap("<leader>j", "<cmd>wincmd j <CR>")
 nnoremap("<leader>k", "<cmd>wincmd k <CR>")
 nnoremap("<leader>l", "<cmd>wincmd l <CR>")
+
 
 
 -- Commented as I forgot what these mappings do
