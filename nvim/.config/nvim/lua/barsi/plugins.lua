@@ -17,6 +17,7 @@ require('packer').startup(function(use)
   use 'Pocco81/auto-save.nvim'
   use 'Darazaki/indent-o-matic'
   use 'RRethy/vim-illuminate'
+  use 'mbbill/undotree'
 
 
 
