@@ -1,5 +1,6 @@
 export DISCORD=false
 export ZSH="$HOME/.oh-my-zsh"
+eval "$(zoxide init bash)"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -35,6 +36,7 @@ alias vimrc='vim ~/dotfiles/nvim/.config'
 alias move='mv'
 alias ls='exa'
 alias la='ls -la'
+alias cd='z'
 
 # Terminal Apps Shortcut
 #alias btm="btm --color gruvbox"
