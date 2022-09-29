@@ -1,4 +1,3 @@
-
 export DISCORD=false
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -20,6 +19,8 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 # System Stuff
 alias nala="sudo nala"
 alias src="source ~/.zshrc"
+alias open="wslview"
+alias lg="lazygit"
  
 # Vim aliases
 alias v='nvim'
