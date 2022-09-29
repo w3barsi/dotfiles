@@ -10,8 +10,12 @@ nnoremap("<C-k>", ":lua require('illuminate').goto_prev_reference(wrap)<CR>", { 
 
 -- Add semicolon to end
 nnoremap(";;", "A;<Esc>")
-inoremap(";;", "<Esc>A;<Esc>")
 
+-- Keep visual mode after indent
+vnoremap(">", ">gv", {silent = true})
+vnoremap("<", "<gv", {silent = true})
+
+-- Paste without changing clipboard buffer
 xnoremap("<leader>p", "\"_dP")
 
 --nnoremap("<leader>n", ":RunFile toggleterm<CR>")
