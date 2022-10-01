@@ -1,7 +1,4 @@
-export DISCORD=false
 export ZSH="$HOME/.oh-my-zsh"
-eval "$(zoxide init bash)"
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
@@ -36,7 +33,6 @@ alias vimrc='vim ~/dotfiles/nvim/.config'
 alias move='mv'
 alias ls='exa'
 alias la='ls -la'
-alias cd='z'
 
 # Terminal Apps Shortcut
 #alias btm="btm --color gruvbox"
@@ -111,6 +107,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
+
+export DISCORD=false
+
+eval "$(zoxide init bash)"
 
 # ~/.zshrc
 #
