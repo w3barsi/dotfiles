@@ -19,11 +19,11 @@ vim.g.nord_disable_background = false
 vim.g.nord_italic = false
 vim.g.nord_uniform_diff_background = true
 
-require('colorizer').setup {
-  user_default_options = {
-    names = false;
-  }
-}
+require("colorizer").setup({
+	user_default_options = {
+		names = false,
+	},
+})
 
 --function searchCount()
 --local search = vim.fn.searchcount({ maxcount = 0 }) -- maxcount = 0 makes the number not be capped at 99
@@ -47,5 +47,5 @@ require('colorizer').setup {
 --vim.cmd [[colorscheme barstrata]]
 --vim.cmd[[colorscheme nord]]
 --
-local theme = require('last-color').recall() or 'barstrata'
-vim.cmd(('colorscheme %s'):format(theme))
+local theme = require("last-color").recall() or "barstrata"
+vim.cmd(("colorscheme %s"):format(theme))
