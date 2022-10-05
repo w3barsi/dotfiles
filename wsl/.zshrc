@@ -24,6 +24,7 @@ alias lg="lazygit"
 alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
+alias nv='/mnt/c/tools/neovide.exe --wsl'
 
 #RC Aliases
 alias zshrc='vim ~/.zshrc'

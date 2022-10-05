@@ -26,3 +26,6 @@ require("barsi.telescope")
 require("barsi.terminal")
 require("barsi.themes")
 require("barsi.transparent")
+
+--require("barsi.neovide")
+

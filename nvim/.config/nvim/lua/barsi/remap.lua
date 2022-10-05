@@ -47,9 +47,11 @@ inoremap("<C-CR>", "<Esc>o")
 nnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
 vnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
 
+nnoremap("<A-k>", [[V:m '<-2<CR>]], { silent = true })
+nnoremap("<A-j>", [[V:m '>+1<CR>]], { silent = true })
 -- Move Text in Visual Block Up or Down
-vnoremap("K", [[:m '<-2<CR>gv=gv]], { silent = true })
-vnoremap("J", [[:m '>+1<CR>gv=gv]], { silent = true })
+vnoremap("<A-k>", [[:m '<-2<CR>gv=gv]], { silent = true })
+vnoremap("<A-j>", [[:m '>+1<CR>gv=gv]], { silent = true })
 
 -- Move text under cursor
 inoremap("<C-j>", [[ <esc>:m .+1<CR>== ]], { silent = true })
