@@ -1,4 +1,16 @@
 vim.g.mapleader = " "
+vim.g.clipboard = {
+ name = "win32yank.exe",
+ copy = {
+  ["+"] = "win32yank.exe -i",
+  ["*"] = "win32yank.exe -i",
+ },
+ paste = {
+  ["+"] = "win32yank.exe -o",
+  ["*"] = "win32yank.exe -o",
+ },
+ cache_enabled = 1,
+}
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
@@ -34,7 +46,7 @@ vim.opt.incsearch = true
 vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 8
 
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.signcolumn = "yes:1"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.lazyredraw = true
