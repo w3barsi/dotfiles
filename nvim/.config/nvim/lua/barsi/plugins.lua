@@ -7,8 +7,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 
-require("packer").startup(function(use)
-	-- Packer can manage itself
+require("packer").startup(function(use) -- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
 	use("nvim-lua/plenary.nvim")
@@ -19,7 +18,9 @@ require("packer").startup(function(use)
 	use("mbbill/undotree")
 
 	-- Easy Commenting
-	use("preservim/nerdcommenter")
+	--use("preservim/nerdcommenter")
+	use("numToStr/Comment.nvim")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- vim plugin to surround text with tag
 	use("tpope/vim-surround")
 	use("windwp/nvim-autopairs")
@@ -83,7 +84,7 @@ require("packer").startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("ThePrimeagen/harpoon")
 
-	use("raddari/last-color.nvim")
+	use("raddari/last-color.nvim") -- Remembers last used colorscheme
 	-- COLORS/THEME
 	use("gruvbox-community/gruvbox")
 	use("martinsione/darkplus.nvim")
@@ -116,10 +117,6 @@ require("packer").startup(function(use)
 	use("CRAG666/code_runner.nvim")
 	--use 'andweeb/presence.nvim'
 
-	-- Old plugins
-	-- Plug 'alvan/vim-closetag'                                       " Auto-close HTML Tags
-	-- Plug 'leafOfTree/vim-matchtag'init
-	--
 	-- Plugisn to keep an eyeo n
 	-- https://github.com/hkupty/iron.nvim
 	-- 'simrat39/symbols-outline.nvim'

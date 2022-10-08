@@ -44,8 +44,8 @@ inoremap("<S-CR>", "<Esc>O")
 inoremap("<C-CR>", "<Esc>o")
 
 -- Use Ctrl + / to comment a line or a visual block
-nnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
-vnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
+-- nnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
+-- vnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
 
 nnoremap("<A-k>", [[V:m '<-2<CR>]], { silent = true })
 nnoremap("<A-j>", [[V:m '>+1<CR>]], { silent = true })

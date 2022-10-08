@@ -11,7 +11,8 @@ vim.g.barstrata_italic_functions = false
 vim.g.barstrata_italic_variables = false
 vim.g.barstrata_italic_types = true
 vim.g.barstrata_transparent = false
-vim.g.barstrata_variant = "default"
+-- vim.g.barstrata_variant = "default"
+vim.g.barstrata_variant = "darker"
 
 vim.g.nord_contrast = true
 vim.g.nord_borders = false
