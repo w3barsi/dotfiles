@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["auto-save.nvim"] = {
-    loaded = true,
-    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/auto-save.nvim",
-    url = "https://github.com/Pocco81/auto-save.nvim"
-  },
   ["barstrata.nvim"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/barstrata.nvim",
@@ -243,6 +238,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
+  nvim = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim",
+    url = "https://github.com/catppuccin/nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,

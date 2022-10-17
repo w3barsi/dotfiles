@@ -1,10 +1,12 @@
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all",
-	indent = { enable = true },
+	indent = {
+		enable = true,
+		disable = { "python" },
+	},
 
 	highlight = {
 		enable = true,
-		--disable = { "" },
 		additional_vim_regex_highlighting = false,
 	},
 
@@ -37,6 +39,9 @@ require("treesitter-context").setup({
 			"if",
 			"switch",
 			"case",
+		},
+		json = {
+			"pair",
 		},
 	},
 })
