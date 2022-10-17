@@ -11,8 +11,8 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
 	use("nvim-lua/plenary.nvim")
-	--use 'tpope/vim-sleuth' -- .editorconfig parser
-	use("Pocco81/auto-save.nvim")
+
+	-- use("Pocco81/auto-save.nvim")
 	use("Darazaki/indent-o-matic")
 	use("RRethy/vim-illuminate")
 	use("mbbill/undotree")
@@ -100,6 +100,7 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("w3barsi/barstrata.nvim")
 	use("NTBBloodbath/doom-one.nvim")
 	use("rose-pine/neovim")
+	use("catppuccin/nvim")
 	use("marko-cerovac/material.nvim")
 	use("sam4llis/nvim-tundra")
 
