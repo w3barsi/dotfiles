@@ -47,8 +47,8 @@ inoremap("<C-CR>", "<Esc>o")
 -- nnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
 -- vnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
 
-nnoremap("<A-k>", [[V:m '<-2<CR>]], { silent = true })
-nnoremap("<A-j>", [[V:m '>+1<CR>]], { silent = true })
+nnoremap("<A-k>", [[V:m '<-2<CR>gv=]], { silent = true })
+nnoremap("<A-j>", [[V:m '>+1<CR>gv=]], { silent = true })
 -- Move Text in Visual Block Up or Down
 vnoremap("<A-k>", [[:m '<-2<CR>gv=gv]], { silent = true })
 vnoremap("<A-j>", [[:m '>+1<CR>gv=gv]], { silent = true })
