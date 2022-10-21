@@ -10,11 +10,13 @@ require("telescope").setup({
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
+				["<S-Tab>"] = actions.move_selection_next,
+				["<Tab>"] = actions.move_selection_previous,
 			},
 		},
 		file_ignore_patterns = {
-			"node_modules",
 			".git",
+			"node_modules",
 		},
 		vimgrep_arguments = {
 			"rg",
@@ -31,6 +33,9 @@ require("telescope").setup({
 				preview_width = 0.60,
 			},
 		},
+	},
+	pickers = {
+		current_buffer_fuzzy_find = { sorting_strategy = "ascending" },
 	},
 	extensions = {
 		fzy_native = {
