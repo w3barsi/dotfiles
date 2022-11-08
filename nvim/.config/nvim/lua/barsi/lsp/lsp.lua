@@ -7,30 +7,117 @@ require("nvim-lsp-installer").setup({
 		},
 	},
 })
-
-local on_attach = require("barsi.remap").on_attach
-
+-- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm
+local tw_highlight = require("tailwind-highlight")
+local lspconfig = require("lspconfig")
 local saga = require("lspsaga")
 saga.init_lsp_saga()
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require("lsp_signature").setup({
+	floating_window = false,
+	hint_enable = true, -- virtual hint enable
+	hint_prefix = "🐼 ",
+})
+
+vim.diagnostic.config({
+	underline = { severity_limit = "Error" },
+	signs = true,
+	update_in_insert = false,
+})
+
+local on_attach = require("barsi.remap").on_attach
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = {
+		"documentation",
+		"detail",
+		"additionalTextEdits",
+	},
+}
 
--- vimls html sumneko_lua bashls yamlls prismals ccls clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm
-
-require("lspconfig").emmet_ls.setup({
+local default_config = {
 	on_attach = on_attach,
 	capabilities = capabilities,
+}
+
+lspconfig.html.setup(default_config)
+lspconfig.astro.setup(default_config)
+lspconfig.cssls.setup(default_config)
+lspconfig.taplo.setup(default_config)
+lspconfig.vimls.setup(default_config)
+lspconfig.bashls.setup(default_config)
+lspconfig.clangd.setup(default_config)
+lspconfig.eslint.setup(default_config)
+lspconfig.jsonls.setup(default_config)
+lspconfig.yamlls.setup(default_config)
+lspconfig.emmet_ls.setup(default_config)
+lspconfig.prismals.setup(default_config)
+lspconfig.intelephense.setup(default_config)
+lspconfig.rust_analyzer.setup(default_config)
+
+-- lspconfig.sumneko_lua.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		Lua = {
+-- 			diagnostics = {
+-- 				globals = { "vim" },
+-- 			},
+-- 		},
+-- 	},
+-- })
+
+local lua_rtp = vim.split(package.path, ";")
+table.insert(lua_rtp, "lua/?.lua")
+table.insert(lua_rtp, "lua/?/init.lua")
+
+lspconfig.sumneko_lua.setup(vim.tbl_extend("force", default_config, {
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+				path = lua_rtp,
+			},
+			diagnostics = { globals = { "vim" } },
+			workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+			telemetry = { enable = false },
+		},
+	},
+}))
+
+lspconfig.tailwindcss.setup({
+	on_attach = function(client, bufnr)
+		tw_highlight.setup(client, bufnr, {
+			single_column = false,
+			mode = "background",
+			debounce = 200,
+		})
+
+		on_attach(client, bufnr)
+	end,
 })
 
-require("lspconfig").astro.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
+end
 
-require("lspconfig").rust_analyzer.setup({
+lspconfig.tsserver.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	commands = {
+		OrganizeImports = {
+			organize_imports,
+			description = "Organize Imports",
+		},
+	},
 })
 
 local rt = require("rust-tools")
@@ -47,92 +134,10 @@ rt.setup({
 	},
 })
 
-require("lspconfig").taplo.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").clangd.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
 --require('lspconfig').ccls.setup {
 --on_attach = on_attach,
 --capabilities = capabilities
 --}
-
-require("lspconfig").bashls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").sumneko_lua.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	},
-})
-
-require("lspconfig").vimls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").cssls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").tsserver.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").jsonls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").html.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").intelephense.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").eslint.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").jsonls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").yamlls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig").prismals.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
 
 --local cfg = {
 --floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
@@ -144,3 +149,4 @@ require("lspconfig").prismals.setup({
 --}
 
 --require('lsp_signature').setup(cfg)
+--
