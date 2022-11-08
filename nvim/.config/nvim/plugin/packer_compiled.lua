@@ -84,6 +84,12 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["auto-session"] = {
+    config = { "\27LJ\2\n”\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\31auto_session_suppress_dirs\1\5\0\0\a~/\15~/Projects\16~/Downloads\6/\1\0\1\14log_level\nerror\nsetup\17auto-session\frequire\0" },
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/auto-session",
+    url = "https://github.com/rmagatti/auto-session"
+  },
   ["barstrata.nvim"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/barstrata.nvim",
@@ -124,6 +130,16 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/code_runner.nvim",
     url = "https://github.com/CRAG666/code_runner.nvim"
   },
+  ["copilot-client.lua"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/copilot-client.lua",
+    url = "https://github.com/samodostal/copilot-client.lua"
+  },
+  ["copilot.lua"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/copilot.lua",
+    url = "https://github.com/zbirenbaum/copilot.lua"
+  },
   ["darkplus.nvim"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
@@ -133,6 +149,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/doom-one.nvim",
     url = "https://github.com/NTBBloodbath/doom-one.nvim"
+  },
+  ["dracula.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/dracula.nvim",
+    url = "https://github.com/Mofiqul/dracula.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -289,6 +310,11 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+  },
   ["nvim-ts-autotag"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
@@ -313,6 +339,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["oh-lucy.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/oh-lucy.nvim",
+    url = "https://github.com/Yazeed1s/oh-lucy.nvim"
   },
   ["onedarkpro.nvim"] = {
     loaded = true,
@@ -344,6 +375,11 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/poimandress.nvim",
     url = "https://github.com/w3barsi/poimandress.nvim"
   },
+  ["presence.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/presence.nvim",
+    url = "https://github.com/andweeb/presence.nvim"
+  },
   ["rust-tools.nvim"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
@@ -353,6 +389,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/substrata.nvim",
     url = "https://github.com/kvrohit/substrata.nvim"
+  },
+  ["tailwind-highlight.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/tailwind-highlight.nvim",
+    url = "https://github.com/princejoogie/tailwind-highlight.nvim"
   },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
@@ -368,6 +409,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   undotree = {
     loaded = true,
@@ -407,6 +453,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: auto-session
+time([[Config for auto-session]], true)
+try_loadstring("\27LJ\2\n”\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\31auto_session_suppress_dirs\1\5\0\0\a~/\15~/Projects\16~/Downloads\6/\1\0\1\14log_level\nerror\nsetup\17auto-session\frequire\0", "config", "auto-session")
+time([[Config for auto-session]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
