@@ -37,6 +37,8 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
+
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -93,10 +95,19 @@ cmp.setup({
 		--}
 	),
 	formatting = {
-		format = function(_, vim_item)
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-			return vim_item
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+			local strings = vim.split(kind.kind, "%s", { trimempty = true })
+			kind.kind = " " .. strings[1] .. " "
+			kind.menu = "    [" .. strings[2] .. "]"
+
+			return kind
 		end,
+		-- format = function(_, vim_item)
+		-- 	vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+		-- 	return vim_item
+		-- end,
 	},
 	experimental = {
 		native_menu = false,
