@@ -14,22 +14,28 @@ export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
 # =============================================================================
 # ========== Alias ============================================================
 # =============================================================================
+#School aliases
+alias dsa="cd ~/school/DSA/"
+
 # System Stuff
 alias nala="sudo nala"
 alias src="source ~/.zshrc"
 alias open="wslview"
 alias lg="lazygit"
+# alias mpv="mpv.exe"
  
 # Vim aliases
 alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
 alias nv='/mnt/c/tools/neovide.exe --wsl'
+alias avim="nvim -u ~/.config/avim"
 
 #RC Aliases
 alias zshrc='vim ~/.zshrc'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
-alias vimrc='vim ~/dotfiles/nvim/.config'
+alias vimrc='cd ~/dotfiles/nvim/.config/nvim && vim '
+alias nvimrc='cd ~/dotfiles/nvim/.config/nvim && nv'
 
 alias move='mv'
 alias ls='exa'
