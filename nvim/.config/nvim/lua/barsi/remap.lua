@@ -1,18 +1,15 @@
-local nnoremap = require("barsi.keymaps").nnoremap
-local inoremap = require("barsi.keymaps").inoremap
-local vnoremap = require("barsi.keymaps").vnoremap
-local xnoremap = require("barsi.keymaps").xnoremap
+local nnoremap = require("barsi.scripts.keymaps").nnoremap
+local inoremap = require("barsi.scripts.keymaps").inoremap
+local vnoremap = require("barsi.scripts.keymaps").vnoremap
+local xnoremap = require("barsi.scripts.keymaps").xnoremap
 local L = {}
 
 --
-nnoremap("<C-j>", ":lua require('illuminate').goto_next_reference(wrap)<CR>", { silent = true })
-nnoremap("<C-k>", ":lua require('illuminate').goto_prev_reference(wrap)<CR>", { silent = true })
+nnoremap("]d", ":lua require('illuminate').goto_next_reference(wrap)<CR>", { silent = true })
+nnoremap("[d", ":lua require('illuminate').goto_prev_reference(wrap)<CR>", { silent = true })
 
 -- Add semicolon to end
 nnoremap(";;", "A;<Esc>")
--- Keep visual mode after indent
-vnoremap(">", ">gv", { silent = true })
-vnoremap("<", "<gv", { silent = true })
 
 -- Paste without changing clipboard buffer
 xnoremap("<leader>p", '"_dP')
@@ -26,7 +23,7 @@ nnoremap("<leader>u", "<cmd>UndotreeShow<CR>")
 nnoremap("Y", "y$") -- yank to eol
 
 -- Rename all in buffer
-nnoremap("<leader><F2>", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+nnoremap("<leader><F2>", [[ :%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left> ]])
 vnoremap("<F2>", ":s/")
 --Rename in Visual Mode
 --vnoremap("<leader>")
@@ -39,28 +36,24 @@ vnoremap("<F2>", ":s/")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
 
--- Make new line above or below current line
-inoremap("<S-CR>", "<Esc>O")
-inoremap("<C-CR>", "<Esc>o")
-
--- Use Ctrl + / to comment a line or a visual block
--- nnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
--- vnoremap("<C-_>", [[<Plug>NERDCommenterToggle]])
-
+-- Move Text in Visual Block Up or Down
 nnoremap("<A-k>", [[V:m '<-2<CR>gv=]], { silent = true })
 nnoremap("<A-j>", [[V:m '>+1<CR>gv=]], { silent = true })
--- Move Text in Visual Block Up or Down
 vnoremap("<A-k>", [[:m '<-2<CR>gv=gv]], { silent = true })
 vnoremap("<A-j>", [[:m '>+1<CR>gv=gv]], { silent = true })
+inoremap("<A-k>", [[<esc>:m .-2<CR>==a]], { silent = true })
+inoremap("<A-j>", [[<esc>:m .+1<CR>==a]], { silent = true })
+-- Keep visual mode after indent
+vnoremap(">", ">gv", { silent = true })
+vnoremap("<", "<gv", { silent = true })
 
 -- Move text under cursor
-inoremap("<C-j>", [[ <esc>:m .+1<CR>== ]], { silent = true })
-inoremap("<C-k>", [[ <esc>:m .-2<CR>== ]], { silent = true })
 
 -- Ctrl + BS Erases a word
 -- Using vim.cmd for now
 vim.cmd([[noremap! <C-BS> <C-w>]])
 vim.cmd([[noremap! <C-h> <C-w>]])
+nnoremap("x", [["_x]])
 
 -- Telescope and NvimTree keybindings
 nnoremap("<leader>pp", [[:NvimTreeToggle<CR>]], { silent = true })
@@ -76,7 +69,6 @@ nnoremap(
 	{ silent = true }
 )
 
-nnoremap("<leader>pi", [[:source %<CR> :PlugInstall<CR>]], { silent = true })
 nnoremap("<leader>gg", [[:LazyGit<CR>]], { silent = true })
 
 --nnoremap("co", [[:copen<CR>]], {sileng = true})
@@ -86,41 +78,16 @@ nnoremap("<leader>gg", [[:LazyGit<CR>]], { silent = true })
 --Deprecated / Moved to Hydra Maps
 --nnoremap("<Leader>-", "<cmd>vertical resize -4<CR>")
 --nnoremap("<Leader>=", "<cmd>vertical resize +5<CR>")
-nnoremap("<leader>h", "<cmd>wincmd h <CR>")
-nnoremap("<leader>j", "<cmd>wincmd j <CR>")
-nnoremap("<leader>k", "<cmd>wincmd k <CR>")
-nnoremap("<leader>l", "<cmd>wincmd l <CR>")
+-- nnoremap("<leader>h", "<cmd>wincmd h <CR>")
+-- nnoremap("<leader>j", "<cmd>wincmd j <CR>")
+-- nnoremap("<leader>k", "<cmd>wincmd k <CR>")
+-- nnoremap("<leader>l", "<cmd>wincmd l <CR>")
 
 -- Commented as I forgot what these mappings do
 --nnoremap("n", "nzzzv")
 --nnoremap("N", "nzzzv")
 --nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . "k"
 --nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . "j"
-
-vim.g["UltiSnipsJumpForwardTrigger"] = "<C-j>"
-vim.g["UltiSnipsJumpBackwordTrigger"] = "<C-k>"
-
--- REFACTORING
-vnoremap(
-	"<leader>re",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vnoremap(
-	"<leader>rf",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vnoremap(
-	"<leader>rv",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vnoremap(
-	"<leader>ri",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
 
 -- [[ LSP ]]
 local open_float = function()
@@ -133,30 +100,38 @@ local open_float = function()
 	)
 end
 
-local on_attach = function()
-	--vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-	vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, buffer = 0 })
+local on_attach = function(client, bufnr)
+	-- nnoremap( "K", vim.lsp.buf.hover, { buffer = 0 })
 
+	nnoremap("gd", vim.lsp.buf.definition, { desc = "Go to definition [LSP]", buffer = 0 })
+	nnoremap("gt", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = 0 })
+	nnoremap("gi", vim.lsp.buf.implementation, { desc = "Go to implementation [LSP]", buffer = 0 })
+	nnoremap("gr", vim.lsp.buf.references, { desc = "Go to references [LSP]", buffer = 0 })
+	nnoremap("gf", vim.lsp.buf.format, { buffer = 0 })
+	nnoremap("fd", [[gg=G<C-o>]], { buffer = 0, silent = true })
+
+	nnoremap("?", open_float, { buffer = 0 })
+	nnoremap("<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
+	nnoremap("<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
+	nnoremap("<leader>dp", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
+
+	-- LSP Saga Keymaps
+	nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, buffer = 0 })
 	nnoremap("ga", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+	nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+	vnoremap("<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+	nnoremap("<F2>", "<cmd>Lspsaga rename<CR>", { silent = true, buffer = 0 })
+	nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { buffer = bufnr })
+	nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { buffer = bufnr })
 
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
-	vim.keymap.set("n", "gf", vim.lsp.buf.format, { buffer = 0 })
-	vim.keymap.set("n", "fd", [[gg=G<C-o>]], { buffer = 0, silent = true })
-
-	--vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 })
-	vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-	vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
-
-	--vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { buffer = 0 })
-	vim.keymap.set("n", "<F2>", "<cmd>Lspsaga rename<CR>", { silent = true, buffer = 0 })
-
-	vim.keymap.set("n", "?", open_float, { buffer = 0 })
-	vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
-	vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
-	vim.keymap.set("n", "<leader>dp", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
+	if client.name == "tsserver" then
+		vim.keymap.set(
+			"n",
+			"<Leader>oi",
+			"<Cmd>OrganizeImports<CR>",
+			{ desc = "Organize imports [TS]", buffer = bufnr }
+		)
+	end
 end
 
 L.on_attach = on_attach

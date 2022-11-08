@@ -1,5 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
-local nnoremap = require("barsi.keymaps").nnoremap
+local nnoremap = require("barsi.scripts.keymaps").nnoremap
 --vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --pattern = { "*" },
 --command = "lua vim.lsp.buf.format()"
@@ -35,4 +35,14 @@ autocmd("FileType", {
 autocmd("FileType", {
 	pattern = "rust",
 	command = [[nnoremap <buffer><silent> <leader>n :! tmux send-keys -t 1 "cargo run" Enter <CR>]],
+})
+--
+-- Briefly highlight code on yank
+local yank_group = vim.api.nvim_create_augroup("YankGroup", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = yank_group,
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Visual", timeout = 250 })
+	end,
+	desc = "Briefly highlight code on yank",
 })

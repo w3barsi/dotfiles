@@ -2,13 +2,15 @@ if vim.fn.exists("g:neovide") == 0 then
     return
 end
 
-local nnoremap = require("barsi.keymaps").nnoremap
-local vnoremap = require("barsi.keymaps").vnoremap
+local vnoremap = require("barsi.scripts.keymaps").vnoremap
+
+vim.g.neovide_refresh_rate = 500
+vim.g.neovide_cursor_trail_size = 0
 
 vim.g.gui_font_default_size = 15
-vim.g.neovide_refresh_rate = 165
 vim.g.gui_font_size = vim.g.gui_font_default_size
 vim.g.gui_font_face = "JetBrainsMonoNL NF"
+
 RefreshGuiFont = function()
     vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
 end
@@ -29,15 +31,12 @@ ResetGuiFont()
 -- Keymaps
 
 
-vnoremap("<A-k>", [[:m '<-2<CR>gv=gv]], { silent = true })
-vnoremap("J", [[:m '>+1<CR>gv=gv]], { silent = true })
-
 local opts = { noremap = true, silent = true }
 
 
-vim.keymap.set({ "n", "i" }, "<C-+>", function()
+vim.keymap.set({ "n"}, "+", function()
     ResizeGuiFont(1)
 end, opts)
-vim.keymap.set({ "n", "i" }, "<C-->", function()
+vim.keymap.set({ "n"}, "_", function()
     ResizeGuiFont(-1)
 end, opts)

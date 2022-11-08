@@ -9,23 +9,33 @@ end
 
 require("packer").startup(function(use) -- Packer can manage itself
 	use("wbthomason/packer.nvim")
+	use("lewis6991/impatient.nvim")
 
+	-- Dependencies
 	use("nvim-lua/plenary.nvim")
 
-	-- use("Pocco81/auto-save.nvim")
 	use("Darazaki/indent-o-matic")
 	use("RRethy/vim-illuminate")
 	use("mbbill/undotree")
-
-	-- Easy Commenting
-	--use("preservim/nerdcommenter")
-	use("numToStr/Comment.nvim")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
-	-- vim plugin to surround text with tag
 	use("tpope/vim-surround")
 	use("windwp/nvim-autopairs")
-	-- Adds colors to color codes
 	use("NvChad/nvim-colorizer.lua")
+	use("princejoogie/tailwind-highlight.nvim")
+
+	-- Easy Commenting
+	use("numToStr/Comment.nvim")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
+
+	-- Handles session management like opening a project in VSCode
+	use({
+		"rmagatti/auto-session",
+		config = function()
+			require("auto-session").setup({
+				log_level = "error",
+				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+			})
+		end,
+	})
 
 	use({
 		"iamcco/markdown-preview.nvim",
@@ -39,9 +49,11 @@ require("packer").startup(function(use) -- Packer can manage itself
 		branch = "master",
 	})
 	use("anuvyklack/hydra.nvim")
+
 	-- LSP
 	use("neovim/nvim-lspconfig")
 	use("williamboman/nvim-lsp-installer")
+	use("ray-x/lsp_signature.nvim")
 
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-nvim-lsp")
@@ -50,9 +62,15 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
 	use("onsails/lspkind-nvim")
-	use("ray-x/lsp_signature.nvim")
 	use("glepnir/lspsaga.nvim")
-	-- use 'github/copilot.vim'
+
+	use({
+		"samodostal/copilot-client.lua",
+		requires = {
+			"zbirenbaum/copilot.lua", -- requires copilot.lua and plenary.nvim
+			"nvim-lua/plenary.nvim",
+		},
+	})
 
 	-- LANGUAGE SPECIFIC
 	use("simrat39/rust-tools.nvim")
@@ -72,8 +90,9 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("rhysd/vim-clang-format")
 
 	use("nvim-treesitter/nvim-treesitter")
-	use("nvim-treesitter/playground")
 	use("nvim-treesitter/nvim-treesitter-context")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/playground")
 
 	use("p00f/nvim-ts-rainbow")
 	use("windwp/nvim-ts-autotag")
@@ -103,6 +122,9 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("catppuccin/nvim")
 	use("marko-cerovac/material.nvim")
 	use("sam4llis/nvim-tundra")
+	use("folke/tokyonight.nvim")
+	use("Mofiqul/dracula.nvim")
+	use("Yazeed1s/oh-lucy.nvim")
 
 	use("xiyaowong/nvim-transparent")
 	use("nvim-lualine/lualine.nvim")
@@ -113,10 +135,9 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("lewis6991/gitsigns.nvim")
 
 	use("dstein64/vim-startuptime")
-	use("lewis6991/impatient.nvim")
 	use("akinsho/toggleterm.nvim")
 	use("CRAG666/code_runner.nvim")
-	--use 'andweeb/presence.nvim'
+	use("andweeb/presence.nvim")
 
 	-- Plugisn to keep an eyeo n
 	-- https://github.com/hkupty/iron.nvim

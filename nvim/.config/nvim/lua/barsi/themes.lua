@@ -11,14 +11,17 @@ vim.g.barstrata_italic_functions = false
 vim.g.barstrata_italic_variables = false
 vim.g.barstrata_italic_types = true
 vim.g.barstrata_transparent = false
--- vim.g.barstrata_variant = "default"
-vim.g.barstrata_variant = "darker"
+-- vim.g.barstrata_variant = "black"
 
 vim.g.nord_contrast = true
 vim.g.nord_borders = false
 vim.g.nord_disable_background = false
 vim.g.nord_italic = false
 vim.g.nord_uniform_diff_background = true
+
+require("rose-pine").setup({
+	dark_variant = 'main'
+})
 
 require("colorizer").setup({
 	user_default_options = {
