@@ -4,7 +4,7 @@ local vnoremap = require("barsi.scripts.keymaps").vnoremap
 local xnoremap = require("barsi.scripts.keymaps").xnoremap
 local L = {}
 
---
+-- Navige around vim-illuminate
 nnoremap("]d", ":lua require('illuminate').goto_next_reference(wrap)<CR>", { silent = true })
 nnoremap("[d", ":lua require('illuminate').goto_prev_reference(wrap)<CR>", { silent = true })
 
@@ -60,9 +60,9 @@ nnoremap("<leader>pp", [[:NvimTreeToggle<CR>]], { silent = true })
 
 nnoremap("<C-p>", ":lua require('telescope.builtin').find_files({hidden=true})<cr>", { silent = true })
 nnoremap("<C-f>", ":lua require('telescope.builtin').live_grep({hidden=true})<cr>", { silent = true })
-nnoremap("<leader>pb", ":lua require('telescope.builtin').buffers()<cr>", { silent = true })
-nnoremap("<leader>ph", ":lua require('telescope.builtin').help_tags()<cr>", { silent = true })
-nnoremap("<leader>pc", ":lua require('telescope.builtin').commands()<cr>", { silent = true })
+nnoremap("<leader>tb", ":lua require('telescope.builtin').buffers()<cr>", { silent = true })
+nnoremap("<leader>th", ":lua require('telescope.builtin').help_tags()<cr>", { silent = true })
+nnoremap("<leader>tc", ":lua require('telescope.builtin').commands()<cr>", { silent = true })
 nnoremap(
 	"<Leader>css",
 	":lua require('telescope.builtin').colorscheme(require('telescope.themes').get_dropdown({}))<cr>",
@@ -106,23 +106,24 @@ local on_attach = function(client, bufnr)
 	nnoremap("gd", vim.lsp.buf.definition, { desc = "Go to definition [LSP]", buffer = 0 })
 	nnoremap("gt", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = 0 })
 	nnoremap("gi", vim.lsp.buf.implementation, { desc = "Go to implementation [LSP]", buffer = 0 })
-	nnoremap("gr", vim.lsp.buf.references, { desc = "Go to references [LSP]", buffer = 0 })
+	-- nnoremap("gr", vim.lsp.buf.references, { desc = "Go to references [LSP]", buffer = 0 })
+	nnoremap("gr", function()
+		require("telescope.builtin").lsp_references()
+	end, { desc = "Go to references [LSP]", buffer = 0 })
 	nnoremap("gf", vim.lsp.buf.format, { buffer = 0 })
 	nnoremap("fd", [[gg=G<C-o>]], { buffer = 0, silent = true })
 
 	nnoremap("?", open_float, { buffer = 0 })
-	nnoremap("<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
-	nnoremap("<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
+	nnoremap("]e", vim.diagnostic.goto_next, { buffer = 0 })
+	nnoremap("[e", vim.diagnostic.goto_prev, { buffer = 0 })
 	nnoremap("<leader>dp", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
 
 	-- LSP Saga Keymaps
 	nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, buffer = 0 })
 	nnoremap("ga", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-	nnoremap("<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-	vnoremap("<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+	nnoremap("gca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+	vnoremap("gca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
 	nnoremap("<F2>", "<cmd>Lspsaga rename<CR>", { silent = true, buffer = 0 })
-	nnoremap("[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { buffer = bufnr })
-	nnoremap("]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { buffer = bufnr })
 
 	if client.name == "tsserver" then
 		vim.keymap.set(

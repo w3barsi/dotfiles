@@ -30,4 +30,5 @@ require("barsi.plugins.nvim-tree")
 require("barsi.plugins.telescope")
 require("barsi.plugins.transparent")
 require("barsi.plugins.presence")
+require("barsi.plugins.whichkey")
 

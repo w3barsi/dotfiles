@@ -9,7 +9,7 @@ require("telescope").setup({
 		},
 		mappings = {
 			i = {
-				["<esc>"] = actions.close,
+				-- ["<esc>"] = actions.close,
 				["<S-Tab>"] = actions.move_selection_next,
 				["<Tab>"] = actions.move_selection_previous,
 			},

@@ -21,6 +21,7 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("windwp/nvim-autopairs")
 	use("NvChad/nvim-colorizer.lua")
 	use("princejoogie/tailwind-highlight.nvim")
+	use("folke/which-key.nvim")
 
 	-- Easy Commenting
 	use("numToStr/Comment.nvim")
