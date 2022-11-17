@@ -1,15 +1,11 @@
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
-    # fzf
     git
     extract
     #zsh-autosuggestions
 )
-
 source $ZSH/oh-my-zsh.sh
-export FZF_BASE=/home/barsi/.oh-my-zsh/plugins/fz/install
  
 # =============================================================================
 # ========== Alias ============================================================
@@ -22,14 +18,18 @@ alias nala="sudo nala"
 alias src="source ~/.zshrc"
 alias open="wslview"
 alias lg="lazygit"
+alias ld="lazydocker"
+alias winget="winget.exe"
 # alias mpv="mpv.exe"
+alias yt-dl="cd /mnt/e/Spotify/ && yt-dlp"
+alias yt-dld="cd /mnt/e/Spotify/ && yt-dlp -f 'bestaudio[ext=m4a]'"
  
 # Vim aliases
 alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
 alias nv='/mnt/c/tools/neovide.exe --wsl'
-alias avim="nvim -u ~/.config/avim"
+alias avim="nvim -u ~/.config/avim/init.lua"
 
 #RC Aliases
 alias zshrc='vim ~/.zshrc'
@@ -113,29 +113,31 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
-
 export DISCORD=false
 
 eval "$(zoxide init bash)"
 
-# ~/.zshrc
-#
 export SUDO_EDITOR="nvim"
-
 export USER_BIN="/home/barsi/bin/"
 export PATH="$USER_BIN:$PATH"
-
 export LOCAL_USER_BIN="/home/barsi/.local/bin/"
 export PATH="$LOCAL_USER_BIN:$PATH"
+export STARSHIP_CONFIG="/home/barsi/.starship.toml"
 
 # fnm
 export PATH=/home/barsi/.fnm:$PATH
 eval "`fnm env`"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fnm
 export PATH=/home/barsi/.fnm:$PATH
 eval "`fnm env`"
+
+# Go
+export PATH=$PATH:/usr/local/go/bin
+
+eval "$(starship init zsh)"
+
+
