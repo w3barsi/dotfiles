@@ -18,6 +18,9 @@ xnoremap("<leader>p", '"_dP')
 nnoremap("<leader>n", [[:! tmux send-keys -t 1 "cargo run" Enter <CR>]])
 nnoremap("<leader><Tab>", ":TSHi<cr>", { silent = true })
 
+-- Terminal Mappings
+nnoremap("<C-\\>", [[:ToggleTerm direction=vertical<CR>]], {silent = true})
+
 nnoremap("<leader>u", "<cmd>UndotreeShow<CR>")
 --nnoremap("<leader><Tab>", "<cmd>tabn<CR>") -- go to next tab
 nnoremap("Y", "y$") -- yank to eol
@@ -63,6 +66,7 @@ nnoremap("<C-f>", ":lua require('telescope.builtin').live_grep({hidden=true})<cr
 nnoremap("<leader>tb", ":lua require('telescope.builtin').buffers()<cr>", { silent = true })
 nnoremap("<leader>th", ":lua require('telescope.builtin').help_tags()<cr>", { silent = true })
 nnoremap("<leader>tc", ":lua require('telescope.builtin').commands()<cr>", { silent = true })
+nnoremap("<leader>th", ":lua require('telescope.builtin').highlights()<cr>", { silent = true })
 nnoremap(
 	"<Leader>css",
 	":lua require('telescope.builtin').colorscheme(require('telescope.themes').get_dropdown({}))<cr>",
