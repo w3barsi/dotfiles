@@ -1,6 +1,6 @@
 format = """
 $directory\
-[](bg:#FCC5E9 fg:#f087bd)\
+[](fg:#f087bd bg:#FCC5E9 )\
 $git_branch\
 [](fg:#FCC5E9 bg:#fabec0)\
 $c\
@@ -10,8 +10,9 @@ $nodejs\
 $rust\
 [](fg:#fabec0)\
 $fill\
-[](fg:#f087bd)\
+[](fg:#FCC5E9)\
 $cmd_duration\
+[](fg:#f087bd bg:#FCC5E9)\
 $time
  $character
 """
