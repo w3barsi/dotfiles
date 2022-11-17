@@ -1,8 +1,8 @@
+require("barsi.plugins")
 require("impatient")
 
 -- User Settings
 require("barsi.autocmd")
-require("barsi.plugins")
 require("barsi.options")
 require("barsi.remap")
 require("barsi.terminal")
