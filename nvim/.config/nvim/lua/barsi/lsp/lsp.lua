@@ -7,7 +7,7 @@ require("nvim-lsp-installer").setup({
 		},
 	},
 })
--- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm
+-- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm php dockerls taplo
 local tw_highlight = require("tailwind-highlight")
 local lspconfig = require("lspconfig")
 local saga = require("lspsaga")
@@ -57,6 +57,7 @@ lspconfig.emmet_ls.setup(default_config)
 lspconfig.prismals.setup(default_config)
 lspconfig.intelephense.setup(default_config)
 lspconfig.rust_analyzer.setup(default_config)
+lspconfig.vuels.setup(default_config)
 
 -- lspconfig.sumneko_lua.setup({
 -- 	on_attach = on_attach,
@@ -82,7 +83,7 @@ lspconfig.sumneko_lua.setup(vim.tbl_extend("force", default_config, {
 				path = lua_rtp,
 			},
 			diagnostics = { globals = { "vim" } },
-			workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+			-- workspace = { library = vim.api.nvim_get_runtime_file("", true) },
 			telemetry = { enable = false },
 		},
 	},
