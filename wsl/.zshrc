@@ -125,7 +125,7 @@ export PATH="$LOCAL_USER_BIN:$PATH"
 export STARSHIP_CONFIG="/home/barsi/.starship.toml"
 
 # fnm
-export PATH=/home/barsi/.fnm:$PATH
+export PATH="$HOME/.fnm:$PATH"
 eval "`fnm env`"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
