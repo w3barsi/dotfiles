@@ -97,6 +97,7 @@ function install_shell() {
     print_green "   - ${NC}tmux\n"
     print_green "   - ${NC}zsh\n"
     print_green "   - ${NC}starship\n"
+    rm -rf /home/barsi/.oh-my-zsh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -s --unattended
 
     sudo nala install tmux
