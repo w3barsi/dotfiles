@@ -73,6 +73,7 @@ function install_languages(){
     curl -fsSL https://fnm.vercel.app/install | bash
     export PATH="/home/barsi/.local/share/fnm:$PATH"
     eval "`fnm env`"
+    fnm
 
 }
 
