@@ -10,9 +10,6 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 function main() {
-    sudo apt update
-    sudo apt upgrade -y
-
     install_initial_deps
     install_additional_deps
     install_languages
@@ -33,6 +30,8 @@ function install_initial_deps() {
     print_green "   - ${NC}nala"
     print_green "   - ${NC}git"
     sudo apt install nala git -y
+    sudo nala update
+    sudo nala upgrade -y
     print_cyan "Cloning w3barsi/dotfiles..."
     git clone https://github.com/w3barsi/dotfiles
     print_red "Removing unnecessary folders..."
