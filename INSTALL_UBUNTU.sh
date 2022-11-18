@@ -13,6 +13,7 @@ function main() {
     install_initial_deps
     install_additional_deps
     install_languages
+    install_shell
 }
 
 function test_print() {
@@ -30,6 +31,7 @@ function install_initial_deps() {
     print_green "   - ${NC}nala"
     print_green "   - ${NC}git\n"
     sudo apt install nala git -y
+    print_green "Updating packages..."
     sudo nala update
     sudo nala upgrade -y
     print_cyan "Cloning w3barsi/dotfiles...\n"
@@ -40,6 +42,17 @@ function install_initial_deps() {
 }
 
 function install_additional_deps() {
+    print_green "Installing initial dependencies..."
+    print_green "   - ${NC}zsh"
+    print_green "   - ${NC}zoxide\n"
+    print_green "   - ${NC}exa\n"
+    print_green "   - ${NC}curl\n"
+    print_green "   - ${NC}unzip\n"
+    print_green "   - ${NC}python3\n"
+    print_green "   - ${NC}python3-pip\n"
+    print_green "   - ${NC}fd-find\n"
+    print_green "   - ${NC}ripgrep\n"
+    print_green "   - ${NC}fontconfig\n"
     sudo nala install stow \
         zsh \
         zoxide \
@@ -77,36 +90,30 @@ function install_languages(){
     eval "`fnm env`"
     print_green "RUNNING FNM\n"
     fnm
-
 }
 
-#
-#
-# # printf "${RED}[-----]${NC} Downloading Fonts"
-# # curl https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
-# # printf "${RED}[-----]${NC} Installing Fonts"
-# # cd
-# # unzip JetBrainsMono.zip -d ~/.fonts
-# # fc-cache -fv
-# # rm -rf JetBrainsMono.zip
-# # printf "${RED}[-----]${NC} Installed JetBrainsMono"
-#
-#
-# printf "${RED}[-----]${NC} Stowing Ubuntu/WSL dotfiles\n"
-# printf "${CYAN}[-----] -${NC} tmux\n"
-# printf "${CYAN}[-----] -${NC} zsh\n"
-# printf "${CYAN}[-----] -${NC} starship\n"
-# cd
-# rm -rf .zshrc .starship.toml .tmux.conf
-# cd dotfiles
-# stow wsl
-# cd
-#
-# source "$HOME/.zshrc"
-#
-# printf "${RED}[-----]${NC} Installing node 18\n"
-# fnm install 18
-#
+function install_shell() {
+    print_green "Installing Oh-My-Zsh..."
+    print_green "   - ${NC}tmux\n"
+    print_green "   - ${NC}zsh\n"
+    print_green "   - ${NC}starship\n"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    sudo nala install tmux
+    cargo install starship --locked
+
+    print_green "Stowing Ubuntu/WSL dotfiles"
+    cd
+    rm -rf .zshrc .starship.toml .tmux.conf
+    cd dotfiles
+    stow wsl
+    cd
+
+    chsh -s $(which zsh)
+}
+
+
+
 # printf "${RED}[-----]${NC} Installing neovim build dependencies\n"
 # sudo nala install ninja-build \
 #     gettext \
@@ -156,18 +163,15 @@ function install_languages(){
 # stow nvim
 # cd
 #
-# chsh -s $(which zsh)
-#
-# 
-# # declare -a __npm_deps=(
-# #   "neovim"
-# #   "tree-sitter-cli"
-# # )
-# # 
-# # declare -a __pip_deps=(
-# #   "pynvim"
-# # )
-# #fd::fd-find" "rg::ripgrep
+
+# # printf "${RED}[-----]${NC} Downloading Fonts"
+# # curl https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
+# # printf "${RED}[-----]${NC} Installing Fonts"
+# # cd
+# # unzip JetBrainsMono.zip -d ~/.fonts
+# # fc-cache -fv
+# # rm -rf JetBrainsMono.zip
+# # printf "${RED}[-----]${NC} Installed JetBrainsMono"
 
 function print_blue(){
     printf "\n${BLUE} $1"
