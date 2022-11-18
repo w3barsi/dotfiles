@@ -1,6 +1,7 @@
 #!/bin/bash
 
 RED='\033[0;31m'
+CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 sudo apt install nala git -y
@@ -13,8 +14,8 @@ sudo apt upgrade -y
 printf "${RED}[-----]${NC} Downloading initial dependencies...\n"
 sudo nala install stow zsh zoxide exa curl unzip npm python3 python3-pip fontconfig -y
 
-printf "${RED}[-----]${NC} Installing Starship Prompt\n"
-curl -sS https://starship.rs/install.sh | sh
+# printf "${RED}[-----]${NC} Installing Starship Prompt\n"
+# curl -sS https://starship.rs/install.sh | sh
 
 printf "${RED}[-----]${NC} Making python3 default python command\n"
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10
@@ -37,9 +38,9 @@ source "/home/barsi/.cargo/env"
 
 
 printf "${RED}[-----]${NC} Stowing Ubuntu/WSL dotfiles\n"
-printf "${RED}[-----]${NC}  - tmux\n"
-printf "${RED}[-----]${NC}  - zsh\n"
-printf "${RED}[-----]${NC}  - starship\n"
+printf "${CYAN}[-----] -${NC} tmux\n"
+printf "${CYAN}[-----] -${NC} zsh\n"
+printf "${CYAN}[-----] -${NC} starship\n"
 cd
 rm -rf .zshrc .starship.toml .tmux.conf
 cd dotfiles
@@ -76,9 +77,15 @@ make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 cd
 
-printf "${RED}[-----]${NC} Installing neovim IDE dependencies\n"
-printf "${RED}[-----]${NC} - ripgrep\n"
-sudo nala install ripgrep -y
+printf "${RED}[-----]${NC} Installing neovim dependencies\n"
+printf "${CYAN}[-----] - ${NC}ripgrep\n"
+printf "${CYAN}[-----] - ${NC}fd-find\n"
+sudo nala install ripgrep fd-find -y
+printf "${CYAN}[-----] - ${NC}pynvim\n"
+pip install pynvim
+printf "${CYAN}[-----] - ${NC}neovim\n"
+printf "${CYAN}[-----] - ${NC}tree-sitter-cli\n"
+npm i -g neovim tree-sitter-cli
 
 printf "${RED}[-----]${NC} - lazygit\n"
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name":' |  sed -E 's/.*"v*([^"]+)".*/\1/')
@@ -86,9 +93,22 @@ curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/lates
 sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
 rm -rf lazygit.tar.gz
 
-printf "${RED}[-----]${NC} Installing LunarVim -- Checkhealth Shortcut"
-LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+# printf "${RED}[-----]${NC} Installing LunarVim -- Checkhealth Shortcut"
+# LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y
 
-cd "/home/barsi/dotfiles"
+cd
 printf "${RED}[-----]${NC} Stowing neovim config"
 stow nvim
+cd
+# nvim
+
+
+# declare -a __npm_deps=(
+#   "neovim"
+#   "tree-sitter-cli"
+# )
+# 
+# declare -a __pip_deps=(
+#   "pynvim"
+# )
+#fd::fd-find" "rg::ripgrep
