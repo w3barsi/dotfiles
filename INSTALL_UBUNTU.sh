@@ -71,8 +71,11 @@ function install_languages(){
     print_brackets_green "4/4" "Installing NodeJS"
     sudo nala install npm -y
     curl -fsSL https://fnm.vercel.app/install | bash
+    print_red "EXPORTING FNM PATH"
     export PATH="/home/barsi/.local/share/fnm:$PATH"
+    print_red "EVALUATING FNM"
     eval "`fnm env`"
+    print_green "RUNNING FNM"
     fnm
 
 }
@@ -167,20 +170,20 @@ function install_languages(){
 # #fd::fd-find" "rg::ripgrep
 
 function print_blue(){
-    printf "\n${BLUE} $1"
+    printf "\n${BLUE} $1\n"
 }
 function print_green(){
-    printf "\n${GREEN} $1"
+    printf "\n${GREEN} $1\n"
 }
 function print_brackets_green(){
-    printf "\n${NC}[${GREEN}$1${NC}] $2"
+    printf "\n${NC}[${GREEN}$1${NC}] $2\n"
 }
 
 function print_cyan(){
-    printf "\n${CYAN} $1"
+    printf "\n${CYAN} $1\n"
 }
 function print_red(){
-    printf "\n${RED} $1"
+    printf "\n${RED} $1\n"
 }
 
 main
