@@ -97,7 +97,7 @@ function install_shell() {
     print_green "   - ${NC}tmux\n"
     print_green "   - ${NC}zsh\n"
     print_green "   - ${NC}starship\n"
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -s --unattended
 
     sudo nala install tmux
     cargo install starship --locked
