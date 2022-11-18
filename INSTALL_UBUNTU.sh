@@ -10,10 +10,9 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 function main() {
-    # sudo apt update
-    # sudo apt upgrade -y
-
-    test_print
+    install_initial_deps
+    install_additional_deps
+    install_languages
 }
 
 function test_print() {
