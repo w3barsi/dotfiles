@@ -10,9 +10,9 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 function main() {
-    install_initial_deps
-    install_additional_deps
-    install_languages
+    # install_initial_deps
+    # install_additional_deps
+    # install_languages
     install_shell
 }
 
@@ -101,6 +101,7 @@ function install_shell() {
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -s --unattended
 
     sudo nala install tmux
+    source "/home/barsi/.cargo/env"
     cargo install starship --locked
 
     print_green "Stowing Ubuntu/WSL dotfiles\n"
