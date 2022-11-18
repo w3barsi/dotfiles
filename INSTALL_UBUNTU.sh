@@ -33,9 +33,9 @@ function install_initial_deps() {
     sudo nala update
     sudo nala upgrade -y
     print_cyan "Cloning w3barsi/dotfiles...\n"
+    cd
     git clone https://github.com/w3barsi/dotfiles
     print_red "Removing unnecessary folders...\n"
-    cd
     rm -rf Desktop Documents Downloads Music Pictures Public Templates Videos
 }
 
