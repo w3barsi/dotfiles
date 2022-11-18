@@ -28,13 +28,13 @@ function test_print() {
 function install_initial_deps() {
     print_green "Installing initial dependencies..."
     print_green "   - ${NC}nala"
-    print_green "   - ${NC}git"
+    print_green "   - ${NC}git\n"
     sudo apt install nala git -y
     sudo nala update
     sudo nala upgrade -y
-    print_cyan "Cloning w3barsi/dotfiles..."
+    print_cyan "Cloning w3barsi/dotfiles...\n"
     git clone https://github.com/w3barsi/dotfiles
-    print_red "Removing unnecessary folders..."
+    print_red "Removing unnecessary folders...\n"
     cd
     rm -rf Desktop Documents Downloads Music Pictures Public Templates Videos
 }
@@ -55,27 +55,27 @@ function install_additional_deps() {
 
 function install_languages(){
     print_green "Installing programming language..."
-    print_brackets_green "1/4" "Making pip3 the default pip version"
+    print_brackets_green "1/4" "Making pip3 the default pip version\n"
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
-    print_brackets_green "2/4" "Installing Rust"
+    print_brackets_green "2/4" "Installing Rust\n"
     curl https://sh.rustup.rs -sSf | sh -s -- -y
     source "/home/barsi/.cargo/env"
 
-    print_brackets_green "3/4" "Installing Go"
+    print_brackets_green "3/4" "Installing Go\n"
     curl -JLO https://go.dev/dl/go1.19.3.linux-amd64.tar.gz 
     sudo rm -rf /usr/local/go 
     sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz 
     export PATH=$PATH:/usr/local/go/bin
 
-    print_brackets_green "4/4" "Installing NodeJS"
+    print_brackets_green "4/4" "Installing NodeJS\n"
     sudo nala install npm -y
     curl -fsSL https://fnm.vercel.app/install | bash
-    print_red "EXPORTING FNM PATH"
+    print_red "EXPORTING FNM PATH\n"
     export PATH="/home/barsi/.local/share/fnm:$PATH"
-    print_red "EVALUATING FNM"
+    print_red "EVALUATING FNM\n"
     eval "`fnm env`"
-    print_green "RUNNING FNM"
+    print_green "RUNNING FNM\n"
     fnm
 
 }
@@ -170,20 +170,20 @@ function install_languages(){
 # #fd::fd-find" "rg::ripgrep
 
 function print_blue(){
-    printf "\n${BLUE} $1\n"
+    printf "\n${BLUE} $1"
 }
 function print_green(){
-    printf "\n${GREEN} $1\n"
+    printf "\n${GREEN} $1"
 }
 function print_brackets_green(){
-    printf "\n${NC}[${GREEN}$1${NC}] $2\n"
+    printf "\n${NC}[${GREEN}$1${NC}] $2"
 }
 
 function print_cyan(){
-    printf "\n${CYAN} $1\n"
+    printf "\n${CYAN} $1"
 }
 function print_red(){
-    printf "\n${RED} $1\n"
+    printf "\n${RED} $1"
 }
 
 main
