@@ -10,9 +10,9 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 function main() {
-    # install_initial_deps
-    # install_additional_deps
-    # install_languages
+    install_initial_deps
+    install_additional_deps
+    install_languages
     install_shell
 }
 
@@ -158,7 +158,7 @@ function install_shell() {
 # rm -rf lazygit.tar.gz
 #
 # # printf "${RED}[-----]${NC} Installing LunarVim -- Checkhealth Shortcut"
-# # LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y
+# # LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y --install-dependencies
 #
 # cd
 # printf "${RED}[-----]${NC} Stowing neovim config"
