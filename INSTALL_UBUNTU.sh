@@ -94,8 +94,8 @@ function install_languages(){
 
 function install_shell() {
     print_green "Installing Oh-My-Zsh..."
-    print_green "   - ${NC}tmux\n"
-    print_green "   - ${NC}zsh\n"
+    print_green "   - ${NC}tmux"
+    print_green "   - ${NC}zsh"
     print_green "   - ${NC}starship\n"
     rm -rf /home/barsi/.oh-my-zsh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -s --unattended
@@ -103,7 +103,7 @@ function install_shell() {
     sudo nala install tmux
     cargo install starship --locked
 
-    print_green "Stowing Ubuntu/WSL dotfiles"
+    print_green "Stowing Ubuntu/WSL dotfiles\n"
     cd
     rm -rf .zshrc .starship.toml .tmux.conf
     cd dotfiles
