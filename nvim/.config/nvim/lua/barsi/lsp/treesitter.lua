@@ -1,5 +1,25 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = "all",
+	ensure_installed = {
+		"html",
+		"css",
+		"tsx",
+		"typescript",
+		"javascript",
+		"astro",
+		"vue",
+		"c",
+		"bash",
+		"dockerfile",
+		"json",
+		"lua",
+		"php",
+		"prisma",
+		"rust",
+		"toml",
+		"vim",
+		"yaml",
+		"help"
+	},
 	indent = {
 		enable = true,
 		disable = { "python" },

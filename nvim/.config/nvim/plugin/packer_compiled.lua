@@ -340,6 +340,11 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  nvim_rocks = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim_rocks",
+    url = "https://github.com/theHamsta/nvim_rocks"
+  },
   ["oh-lucy.nvim"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/oh-lucy.nvim",
@@ -349,6 +354,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/onedarkpro.nvim",
     url = "https://github.com/olimorris/onedarkpro.nvim"
+  },
+  ["oxocarbon.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/oxocarbon.nvim",
+    url = "https://github.com/shaunsingh/oxocarbon.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,

@@ -1,16 +1,23 @@
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local is_bootstrap = false
-
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	is_bootstrap = true
-	vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-	vim.cmd([[packadd packer.nvim]])
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 require("packer").startup(function(use) -- Packer can manage itself
 	use("wbthomason/packer.nvim")
 	use("lewis6991/impatient.nvim")
+	use({
+		"theHamsta/nvim_rocks",
+		run = "pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua",
+	})
 
 	-- Dependencies
 	use("nvim-lua/plenary.nvim")
@@ -127,6 +134,7 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("folke/tokyonight.nvim")
 	use("Mofiqul/dracula.nvim")
 	use("Yazeed1s/oh-lucy.nvim")
+	use({ "shaunsingh/oxocarbon.nvim", run = "./install.sh" })
 
 	use("xiyaowong/nvim-transparent")
 	use("nvim-lualine/lualine.nvim")
@@ -144,12 +152,12 @@ require("packer").startup(function(use) -- Packer can manage itself
 	-- Plugisn to keep an eyeo n
 	-- https://github.com/hkupty/iron.nvim
 	-- 'simrat39/symbols-outline.nvim'
-	if is_bootstrap then
-		require("packer").sync()
-	end
+	if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
 
-if is_bootstrap then
+if packer_bootstrap then
 	print("==================================")
 	print("    Plugins are being installed")
 	print("    Wait until Packer completes,")

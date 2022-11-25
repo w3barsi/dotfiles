@@ -100,7 +100,7 @@ function install_shell() {
     rm -rf /home/barsi/.oh-my-zsh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -s --unattended
 
-    sudo nala install tmux
+    sudo nala install tmux -y
     source "/home/barsi/.cargo/env"
     cargo install starship --locked
 
@@ -114,51 +114,58 @@ function install_shell() {
     chsh -s $(which zsh)
 }
 
+function install_neovim() {
+    print_green "Installing neovim build dependencies...\n"
+    sudo nala install ninja-build \
+        gettext \
+        libtool \
+        libtool-bin \
+        autoconf \
+        automake \
+        cmake \
+        g++ \
+        pkg-config \
+        unzip \
+        curl \
+        doxygen -y
+    cd
+    print_green "Cloning neovim...\n"
+    git clone https://github.com/neovim/neovim
+    print_green "Now building neovim stable...\n"
+    cd neovim
+    git checkout stable
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
+    cd
+
+    print_green "Installing neovim dependencies...\n"
+    print_green "   - ${NC}ripgrep"
+    print_green "   - ${NC}fd-find"
+    print_green "   - ${NC}lazygit"
+    print_green "   - ${NC}[PYTHON]pynvim"
+    print_green "   - ${NC}[NPM] neovim\n"
+    print_green "   - ${NC}[NPM] tree-sitter-cli\n"
+    sudo nala install ripgrep fd-find -y
+    pip install pynvim
+    sudo npm i -g neovim tree-sitter-cli
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name":' |  sed -E 's/.*"v*([^"]+)".*/\1/')
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
+    rm -rf lazygit.tar.gz
+
+    cd
+    printf "${RED}[-----]${NC} Stowing neovim config"
+    cd dotfiles
+    stow nvim
+    cd
+
+    print_green "Installing LunarVim..."
+    LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y --install-dependencies
+}
 
 
-# printf "${RED}[-----]${NC} Installing neovim build dependencies\n"
-# sudo nala install ninja-build \
-#     gettext \
-#     libtool \
-#     libtool-bin \
-#     autoconf \
-#     automake \
-#     cmake \
-#     g++ \
-#     pkg-config \
-#     unzip \
-#     curl \
-#     doxygen -y
+
 #
-# cd
-# printf "${RED}[-----]${NC} Cloning neovim\n"
-# git clone https://github.com/neovim/neovim
-# cd neovim
-# git checkout stable
-# printf "${RED}[-----]${NC} Checked out to stable branch\n"
-# printf "${RED}[-----]${NC} Now building...\n"
-# make CMAKE_BUILD_TYPE=RelWithDebInfo
-# sudo make install
-# cd
-#
-# printf "${RED}[-----]${NC} Installing neovim dependencies\n"
-# printf "${CYAN}[-----] - ${NC}ripgrep\n"
-# printf "${CYAN}[-----] - ${NC}fd-find\n"
-# sudo nala install ripgrep fd-find -y
-# printf "${CYAN}[-----] - ${NC}pynvim\n"
-# pip install pynvim
-# printf "${CYAN}[-----] - ${NC}neovim\n"
-# printf "${CYAN}[-----] - ${NC}tree-sitter-cli\n"
-# npm i -g neovim tree-sitter-cli
-#
-# printf "${RED}[-----]${NC} - lazygit\n"
-# LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name":' |  sed -E 's/.*"v*([^"]+)".*/\1/')
-# curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-# sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
-# rm -rf lazygit.tar.gz
-#
-# # printf "${RED}[-----]${NC} Installing LunarVim -- Checkhealth Shortcut"
-# # LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -y --install-dependencies
 #
 # cd
 # printf "${RED}[-----]${NC} Stowing neovim config"

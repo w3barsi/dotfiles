@@ -7,7 +7,7 @@ require("nvim-lsp-installer").setup({
 		},
 	},
 })
--- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm php dockerls taplo bashls
+-- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm php dockerls
 local tw_highlight = require("tailwind-highlight")
 local lspconfig = require("lspconfig")
 local saga = require("lspsaga")
@@ -58,7 +58,9 @@ lspconfig.prismals.setup(default_config)
 lspconfig.intelephense.setup(default_config)
 lspconfig.rust_analyzer.setup(default_config)
 lspconfig.vuels.setup(default_config)
+-- lspconfig.volar.setup(default_config)
 lspconfig.bashls.setup(default_config)
+
 
 -- lspconfig.sumneko_lua.setup({
 -- 	on_attach = on_attach,
