@@ -240,6 +240,16 @@ _G.packer_plugins = {
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["material.nvim"] = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/material.nvim",
@@ -279,11 +289,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/NvChad/nvim-colorizer.lua"
-  },
-  ["nvim-lsp-installer"] = {
-    loaded = true,
-    path = "/home/barsi/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
-    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,

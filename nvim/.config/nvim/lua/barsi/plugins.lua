@@ -60,8 +60,9 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("anuvyklack/hydra.nvim")
 
 	-- LSP
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
 	use("ray-x/lsp_signature.nvim")
 
 	use("hrsh7th/cmp-nvim-lua")
@@ -153,8 +154,8 @@ require("packer").startup(function(use) -- Packer can manage itself
 	-- https://github.com/hkupty/iron.nvim
 	-- 'simrat39/symbols-outline.nvim'
 	if packer_bootstrap then
-    require('packer').sync()
-  end
+		require("packer").sync()
+	end
 end)
 
 if packer_bootstrap then
