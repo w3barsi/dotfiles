@@ -1,0 +1,78 @@
+format = """
+$directory\
+[](fg:#f087bd bg:#FCC5E9 )\
+$git_branch\
+[](fg:#FCC5E9 bg:#fabec0)\
+$c\
+$golang\
+$java\
+$nodejs\
+$rust\
+[](fg:#fabec0)\
+$fill\
+[](fg:#FCC5E9)\
+$cmd_duration\
+[](fg:#f087bd bg:#FCC5E9)\
+$time
+ $character
+"""
+
+
+add_newline = false
+
+[c]
+symbol = " "
+style = "fg:#111319 bg:#fabec0"
+format = '[$symbol](fg:#007aff bg:#fabec0)[($version) ]($style)'
+
+[golang]
+symbol = " "
+style = "fg:#111319 bg:#fabec0"
+format = '[$symbol](fg:#65ccd9 bg:#fabec0)[($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:#111319 bg:#fabec0"
+format = '[$symbol](fg:#89bb3c bg:#fabec0)[($version) ]($style)'
+
+[java]
+symbol = " "
+style = "fg:#111319 bg:#fabec0"
+format = '[$symbol](fg:red bg:#fabec0)[($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "fg:#111319 bg:#fabec0"
+format = '[$symbol](fg:#d83416 bg:#fabec0)[($version) ]($style)'
+
+[cmd_duration]
+min_time = 500
+style = "fg:#111319 bg:#f087bd"
+
+[fill]
+symbol = " "
+style = "bold green"
+
+[line_break]
+disabled = false
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[➜](bold red)"
+
+[directory]
+style = "fg:#111319 bg:#f087bd"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "fg:#111319 bg:#FCC5E9"
+format = '[ $symbol $branch ]($style)'
+
+[time]
+style = "fg:#111319 bg:#f087bd"
+disabled = false
+format = '[ 🕙 $time ]($style) '
+time_format = "%T"
