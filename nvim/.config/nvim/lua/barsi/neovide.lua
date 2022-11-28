@@ -4,12 +4,12 @@ end
 
 local vnoremap = require("barsi.scripts.keymaps").vnoremap
 
-vim.g.neovide_refresh_rate = 500
+vim.g.neovide_refresh_rate = 60
 vim.g.neovide_cursor_trail_size = 0
 
 vim.g.gui_font_default_size = 15
 vim.g.gui_font_size = vim.g.gui_font_default_size
-vim.g.gui_font_face = "JetBrainsMonoNL NF"
+vim.g.gui_font_face = "JetBrainsMono Nerd Font"
 
 RefreshGuiFont = function()
     vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)

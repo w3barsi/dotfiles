@@ -10,7 +10,7 @@ require("mason").setup({
 
 require("mason-lspconfig").setup()
 
--- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm php dockerls
+-- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm php dockerls volar
 local tw_highlight = require("tailwind-highlight")
 local lspconfig = require("lspconfig")
 local saga = require("lspsaga")
