@@ -1,0 +1,203 @@
+window:
+  padding:
+    x: 0
+    y: 0
+  opacity: 1
+
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+  size: 14
+
+schemes:
+  substrata: &substrata
+    # Default colors
+    primary:
+      background: '#191c25'
+      foreground: '#b5b4c9'
+
+    # Cursor colors
+    cursor:
+      text: '#191c25'
+      cursor: '#b5b4c9'
+
+    # Normal colors
+    normal:
+      black:   '#191c25'
+      red:     '#cf8164'
+      green:   '#76a065'
+      yellow:  '#ab924c'
+      blue:    '#8296b0'
+      magenta: '#a18daf'
+      cyan:    '#659ea2'
+      white:   '#b5b4c9'
+
+    # Bright colors
+    bright:
+      black:   '#5b5f71'
+      red:     '#fe9f7c'
+      green:   '#92c47e'
+      yellow:  '#d2b45f'
+      blue:    '#a0b9d8'
+      magenta: '#c6aed7'
+      cyan:    '#7dc2c7'
+      white:   '#f0ecfe'
+
+  code: &vscode
+    primary:
+      background: "#1e1e1e"
+      foreground: "#d4d4d4"
+
+    cursor:
+      text: "#111111"
+      cursor: "#ffffff"
+
+    normal:
+      black: "#1e1e1e"
+      red: "#f44747"
+      green: "#608b4e"
+      yellow: "#dcdcaa"
+      blue: "#569cd6"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#d4d4d4"
+
+    bright:
+      black: "#545454"
+      red: "#f44747"
+      green: "#608b4e"
+      yellow: "#dcdcaa"
+      blue: "#569cd6"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#d4d4d4"
+
+  gruvbox_material_hard_dark: &gruvbox_material_hard_dark
+    primary:
+      background: "0x1d2021"
+      foreground: "0xd4be98"
+    normal:
+      black: "0x32302f"
+      red: "0xea6962"
+      green: "0xa9b665"
+      yellow: "0xd8a657"
+      blue: "0x7daea3"
+      magenta: "0xd3869b"
+      cyan: "0x89b482"
+      white: "0xd4be98"
+    bright:
+      black: "0x32302f"
+      red: "0xea6962"
+      green: "0xa9b665"
+      yellow: "0xd8a657"
+      blue: "0x7daea3"
+      magenta: "0xd3869b"
+      cyan: "0x89b482"
+      white: "0xd4be98"
+
+  gruvbox_material_medium_dark: &gruvbox_material_medium_dark
+    primary:
+      background: "0x282828"
+      foreground: "0xd4be98"
+    normal:
+      black: "0x3c3836"
+      red: "0xea6962"
+      green: "0xa9b665"
+      yellow: "0xd8a657"
+      blue: "0x7daea3"
+      magenta: "0xd3869b"
+      cyan: "0x89b482"
+      white: "0xd4be98"
+    bright:
+      black: "0x3c3836"
+      red: "0xea6962"
+      green: "0xa9b665"
+      yellow: "0xd8a657"
+      blue: "0x7daea3"
+      magenta: "0xd3869b"
+      cyan: "0x89b482"
+      white: "0xd4be98"
+
+onedark: &onedark
+  colors:
+    primary:
+      background: '0x1e2127'
+      foreground: '0xabb2bf'
+      bright_foreground: '0xe6efff'
+    normal:
+      black:   '0x1e2127'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0x828791'
+    bright:
+      black:   '0x5c6370'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0xe6efff'
+    dim:
+      black:   '0x1e2127'
+      red:     '0xe06c75'
+      green:   '0x98c379'
+      yellow:  '0xd19a66'
+      blue:    '0x61afef'
+      magenta: '0xc678dd'
+      cyan:    '0x56b6c2'
+      white:   '0x828791'
+
+
+colors: *onedark
+#
+# Shell
+#
+# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
+# Entries in `shell.args` are passed unmodified as arguments to the shell.
+#
+# Default:
+#   - (macOS) /bin/bash --login
+#   - (Linux/BSD) user login shell
+#   - (Windows) powershell
+#shell:
+#program: /bin/zsh
+#args:
+#- -l
+#- -c
+#- "tmux attach || tmux"
+env:
+  TERM: xterm-256color
+
+key_bindings:
+  - { key: Return,   mods: Shift, chars: "\x1b[13;2u" }
+  - { key: Return,   mods: Control, chars: "\x1b[13;5u" }
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
+  - { key: J,        mods: Alt,     chars: "\x1bj"                       }
+  - { key: K,        mods: Alt,     chars: "\x1bk"                       }
+  - { key: H,        mods: Alt,     chars: "\x1bh"                       }
+  - { key: L,        mods: Alt,     chars: "\x1bl"                       }
+  - { key: Key1,     mods: Command,       chars: "\x01\x31" }
+  - { key: Key2,     mods: Command,       chars: "\x01\x32" }
+  - { key: Key3,     mods: Command,       chars: "\x01\x33" }
+  - { key: Key4,     mods: Command,       chars: "\x01\x34" }
+  - { key: Key5,     mods: Command,       chars: "\x01\x35" }
+  - { key: Key6,     mods: Command,       chars: "\x01\x36" }
+  - { key: Key7,     mods: Command,       chars: "\x01\x37" }
+  - { key: Key8,     mods: Command,       chars: "\x01\x38" }
+  - { key: Key9,     mods: Command,       chars: "\x01\x39" }
+  - { key: C,        mods: Command,       chars: "\x01\x63" }
+  - { key: C,        mods: Command,       chars: "\x01\x78" }
+    # (Windows, Linux, and BSD only)
+    #- { key: V,        mods: Control|Shift, action: Paste            }
+    #- { key: C,        mods: Control|Shift, action: Copy             }
+    #- { key: Insert,   mods: Shift,         action: PasteSelection   }
+    #- { key: Key0,     mods: Control,       action: ResetFontSize    }
+    #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  #- { key: Add,      mods: Control,       action: IncreaseFontSize }
+  #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
