@@ -5,4 +5,7 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 			enable = true,
 		},
 	},
+    update_focused_file = {
+        enable = true
+    }
 })

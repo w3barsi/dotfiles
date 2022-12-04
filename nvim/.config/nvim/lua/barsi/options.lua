@@ -1,21 +1,21 @@
-local is_wsl = (function() 
-  local output = vim.fn.systemlist "uname -r" 
-  return not not string.find(output[1] or "", "WSL")
-end)() 
+local is_wsl = (function()
+	local output = vim.fn.systemlist("uname -r")
+	return not not string.find(output[1] or "", "WSL")
+end)()
 
 if is_wsl then
-    vim.g.clipboard = {
-        name = "win32yank.exe",
-        copy = {
-            ["+"] = "win32yank.exe -i",
-            ["*"] = "win32yank.exe -i",
-        },
-        paste = {
-            ["+"] = "win32yank.exe -o",
-            ["*"] = "win32yank.exe -o",
-        },
-        cache_enabled = 1,
-    }
+	vim.g.clipboard = {
+		name = "win32yank.exe",
+		copy = {
+			["+"] = "win32yank.exe -i",
+			["*"] = "win32yank.exe -i",
+		},
+		paste = {
+			["+"] = "win32yank.exe -o",
+			["*"] = "win32yank.exe -o",
+		},
+		cache_enabled = 1,
+	}
 end
 
 vim.g.mapleader = " "

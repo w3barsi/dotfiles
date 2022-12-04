@@ -18,7 +18,7 @@ require("nvim-treesitter.configs").setup({
 		"toml",
 		"vim",
 		"yaml",
-		"help"
+		"help",
 	},
 	indent = {
 		enable = true,
@@ -45,6 +45,7 @@ require("nvim-treesitter.configs").setup({
 
 	incremental_selection = { enable = true },
 	textobjects = { enable = true },
+	autotag = { enable = true },
 })
 
 require("treesitter-context").setup({

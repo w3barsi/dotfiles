@@ -19,10 +19,10 @@ require("packer").startup(function(use) -- Packer can manage itself
 		run = "pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua",
 	})
 
-
 	-- Dependencies
 	use("nvim-lua/plenary.nvim")
 
+	-- Quality of Life
 	use("Darazaki/indent-o-matic")
 	use("RRethy/vim-illuminate")
 	use("mbbill/undotree")
@@ -30,11 +30,9 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("windwp/nvim-autopairs")
 	use("NvChad/nvim-colorizer.lua")
 	use("princejoogie/tailwind-highlight.nvim")
-	use("folke/which-key.nvim")
 
 	-- Easy Commenting
-	use("numToStr/Comment.nvim")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use({ "numToStr/Comment.nvim", requires = { "JoosepAlviste/nvim-ts-context-commentstring" } })
 
 	-- Handles session management like opening a project in VSCode
 	use({
@@ -61,27 +59,19 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("anuvyklack/hydra.nvim")
 
 	-- LSP
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 	use("ray-x/lsp_signature.nvim")
 
-	use("hrsh7th/cmp-nvim-lua")
-	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
-	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-nvim-lua")
+	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
 	use("onsails/lspkind-nvim")
 	use("glepnir/lspsaga.nvim")
-
-	use({
-		"samodostal/copilot-client.lua",
-		requires = {
-			"zbirenbaum/copilot.lua", -- requires copilot.lua and plenary.nvim
-			"nvim-lua/plenary.nvim",
-		},
-	})
 
 	-- LANGUAGE SPECIFIC
 	use("simrat39/rust-tools.nvim")
@@ -100,10 +90,14 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("rhysd/vim-clang-format")
 
-	use("nvim-treesitter/nvim-treesitter")
-	use("nvim-treesitter/nvim-treesitter-context")
-	use("nvim-treesitter/nvim-treesitter-textobjects")
-	use("nvim-treesitter/playground")
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		requires = {
+			{ "nvim-treesitter/nvim-treesitter-context" },
+			{ "nvim-treesitter/nvim-treesitter-textobjects" },
+			{ "nvim-treesitter/playground" },
+		},
+	})
 
 	use("p00f/nvim-ts-rainbow")
 	use("windwp/nvim-ts-autotag")
@@ -111,32 +105,15 @@ require("packer").startup(function(use) -- Packer can manage itself
 	-- FILE NAVIGATION
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-fzy-native.nvim")
-	use("kyazdani42/nvim-tree.lua")
+	use({ "kyazdani42/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
 	use("ThePrimeagen/harpoon")
 
-	use("raddari/last-color.nvim") -- Remembers last used colorscheme
 	-- COLORS/THEME
+	use("raddari/last-color.nvim") -- Remembers last used colorscheme
 	use("gruvbox-community/gruvbox")
-	use("martinsione/darkplus.nvim")
-	use("shaunsingh/nord.nvim")
-	use("w3barsi/poimandress.nvim")
-	use("olivercederborg/poimandres.nvim")
-	use("sainnhe/gruvbox-material")
-	--use 'laureanray/poimandres.nvim'
-	use("projekt0n/github-nvim-theme")
-	--use 'ldelossa/vimdark'
-	use("olimorris/onedarkpro.nvim")
-	use("kvrohit/substrata.nvim")
 	use("w3barsi/barstrata.nvim")
-	use("NTBBloodbath/doom-one.nvim")
-	use("rose-pine/neovim")
 	use("catppuccin/nvim")
-	use("marko-cerovac/material.nvim")
-	use("sam4llis/nvim-tundra")
-	use("folke/tokyonight.nvim")
 	use("Mofiqul/dracula.nvim")
-	use("Yazeed1s/oh-lucy.nvim")
-	use({ "shaunsingh/oxocarbon.nvim", run = "./install.sh" })
 
 	use("xiyaowong/nvim-transparent")
 	use("nvim-lualine/lualine.nvim")

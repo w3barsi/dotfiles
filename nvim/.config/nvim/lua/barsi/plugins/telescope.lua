@@ -30,6 +30,7 @@ require("telescope").setup({
 		},
 		layout_config = {
 			horizontal = {
+				sorting_strategy = "ascending",
 				preview_width = 0.60,
 			},
 		},
