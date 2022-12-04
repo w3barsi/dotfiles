@@ -1,3 +1,8 @@
+local nnoremap = require("barsi.scripts.keymaps").nnoremap
+local inoremap = require("barsi.scripts.keymaps").inoremap
+local vnoremap = require("barsi.scripts.keymaps").vnoremap
+local xnoremap = require("barsi.scripts.keymaps").xnoremap
+
 require("mason").setup({
 	ui = {
 		icons = {
@@ -28,7 +33,56 @@ vim.diagnostic.config({
 	update_in_insert = false,
 })
 
-local on_attach = require("barsi.remap").on_attach
+
+local open_float = function()
+	local opts = {
+		close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+		border = "rounded",
+	}
+	vim.api.nvim_command(
+		'lua vim.diagnostic.open_float(nil, {close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" }, border = "single",})'
+	)
+end
+
+local on_attach = function(client, bufnr)
+	-- nnoremap( "K", vim.lsp.buf.hover, { buffer = 0 })
+
+	nnoremap("gd", vim.lsp.buf.definition, { desc = "Go to definition [LSP]", buffer = 0 })
+	nnoremap("gt", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = 0 })
+	nnoremap("gi", vim.lsp.buf.implementation, { desc = "Go to implementation [LSP]", buffer = 0 })
+	-- nnoremap("gr", vim.lsp.buf.references, { desc = "Go to references [LSP]", buffer = 0 })
+	nnoremap("gr", function()
+		require("telescope.builtin").lsp_references()
+	end, { desc = "Go to references [LSP]", buffer = 0 })
+	nnoremap("gf", vim.lsp.buf.format, { buffer = 0 })
+	nnoremap("fd", [[gg=G<C-o>]], { buffer = 0, silent = true })
+
+	nnoremap("?", open_float, { buffer = 0 })
+	nnoremap("]e", vim.diagnostic.goto_next, { buffer = 0 })
+	nnoremap("[e", vim.diagnostic.goto_prev, { buffer = 0 })
+	nnoremap("<leader>dp", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
+
+	-- LSP Saga Keymaps
+	nnoremap("K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, buffer = 0 })
+	nnoremap("ga", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+	nnoremap("gca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+	vnoremap("gca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+	nnoremap("<F2>", "<cmd>Lspsaga rename<CR>", { silent = true, buffer = 0 })
+
+	if client.name == "tsserver" then
+		vim.keymap.set(
+			"n",
+			"<Leader>oi",
+			"<Cmd>OrganizeImports<CR>",
+			{ desc = "Organize imports [TS]", buffer = bufnr }
+		)
+	end
+end
+
+-- L.on_attach = on_attach
+-- return L
+
+-- local on_attach = require("barsi.remap").on_attach
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
@@ -56,7 +110,7 @@ lspconfig.clangd.setup(default_config)
 lspconfig.eslint.setup(default_config)
 lspconfig.jsonls.setup(default_config)
 lspconfig.yamlls.setup(default_config)
-lspconfig.emmet_ls.setup(default_config)
+-- lspconfig.emmet_ls.setup(default_config)
 lspconfig.prismals.setup(default_config)
 lspconfig.intelephense.setup(default_config)
 lspconfig.rust_analyzer.setup(default_config)
