@@ -43,6 +43,7 @@ local sources = {
         },
     }),
     null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.markdownlint,
 }
 
 require("null-ls").setup({

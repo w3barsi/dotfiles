@@ -33,7 +33,6 @@ vim.diagnostic.config({
 	update_in_insert = false,
 })
 
-
 local open_float = function()
 	local opts = {
 		close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
@@ -47,15 +46,14 @@ end
 local on_attach = function(client, bufnr)
 	-- nnoremap( "K", vim.lsp.buf.hover, { buffer = 0 })
 
-	nnoremap("gd", vim.lsp.buf.definition, { desc = "Go to definition [LSP]", buffer = 0 })
-	nnoremap("gt", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = 0 })
-	nnoremap("gi", vim.lsp.buf.implementation, { desc = "Go to implementation [LSP]", buffer = 0 })
+	nnoremap("gd", vim.lsp.buf.definition, { desc = "[g]oto [d]efinition", buffer = 0 })
+	nnoremap("gD", vim.lsp.buf.type_definition, { desc = "[g]oto type [D]efinition", buffer = 0 })
+	nnoremap("gi", vim.lsp.buf.implementation, { desc = "[g]oto [i]mplementation", buffer = 0 })
 	-- nnoremap("gr", vim.lsp.buf.references, { desc = "Go to references [LSP]", buffer = 0 })
 	nnoremap("gr", function()
 		require("telescope.builtin").lsp_references()
-	end, { desc = "Go to references [LSP]", buffer = 0 })
-	nnoremap("gf", vim.lsp.buf.format, { buffer = 0 })
-	nnoremap("fd", [[gg=G<C-o>]], { buffer = 0, silent = true })
+	end, { desc = "[g]oto [r]eferenfecs", buffer = 0 })
+	nnoremap("gf", vim.lsp.buf.format, { desc = "[g]o [f]ormat", buffer = 0 })
 
 	nnoremap("?", open_float, { buffer = 0 })
 	nnoremap("]e", vim.diagnostic.goto_next, { buffer = 0 })
