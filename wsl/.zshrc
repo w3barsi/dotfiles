@@ -20,6 +20,7 @@ alias src="source ~/.zshrc"
 alias lg="lazygit"
 alias ld="lazydocker"
 alias winget="winget.exe"
+alias win32yank="win32yank.exe -i"
 # alias mpv="mpv.exe"
 alias yt-dl="cd /mnt/e/Spotify/ && yt-dlp"
 alias yt-dld="cd /mnt/e/Spotify/ && yt-dlp -f 'bestaudio[ext=m4a]'"
@@ -133,5 +134,6 @@ eval "`fnm env`"
 
 # Go
 export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$HOME/.emacs.d/bin"
 
 eval "$(starship init zsh)"
