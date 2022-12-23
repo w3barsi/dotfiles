@@ -3,23 +3,21 @@ local inoremap = require("barsi.scripts.keymaps").inoremap
 local vnoremap = require("barsi.scripts.keymaps").vnoremap
 local xnoremap = require("barsi.scripts.keymaps").xnoremap
 
-require("mason").setup({
-	ui = {
-		icons = {
-			server_installed = "✓",
-			server_pending = "➜",
-			server_uninstalled = "✗",
-		},
-	},
+local lsp = require("lsp-zero")
+local luasnip = require("luasnip")
+
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+lsp.preset("recommended")
+lsp.ensure_installed({
+	"tsserver",
+	"eslint",
+	"sumneko_lua",
+	"rust_analyzer",
 })
-
-require("mason-lspconfig").setup()
-
--- vimls html sumneko_lua bashls yamlls prismals clangd eslint intelephense jsonls tailwindcss tsserver cssls vimls rust_analyzer taplo astro emmet_ls efm php dockerls volar
-local tw_highlight = require("tailwind-highlight")
-local lspconfig = require("lspconfig")
-local saga = require("lspsaga")
-saga.init_lsp_saga()
 
 require("lsp_signature").setup({
 	floating_window = false,
@@ -27,23 +25,54 @@ require("lsp_signature").setup({
 	hint_prefix = "🐼 ",
 })
 
-vim.diagnostic.config({
-	underline = { severity_limit = "Error" },
-	signs = true,
-	update_in_insert = false,
+local cmp = require("cmp")
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+	["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+
+	["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+	["<C-e>"] = cmp.mapping({
+		i = cmp.mapping.abort(),
+		c = cmp.mapping.close(),
+	}),
+	["<CR>"] = cmp.mapping.confirm(),
+	["<Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_next_item()
+		elseif luasnip.expand_or_jumpable() then
+			luasnip.expand_or_jump()
+		elseif has_words_before() then
+			cmp.complete()
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
+	["<S-Tab>"] = cmp.mapping(function(fallback)
+		if cmp.visible() then
+			cmp.select_prev_item()
+		elseif luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
 })
 
-local open_float = function()
-	local opts = {
-		close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-		border = "rounded",
-	}
-	vim.api.nvim_command(
-		'lua vim.diagnostic.open_float(nil, {close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" }, border = "single",})'
-	)
-end
+lsp.setup_nvim_cmp({
+	mapping = cmp_mappings,
+})
 
-local on_attach = function(client, bufnr)
+lsp.set_preferences({
+	suggest_lsp_servers = true,
+	sign_icons = {
+		error = "E",
+		warn = "W",
+		hint = "H",
+		info = "I",
+	},
+})
+
+lsp.on_attach(function(client, bufnr)
 	-- nnoremap( "K", vim.lsp.buf.hover, { buffer = 0 })
 
 	nnoremap("gd", vim.lsp.buf.definition, { desc = "[g]oto [d]efinition", buffer = 0 })
@@ -55,7 +84,6 @@ local on_attach = function(client, bufnr)
 	end, { desc = "[g]oto [r]eferenfecs", buffer = 0 })
 	nnoremap("gf", vim.lsp.buf.format, { desc = "[g]o [f]ormat", buffer = 0 })
 
-	nnoremap("?", open_float, { buffer = 0 })
 	nnoremap("]e", vim.diagnostic.goto_next, { buffer = 0 })
 	nnoremap("[e", vim.diagnostic.goto_prev, { buffer = 0 })
 	nnoremap("<leader>dp", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
@@ -75,136 +103,10 @@ local on_attach = function(client, bufnr)
 			{ desc = "Organize imports [TS]", buffer = bufnr }
 		)
 	end
-end
+end)
 
--- L.on_attach = on_attach
--- return L
+lsp.setup()
 
--- local on_attach = require("barsi.remap").on_attach
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-	properties = {
-		"documentation",
-		"detail",
-		"additionalTextEdits",
-	},
-}
-
-local default_config = {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-
-lspconfig.html.setup(default_config)
-lspconfig.astro.setup(default_config)
-lspconfig.cssls.setup(default_config)
-lspconfig.taplo.setup(default_config)
-lspconfig.vimls.setup(default_config)
-lspconfig.bashls.setup(default_config)
-lspconfig.clangd.setup(default_config)
-lspconfig.eslint.setup(default_config)
-lspconfig.jsonls.setup(default_config)
-lspconfig.yamlls.setup(default_config)
--- lspconfig.emmet_ls.setup(default_config)
-lspconfig.prismals.setup(default_config)
-lspconfig.intelephense.setup(default_config)
-lspconfig.rust_analyzer.setup(default_config)
--- lspconfig.vuels.setup(default_config)
-lspconfig.volar.setup(default_config)
-lspconfig.bashls.setup(default_config)
-
--- lspconfig.sumneko_lua.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	settings = {
--- 		Lua = {
--- 			diagnostics = {
--- 				globals = { "vim" },
--- 			},
--- 		},
--- 	},
--- })
-
-local lua_rtp = vim.split(package.path, ";")
-table.insert(lua_rtp, "lua/?.lua")
-table.insert(lua_rtp, "lua/?/init.lua")
-
-lspconfig.sumneko_lua.setup(vim.tbl_extend("force", default_config, {
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-				path = lua_rtp,
-			},
-			diagnostics = { globals = { "vim" } },
-			-- workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-			telemetry = { enable = false },
-		},
-	},
-}))
-
-lspconfig.tailwindcss.setup({
-	on_attach = function(client, bufnr)
-		tw_highlight.setup(client, bufnr, {
-			single_column = false,
-			mode = "background",
-			debounce = 200,
-		})
-
-		on_attach(client, bufnr)
-	end,
+vim.diagnostic.config({
+	virtual_text = true,
 })
-
-local function organize_imports()
-	local params = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-	vim.lsp.buf.execute_command(params)
-end
-
-lspconfig.tsserver.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	commands = {
-		OrganizeImports = {
-			organize_imports,
-			description = "Organize Imports",
-		},
-	},
-})
-
-local rt = require("rust-tools")
-
-rt.setup({
-	server = {
-		on_attach = function(_, bufnr)
-			on_attach()
-			-- Hover actions
-			vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-			-- Code action groups
-			vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-		end,
-	},
-})
-
---require('lspconfig').ccls.setup {
---on_attach = on_attach,
---capabilities = capabilities
---}
-
---local cfg = {
---floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
-
---hint_enable = false, -- virtual hint enable
---handler_opts = {
---border = "single" -- double, rounded, single, shadow, none
---},
---}
-
---require('lsp_signature').setup(cfg)
---

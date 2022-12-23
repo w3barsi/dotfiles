@@ -59,19 +59,29 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("anuvyklack/hydra.nvim")
 
 	-- LSP
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	use("neovim/nvim-lspconfig")
-	use("ray-x/lsp_signature.nvim")
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		requires = {
+			{"neovim/nvim-lspconfig"},
+			{"williamboman/mason.nvim"},
+			{"williamboman/mason-lspconfig.nvim"},
+			{"ray-x/lsp_signature.nvim"},
 
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-nvim-lua")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lsp-signature-help")
-	use("onsails/lspkind-nvim")
-	use("glepnir/lspsaga.nvim")
+			{"hrsh7th/nvim-cmp"},
+			{"hrsh7th/cmp-buffer"},
+			{"hrsh7th/cmp-path"},
+			{"saadparwaiz1/cmp_luasnip"},
+			{"hrsh7th/cmp-nvim-lua"},
+			{"hrsh7th/cmp-nvim-lsp"},
+			{"hrsh7th/cmp-nvim-lsp-signature-help"},
+			{"onsails/lspkind-nvim"},
+			{"glepnir/lspsaga.nvim"},
+
+			{"L3MON4D3/LuaSnip"},
+			{"rafamadriz/friendly-snippets"}
+		}
+
+	}
 
 	-- LANGUAGE SPECIFIC
 	use("simrat39/rust-tools.nvim")
@@ -82,9 +92,6 @@ require("packer").startup(function(use) -- Packer can manage itself
 	--use 'honza/vim-snippets'
 	--use 'quangnguyen30192/cmp-nvim-ultisnips'
 	---- luasnips
-	use("L3MON4D3/LuaSnip")
-	use("saadparwaiz1/cmp_luasnip")
-	use("rafamadriz/friendly-snippets")
 
 	-- Formatting
 	use("jose-elias-alvarez/null-ls.nvim")

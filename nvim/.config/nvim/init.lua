@@ -11,7 +11,7 @@ require("barsi.neovide")
 
 -- LSP Settings
 require("barsi.lsp.lsp")
-require("barsi.lsp.cmp")
+-- require("barsi.lsp.cmp")
 require("barsi.lsp.null-ls")
 require("barsi.lsp.treesitter")
 
