@@ -21,6 +21,7 @@ local nnoremap = require("barsi.scripts.keymaps").nnoremap
 --vim.cmd[[autocmd FileType jsonc setlocal shiftwidth=2 tabstop=2 expandtab]]
 --
 
+
 autocmd("BufWritePost", {
 	group = vim.api.nvim_create_augroup("packer_user_config", { clear = true }),
 	pattern = "plugins.lua",

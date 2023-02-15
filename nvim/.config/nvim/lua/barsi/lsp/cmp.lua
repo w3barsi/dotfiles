@@ -54,12 +54,17 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
+		["<C-s>"] = function()
+			if luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			end
+		end,
 	},
 	sources = cmp.config.sources(
 		{
-			{ name = "nvim_lsp_signature_help" },
-			{ name = "luasnip" },
+			-- { name = "nvim_lsp_signature_help" },
 			{ name = "nvim_lsp" },
+			{ name = "luasnip" },
 			{ name = "buffer" },
 			{ name = "path" },
 		}
@@ -154,5 +159,3 @@ cmp.setup.cmdline(":", {
 -- 	TypeParameter = "",
 -- }
 --
-
-

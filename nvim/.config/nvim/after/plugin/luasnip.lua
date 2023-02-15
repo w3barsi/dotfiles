@@ -56,7 +56,7 @@ ls.add_snippets("all", {
 			[[
 			const {} = ({}) => {{
 			    {}
-			}} 
+			}}
 			export default {func};
 	    ]],
 			{

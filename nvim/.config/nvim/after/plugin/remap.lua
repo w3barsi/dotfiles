@@ -61,7 +61,7 @@ vim.cmd([[noremap! <C-h> <C-w>]])
 nnoremap("x", [["_x]])
 
 -- Telescope and NvimTree keybindings
-nnoremap("<leader>pp", [[:NvimTreeToggle<CR>]], { silent = true })
+nnoremap("<leader>pp", [[:Neotree<CR>]], { silent = true })
 
 nnoremap("<C-p>", ":lua require('telescope.builtin').find_files({hidden=true})<cr>", { silent = true })
 nnoremap("<C-f>", ":lua require('telescope.builtin').live_grep({hidden=true})<cr>", { silent = true })

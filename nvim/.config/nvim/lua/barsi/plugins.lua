@@ -59,29 +59,28 @@ require("packer").startup(function(use) -- Packer can manage itself
 	use("anuvyklack/hydra.nvim")
 
 	-- LSP
-	use {
-		'VonHeikemen/lsp-zero.nvim',
+	use({
+		"VonHeikemen/lsp-zero.nvim",
 		requires = {
-			{"neovim/nvim-lspconfig"},
-			{"williamboman/mason.nvim"},
-			{"williamboman/mason-lspconfig.nvim"},
-			{"ray-x/lsp_signature.nvim"},
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "ray-x/lsp_signature.nvim" },
 
-			{"hrsh7th/nvim-cmp"},
-			{"hrsh7th/cmp-buffer"},
-			{"hrsh7th/cmp-path"},
-			{"saadparwaiz1/cmp_luasnip"},
-			{"hrsh7th/cmp-nvim-lua"},
-			{"hrsh7th/cmp-nvim-lsp"},
-			{"hrsh7th/cmp-nvim-lsp-signature-help"},
-			{"onsails/lspkind-nvim"},
-			{"glepnir/lspsaga.nvim"},
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+			{ "onsails/lspkind-nvim" },
+			{ "glepnir/lspsaga.nvim" },
 
-			{"L3MON4D3/LuaSnip"},
-			{"rafamadriz/friendly-snippets"}
-		}
-
-	}
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
+	})
 
 	-- LANGUAGE SPECIFIC
 	use("simrat39/rust-tools.nvim")
@@ -112,7 +111,16 @@ require("packer").startup(function(use) -- Packer can manage itself
 	-- FILE NAVIGATION
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-fzy-native.nvim")
-	use({ "kyazdani42/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
+	-- use({ "kyazdani42/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+	})
 	use("ThePrimeagen/harpoon")
 
 	-- COLORS/THEME
