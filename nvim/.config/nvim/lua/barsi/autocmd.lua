@@ -21,23 +21,6 @@ local nnoremap = require("barsi.scripts.keymaps").nnoremap
 --vim.cmd[[autocmd FileType jsonc setlocal shiftwidth=2 tabstop=2 expandtab]]
 --
 
-
-autocmd("BufWritePost", {
-	group = vim.api.nvim_create_augroup("packer_user_config", { clear = true }),
-	pattern = "plugins.lua",
-	command = "source <afile> | PackerSync",
-})
-
-autocmd("FileType", {
-	pattern = "c",
-	command = [[nnoremap <buffer><silent> <leader>n :RunFile toggleterm<CR> ]],
-})
-
-autocmd("FileType", {
-	pattern = "rust",
-	command = [[nnoremap <buffer><silent> <leader>n :! tmux send-keys -t 1 "cargo run" Enter <CR>]],
-})
---
 -- Briefly highlight code on yank
 local yank_group = vim.api.nvim_create_augroup("YankGroup", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {

@@ -18,7 +18,6 @@ if is_wsl then
 	}
 end
 
-vim.g.mapleader = " "
 vim.opt.timeoutlen = 500
 
 vim.opt.termguicolors = true

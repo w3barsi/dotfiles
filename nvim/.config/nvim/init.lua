@@ -1,5 +1,4 @@
 require("barsi.plugins")
-require("impatient")
 
 -- User Settings
 require("barsi.autocmd")
@@ -28,6 +27,5 @@ require("barsi.plugins.indentline")
 require("barsi.plugins.lualine")
 require("barsi.plugins.nvim-tree")
 require("barsi.plugins.telescope")
-require("barsi.plugins.transparent")
 require("barsi.plugins.presence")
 -- require("barsi.plugins.whichkey")

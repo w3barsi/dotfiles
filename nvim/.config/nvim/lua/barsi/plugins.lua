@@ -1,41 +1,38 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
-end
+vim.g.mapleader = " "
 
-local packer_bootstrap = ensure_packer()
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-require("packer").startup(function(use) -- Packer can manage itself
-	use("wbthomason/packer.nvim")
-	use("lewis6991/impatient.nvim")
-	use({
-		"theHamsta/nvim_rocks",
-		run = "pip3 install --user hererocks && python3 -mhererocks . -j2.1.0-beta3 -r3.0.0 && cp nvim_rocks.lua lua",
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
 	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
 
 	-- Dependencies
-	use("nvim-lua/plenary.nvim")
+	"nvim-lua/plenary.nvim",
 
 	-- Quality of Life
-	use("Darazaki/indent-o-matic")
-	use("RRethy/vim-illuminate")
-	use("mbbill/undotree")
-	use("tpope/vim-surround")
-	use("windwp/nvim-autopairs")
-	use("NvChad/nvim-colorizer.lua")
-	use("princejoogie/tailwind-highlight.nvim")
+	"Darazaki/indent-o-matic",
+	"RRethy/vim-illuminate",
+	"mbbill/undotree",
+	"tpope/vim-surround",
+	"windwp/nvim-autopairs",
+	"NvChad/nvim-colorizer.lua",
+	"princejoogie/tailwind-highlight.nvim",
 
 	-- Easy Commenting
-	use({ "numToStr/Comment.nvim", requires = { "JoosepAlviste/nvim-ts-context-commentstring" } })
+	{ "numToStr/Comment.nvim", dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" } },
 
 	-- Handles session management like opening a project in VSCode
-	use({
+	{
 		"rmagatti/auto-session",
 		config = function()
 			require("auto-session").setup({
@@ -43,25 +40,27 @@ require("packer").startup(function(use) -- Packer can manage itself
 				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
 			})
 		end,
-	})
+	},
 
-	use({
+	{
 		"iamcco/markdown-preview.nvim",
-		run = function()
+		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
-	})
-	use("lukas-reineke/indent-blankline.nvim")
-	use({
+	},
+
+	"lukas-reineke/indent-blankline.nvim",
+
+	{
 		"mg979/vim-visual-multi",
 		branch = "master",
-	})
-	use("anuvyklack/hydra.nvim")
+	},
+	"anuvyklack/hydra.nvim",
 
 	-- LSP
-	use({
+	{
 		"VonHeikemen/lsp-zero.nvim",
-		requires = {
+		dependencies = {
 			{ "neovim/nvim-lspconfig" },
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
@@ -80,10 +79,10 @@ require("packer").startup(function(use) -- Packer can manage itself
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
 		},
-	})
+	},
 
 	-- LANGUAGE SPECIFIC
-	use("simrat39/rust-tools.nvim")
+	"simrat39/rust-tools.nvim",
 
 	-- Snippets stuff
 	---- Ultisnips
@@ -93,77 +92,55 @@ require("packer").startup(function(use) -- Packer can manage itself
 	---- luasnips
 
 	-- Formatting
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("rhysd/vim-clang-format")
+	"jose-elias-alvarez/null-ls.nvim",
+	"rhysd/vim-clang-format",
 
-	use({
+	{
 		"nvim-treesitter/nvim-treesitter",
-		requires = {
+		dependencies = {
 			{ "nvim-treesitter/nvim-treesitter-context" },
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			{ "nvim-treesitter/playground" },
 		},
-	})
+	},
 
-	use("p00f/nvim-ts-rainbow")
-	use("windwp/nvim-ts-autotag")
+	"p00f/nvim-ts-rainbow",
+	"windwp/nvim-ts-autotag",
 
 	-- FILE NAVIGATION
-	use("nvim-telescope/telescope.nvim")
-	use("nvim-telescope/telescope-fzy-native.nvim")
-	-- use({ "kyazdani42/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
-	use({
+	"nvim-telescope/telescope.nvim",
+	"nvim-telescope/telescope-fzy-native.nvim",
+	-- use({ "kyazdani42/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } })
+
+	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		},
-	})
-	use("ThePrimeagen/harpoon")
+	},
+
+	"ThePrimeagen/harpoon",
 
 	-- COLORS/THEME
-	use("raddari/last-color.nvim") -- Remembers last used colorscheme
-	use("gruvbox-community/gruvbox")
-	use("w3barsi/barstrata.nvim")
-	use("catppuccin/nvim")
-	use("Mofiqul/dracula.nvim")
+	"raddari/last-color.nvim", -- Remembers last used colorscheme
+	"gruvbox-community/gruvbox",
+	"w3barsi/barstrata.nvim",
+	"catppuccin/nvim",
+	"Mofiqul/dracula.nvim",
 
-	use("xiyaowong/nvim-transparent")
-	use("nvim-lualine/lualine.nvim")
-	use("ryanoasis/vim-devicons")
-	use("kyazdani42/nvim-web-devicons")
+	"nvim-lualine/lualine.nvim",
+	"ryanoasis/vim-devicons",
 
-	use("kdheepak/lazygit.nvim")
-	use("lewis6991/gitsigns.nvim")
+	"lewis6991/gitsigns.nvim",
 
-	use("dstein64/vim-startuptime")
-	use("akinsho/toggleterm.nvim")
-	use("CRAG666/code_runner.nvim")
-	use("andweeb/presence.nvim")
+	"dstein64/vim-startuptime",
+	"akinsho/toggleterm.nvim",
+	"CRAG666/code_runner.nvim",
 
 	-- Plugisn to keep an eyeo n
 	-- https://github.com/hkupty/iron.nvim
 	-- 'simrat39/symbols-outline.nvim'
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
-
-if packer_bootstrap then
-	print("==================================")
-	print("    Plugins are being installed")
-	print("    Wait until Packer completes,")
-	print("       then restart nvim")
-	print("==================================")
-	return
-end
-
--- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	command = "source <afile> | PackerCompile",
-	group = packer_group,
-	pattern = vim.fn.expand("$MYVIMRC"),
 })
