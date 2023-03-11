@@ -1,5 +1,0 @@
-{
-  "workspace": {
-    "library": ["~/Applications/lsp/lua-language-server/meta/3rd/love2d"]
-  }
-}

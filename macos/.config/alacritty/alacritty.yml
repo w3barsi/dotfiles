@@ -7,41 +7,40 @@ window:
 font:
   normal:
     family: JetBrainsMono Nerd Font
-  size: 14
+  size: 18
 
 schemes:
-  substrata: &substrata
-    # Default colors
+  substrata: &substrata # Default colors
     primary:
-      background: '#191c25'
-      foreground: '#b5b4c9'
+      background: "#191c25"
+      foreground: "#b5b4c9"
 
     # Cursor colors
     cursor:
-      text: '#191c25'
-      cursor: '#b5b4c9'
+      text: "#191c25"
+      cursor: "#b5b4c9"
 
     # Normal colors
     normal:
-      black:   '#191c25'
-      red:     '#cf8164'
-      green:   '#76a065'
-      yellow:  '#ab924c'
-      blue:    '#8296b0'
-      magenta: '#a18daf'
-      cyan:    '#659ea2'
-      white:   '#b5b4c9'
+      black: "#191c25"
+      red: "#cf8164"
+      green: "#76a065"
+      yellow: "#ab924c"
+      blue: "#8296b0"
+      magenta: "#a18daf"
+      cyan: "#659ea2"
+      white: "#b5b4c9"
 
     # Bright colors
     bright:
-      black:   '#5b5f71'
-      red:     '#fe9f7c'
-      green:   '#92c47e'
-      yellow:  '#d2b45f'
-      blue:    '#a0b9d8'
-      magenta: '#c6aed7'
-      cyan:    '#7dc2c7'
-      white:   '#f0ecfe'
+      black: "#5b5f71"
+      red: "#fe9f7c"
+      green: "#92c47e"
+      yellow: "#d2b45f"
+      blue: "#a0b9d8"
+      magenta: "#c6aed7"
+      cyan: "#7dc2c7"
+      white: "#f0ecfe"
 
   code: &vscode
     primary:
@@ -121,77 +120,74 @@ schemes:
 onedark: &onedark
   colors:
     primary:
-      background: '0x1e2127'
-      foreground: '0xabb2bf'
-      bright_foreground: '0xe6efff'
+      background: "0x1e2127"
+      foreground: "0xabb2bf"
+      bright_foreground: "0xe6efff"
     normal:
-      black:   '0x1e2127'
-      red:     '0xe06c75'
-      green:   '0x98c379'
-      yellow:  '0xd19a66'
-      blue:    '0x61afef'
-      magenta: '0xc678dd'
-      cyan:    '0x56b6c2'
-      white:   '0x828791'
+      black: "0x1e2127"
+      red: "0xe06c75"
+      green: "0x98c379"
+      yellow: "0xd19a66"
+      blue: "0x61afef"
+      magenta: "0xc678dd"
+      cyan: "0x56b6c2"
+      white: "0x828791"
     bright:
-      black:   '0x5c6370'
-      red:     '0xe06c75'
-      green:   '0x98c379'
-      yellow:  '0xd19a66'
-      blue:    '0x61afef'
-      magenta: '0xc678dd'
-      cyan:    '0x56b6c2'
-      white:   '0xe6efff'
+      black: "0x5c6370"
+      red: "0xe06c75"
+      green: "0x98c379"
+      yellow: "0xd19a66"
+      blue: "0x61afef"
+      magenta: "0xc678dd"
+      cyan: "0x56b6c2"
+      white: "0xe6efff"
     dim:
-      black:   '0x1e2127'
-      red:     '0xe06c75'
-      green:   '0x98c379'
-      yellow:  '0xd19a66'
-      blue:    '0x61afef'
-      magenta: '0xc678dd'
-      cyan:    '0x56b6c2'
-      white:   '0x828791'
-
+      black: "0x1e2127"
+      red: "0xe06c75"
+      green: "0x98c379"
+      yellow: "0xd19a66"
+      blue: "0x61afef"
+      magenta: "0xc678dd"
+      cyan: "0x56b6c2"
+      white: "0x828791"
 
 colors: *onedark
-#
-# Shell
-#
-# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
-# Entries in `shell.args` are passed unmodified as arguments to the shell.
-#
-# Default:
-#   - (macOS) /bin/bash --login
-#   - (Linux/BSD) user login shell
-#   - (Windows) powershell
-#shell:
-#program: /bin/zsh
-#args:
-#- -l
-#- -c
-#- "tmux attach || tmux"
+# shell:
+#   program: /bin/zsh
+#   args:
+#   - -l
+#   - -c
+#   - "tmux attach || tmux"
+
 env:
   TERM: xterm-256color
 
 key_bindings:
-  - { key: Return,   mods: Shift, chars: "\x1b[13;2u" }
-  - { key: Return,   mods: Control, chars: "\x1b[13;5u" }
-  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
-  - { key: J,        mods: Alt,     chars: "\x1bj"                       }
-  - { key: K,        mods: Alt,     chars: "\x1bk"                       }
-  - { key: H,        mods: Alt,     chars: "\x1bh"                       }
-  - { key: L,        mods: Alt,     chars: "\x1bl"                       }
-  - { key: Key1,     mods: Command,       chars: "\x01\x31" }
-  - { key: Key2,     mods: Command,       chars: "\x01\x32" }
-  - { key: Key3,     mods: Command,       chars: "\x01\x33" }
-  - { key: Key4,     mods: Command,       chars: "\x01\x34" }
-  - { key: Key5,     mods: Command,       chars: "\x01\x35" }
-  - { key: Key6,     mods: Command,       chars: "\x01\x36" }
-  - { key: Key7,     mods: Command,       chars: "\x01\x37" }
-  - { key: Key8,     mods: Command,       chars: "\x01\x38" }
-  - { key: Key9,     mods: Command,       chars: "\x01\x39" }
-  - { key: C,        mods: Command,       chars: "\x01\x63" }
-  - { key: C,        mods: Command,       chars: "\x01\x78" }
+  - { key: Return, mods: Shift, chars: "\x1b[13;2u" }
+  - { key: Return, mods: Control, chars: "\x1b[13;5u" }
+  - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
+  - { key: J, mods: Alt, chars: "\x1bj" }
+  - { key: K, mods: Alt, chars: "\x1bk" }
+  - { key: H, mods: Alt, chars: "\x1bh" }
+  - { key: L, mods: Alt, chars: "\x1bl" }
+  - { key: Key1, mods: Command, chars: "\x01\x31" }
+  - { key: Key2, mods: Command, chars: "\x01\x32" }
+  - { key: Key3, mods: Command, chars: "\x01\x33" }
+  - { key: Key4, mods: Command, chars: "\x01\x34" }
+  - { key: Key5, mods: Command, chars: "\x01\x35" }
+  - { key: Key6, mods: Command, chars: "\x01\x36" }
+  - { key: Key7, mods: Command, chars: "\x01\x37" }
+  - { key: Key8, mods: Command, chars: "\x01\x38" }
+  - { key: Key9, mods: Command, chars: "\x01\x39" }
+  - { key: H, mods: Command, chars: "\x01\x68" }
+  - { key: J, mods: Command, chars: "\x01\x6A" }
+  - { key: K, mods: Command, chars: "\x01\x6B" }
+  - { key: L, mods: Command, chars: "\x01\x6C" }
+  - { key: C, mods: Command, chars: "\x01\x63" }
+  - { key: X, mods: Command, chars: "\x01\x78" }
+  - { key: W, mods: Command, chars: "\x01\x78" }
+  - { key: F, mods: Command, chars: "\x06" }
+  - { key: P, mods: Command, chars: "\x10" }
     # (Windows, Linux, and BSD only)
     #- { key: V,        mods: Control|Shift, action: Paste            }
     #- { key: C,        mods: Control|Shift, action: Copy             }
