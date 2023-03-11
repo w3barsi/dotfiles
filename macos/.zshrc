@@ -25,6 +25,7 @@ alias winget="winget.exe"
 alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
+alias bvim='nvim -u ~/.config/bvim/init.lua'
 
 #RC Aliases
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
@@ -106,5 +107,14 @@ eval "`fnm env`"
 export PATH=$PATH:/usr/local/go/bin
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 
+# bun completions
+[ -s "/Users/kuya/.bun/_bun" ] && source "/Users/kuya/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
