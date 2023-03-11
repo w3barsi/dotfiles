@@ -18,7 +18,7 @@ if is_wsl then
 	}
 end
 
-vim.opt.timeoutlen = 500
+vim.opt.timeoutlen = 250
 
 vim.opt.termguicolors = true
 vim.opt.background = "dark"

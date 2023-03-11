@@ -11,9 +11,10 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+require("neodev").setup({})
+
 lsp.preset("recommended")
 lsp.ensure_installed({
-	"tsserver",
 	"eslint",
 	"rust_analyzer",
 })
@@ -28,7 +29,6 @@ local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-
 	["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 	["<C-e>"] = cmp.mapping({
 		i = cmp.mapping.abort(),
@@ -92,32 +92,67 @@ lsp.on_attach(function(client, bufnr)
 	nnoremap("ga", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 	nnoremap("gca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 	vnoremap("gca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
-	nnoremap("<F2>", "<cmd>Lspsaga rename<CR>", { silent = true, buffer = 0 })
+	nnoremap("<F2>", ":IncRename ", { silent = true, buffer = 0 })
 
 	if client.name == "tsserver" then
-		vim.keymap.set(
-			"n",
-			"<Leader>oi",
-			"<Cmd>OrganizeImports<CR>",
-			{ desc = "Organize imports [TS]", buffer = bufnr }
+		nnoremap("gt", function()
+			require("typescript").actions.organizeImports()
+			require("typescript").actions.removeUnused()
+			require("typescript").actions.addMissingImports()
+		end, { desc = "Adds, Organize Inputs and Removes Unused Imports" })
+
+		nnoremap(
+			"ta",
+			":lua require('typescript').actions.addMissingImports()<CR>",
+			{ desc = "[T]ypescript [A]dd Missing Imports", buffer = bufnr }
+		)
+
+		nnoremap(
+			"to",
+			":lua require('typescript').actions.organizeImports()<CR>",
+			{ desc = "[T]ypescript [O]rganize Imports", buffer = bufnr }
+		)
+
+		nnoremap(
+			"tr",
+			":lua require('typescript').actions.removeUnused()<CR>",
+			{ desc = "[T]ypescript [R]emove Unused Imports", buffer = bufnr }
 		)
 	end
 end)
 
-lsp.configure('lua_ls', {
+lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
+			cmpletion = {
+				callSnippet = "Replace",
+			},
 			diagnostics = {
 				globals = {
-					"vim"
-				}
-			}
-		}
-	}
+					"vim",
+				},
+			},
+		},
+	},
 })
+
+lsp.configure("tailwindcss", {
+	-- force_setup = true,
+	cmd = { "tailwindcss-language-server", "--stdio" },
+})
+
+lsp.configure("tsserver", {
+	-- force_setup = true,
+	cmd = { "typescript-language-server", "--stdio" },
+})
+
 
 lsp.setup()
 
 vim.diagnostic.config({
 	virtual_text = true,
 })
+
+-- require("lspconfig").tailwindcss.setup({
+-- 	cmd = { "node", "/Users/kuya/.bun/bin/tailwindcss-language-server", "--stdio" },
+-- })

@@ -28,6 +28,7 @@ cmp.setup({
 	mapping = {
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 
+
 		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
@@ -60,13 +61,14 @@ cmp.setup({
 			end
 		end,
 	},
+
 	sources = cmp.config.sources(
 		{
-			-- { name = "nvim_lsp_signature_help" },
-			{ name = "nvim_lsp" },
-			{ name = "luasnip" },
-			{ name = "buffer" },
 			{ name = "path" },
+			{ name = "nvim_lsp" },
+			{ name = "buffer" },
+			{ name = "luasnip" },
+			-- { name = "nvim_lsp_signature_help" },
 		}
 		--{
 		--{ name = 'buffer' },
