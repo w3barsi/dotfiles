@@ -3,6 +3,7 @@ local inoremap = require("barsi.scripts.keymaps").inoremap
 local vnoremap = require("barsi.scripts.keymaps").vnoremap
 local xnoremap = require("barsi.scripts.keymaps").xnoremap
 
+nnoremap("U", ":redo<CR>", {silent = true});
 nnoremap("<leader>rs", "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<cr>")
 
 
@@ -11,6 +12,7 @@ nnoremap("]d", ":lua require('illuminate').goto_next_reference(wrap)<CR>", { sil
 nnoremap("[d", ":lua require('illuminate').goto_prev_reference(wrap)<CR>", { silent = true })
 
 -- Add semicolon to end
+-- nnoremap("<Esc>", "<Esc>:nohl<Esc>", {silent = true})
 nnoremap(";;", "A;<Esc>")
 
 -- Paste without changing clipboard buffer
@@ -58,6 +60,7 @@ vnoremap("<", "<gv", { silent = true })
 -- Using vim.cmd for now
 vim.cmd([[noremap! <C-BS> <C-w>]])
 vim.cmd([[noremap! <C-h> <C-w>]])
+-- Makes it so x doesn't touch buffer
 nnoremap("x", [["_x]])
 
 -- Telescope and NvimTree keybindings
