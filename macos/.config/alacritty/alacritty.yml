@@ -6,7 +6,10 @@ window:
 
 font:
   normal:
-    family: JetBrainsMono Nerd Font
+    # family: JetBrainsMono Nerd Font
+    family: Hasklug NFM
+    # family: LeagueMono Nerd Font
+    # family: Hack Nerd Font
   size: 18
 
 schemes:
@@ -152,8 +155,9 @@ onedark: &onedark
       white: "0x828791"
 
 colors: *onedark
-# shell:
-#   program: /bin/zsh
+
+shell:
+  program: /usr/local/bin/tmux
 #   args:
 #   - -l
 #   - -c

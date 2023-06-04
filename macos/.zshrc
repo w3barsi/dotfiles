@@ -31,7 +31,7 @@ alias bvim='nvim -u ~/.config/bvim/init.lua'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias zshrc='vim ~/.zshrc'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
-alias vimrc='cd ~/dotfiles/nvim/.config/nvim && vim '
+alias vimrc='cd ~/nvim/ && nvim .'
 alias nvimrc='cd ~/dotfiles/nvim/.config/nvim && nv'
 
 alias move='mv'
