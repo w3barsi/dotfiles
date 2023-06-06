@@ -6,17 +6,17 @@ window:
 
 font:
   normal:
-    # family: JetBrainsMono Nerd Font
-    family: Hasklug NFM
+    #family: JetBrainsMono Nerd Font
+    family: Hasklug Nerd Font
     # family: LeagueMono Nerd Font
     # family: Hack Nerd Font
-  size: 18
+    # size: 13
 
 schemes:
   substrata: &substrata # Default colors
     primary:
       background: "#191c25"
-      foreground: "#b5b4c9"
+      foreground: "#b6b4c9"
 
     # Cursor colors
     cursor:
@@ -156,8 +156,8 @@ onedark: &onedark
 
 colors: *onedark
 
-shell:
-  program: /usr/local/bin/tmux
+#shell:
+#  program: /usr/local/bin/tmux
 #   args:
 #   - -l
 #   - -c
