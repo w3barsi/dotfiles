@@ -3,23 +3,21 @@ export ZSH="$HOME/.oh-my-zsh"
 plugins=(
     git
     extract
-    #zsh-autosuggestions
+    # zsh-completions
+    # zsh-syntax-highlighting
+    # zsh-autosuggestions
 )
 source $ZSH/oh-my-zsh.sh
  
 # =============================================================================
 # ========== Alias ============================================================
 # =============================================================================
-#School aliases
-alias dsa="cd ~/school/DSA/"
-
 # System Stuff
 alias src="source ~/.zshrc"
 
 alias lg="lazygit"
 alias ld="lazydocker"
-
-alias winget="winget.exe"
+alias python="python3"
  
 # Vim aliases
 alias v='nvim'
@@ -28,10 +26,11 @@ alias vi='nvim'
 alias bvim='nvim -u ~/.config/bvim/init.lua'
 
 #RC Aliases
+alias krc='vim ~/.config/karabiner/assets/complex_modifications/custom.json'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias zshrc='vim ~/.zshrc'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
-alias vimrc='cd ~/nvim/ && nvim .'
+alias vimrc='cd ~/.config/nvim && nvim .'
 alias nvimrc='cd ~/dotfiles/nvim/.config/nvim && nv'
 
 alias move='mv'
