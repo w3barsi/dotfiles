@@ -26,7 +26,8 @@ alias vi='nvim'
 alias bvim='nvim -u ~/.config/bvim/init.lua'
 
 #RC Aliases
-alias krc='vim ~/.config/karabiner/assets/complex_modifications/custom.json'
+alias dots="~/dotfiles/scripts/edit-dotfiles.sh"
+alias krc='vim ~/.config/karabiner/karabiner.json'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias zshrc='vim ~/.zshrc'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
@@ -43,6 +44,7 @@ alias tatt="tmux attach -t"
 alias tnew="tmux new -s"
 alias tkill="tmux kill-session -t"
 
+alias ytdl-a="youtube-dl "
 
 t-rnm() {
     command tmux rename-session -t "$1" "$2"

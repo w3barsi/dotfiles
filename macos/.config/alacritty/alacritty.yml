@@ -10,7 +10,7 @@ font:
     # family: Hasklug Nerd Font
     # family: LeagueMono Nerd Font
     family: Hack Nerd Font
-  size: 18
+  size: 14
 
 import:
   - "~/dotfiles/dracula.yml"
