@@ -1,5 +1,0 @@
-xfce4-settings
-picom
-flameshot
-discord
-caprine
