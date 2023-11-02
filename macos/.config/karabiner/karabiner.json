@@ -130,7 +130,7 @@
             ]
           },
           {
-            "description": "[5] hj to spacebar + h",
+            "description": "[5] kl to spacebar + l",
             "manipulators": [
               {
                 "type": "basic",
