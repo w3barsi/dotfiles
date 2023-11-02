@@ -1,9 +1,9 @@
 window:
   padding:
-    x: 0
-    y: 0
+    x: 10
+    y: 10
   opacity: 1
-
+  decorations: none
 font:
   normal:
     # family: JetBrainsMono Nerd Font
@@ -43,16 +43,26 @@ key_bindings:
   - { key: Key7, mods: Command, chars: "\x01\x37" }
   - { key: Key8, mods: Command, chars: "\x01\x38" }
   - { key: Key9, mods: Command, chars: "\x01\x39" }
+
+  # Tmux Remaps
+  - { key: A, mods: Command, chars: "\x01" }
   - { key: C, mods: Command, chars: "\x01\x63" }
-  - { key: H, mods: Command, chars: "\x01\x68" }
-  - { key: J, mods: Command, chars: "\x01\x6A" }
-  - { key: K, mods: Command, chars: "\x01\x6B" }
-  - { key: L, mods: Command, chars: "\x01\x6C" }
+  # - { key: H, mods: Command, chars: "\x01\x68" }
+  # - { key: J, mods: Command, chars: "\x01\x6A" }
+  # - { key: K, mods: Command, chars: "\x01\x6B" }
+  # - { key: L, mods: Command, chars: "\x01\x6C" }
   - { key: W, mods: Command, chars: "\x01\x78" }
   - { key: X, mods: Command, chars: "\x01\x78" }
+
+  # Remaps Command + Key to Control + Key
   - { key: E, mods: Command, chars: "\x05" }
   - { key: F, mods: Command, chars: "\x06" }
+  - { key: F, mods: Command, chars: "\x08" }
   - { key: I, mods: Command, chars: "\x09" }
+  - { key: J, mods: Command, chars: "\x0A" }
+  - { key: K, mods: Command, chars: "\x0B" }
+  - { key: L, mods: Command, chars: "\x0C" }
+  - { key: N, mods: Command, chars: "\x0E" }
   - { key: O, mods: Command, chars: "\x0F" }
   - { key: P, mods: Command, chars: "\x10" }
   - { key: U, mods: Command, chars: "\x15" }
