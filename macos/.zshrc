@@ -24,6 +24,7 @@ alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
 alias bvim='nvim -u ~/.config/bvim/init.lua'
+alias p="pnpm"
 
 #RC Aliases
 alias dots="~/dotfiles/scripts/edit-dotfiles.sh"
@@ -119,3 +120,5 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+clear
