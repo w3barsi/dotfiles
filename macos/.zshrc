@@ -29,6 +29,7 @@ alias p="pnpm"
 #RC Aliases
 alias dots="~/dotfiles/scripts/edit-dotfiles.sh"
 alias krc='vim ~/.config/karabiner/karabiner.json'
+alias hrc='vim ~/.hammerspoon/'
 alias alacrc='vim ~/.config/alacritty/alacritty.yml'
 alias zshrc='vim ~/.zshrc'
 alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
@@ -122,3 +123,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 clear
+
+# bun completions
+[ -s "/Users/barsi/.bun/_bun" ] && source "/Users/barsi/.bun/_bun"

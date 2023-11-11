@@ -1,5 +1,5 @@
 -- A global variable for the Hyper Mode
-hyper = hs.hotkey.modal.new({}, 'F17')
+hyper = hs.hotkey.modal.new({}, "F17")
 
 -- Enter Hyper Mode when F18 (Hyper/Capslock) is pressed
 function enterHyperMode()
@@ -12,20 +12,34 @@ end
 function exitHyperMode()
   hyper:exit()
   if not hyper.triggered then
-    hs.eventtap.keyStroke({}, 'ESCAPE')
+    hs.eventtap.keyStroke({}, "ESCAPE")
   end
 end
 
 -- Bind the Hyper key
-f18 = hs.hotkey.bind({}, 'F18', enterHyperMode, exitHyperMode)
+f18 = hs.hotkey.bind({}, "F18", enterHyperMode, exitHyperMode)
 
 hyper:bind({}, 'u', function()
   hs.eventtap.keyStroke({'cmd','alt','shift','ctrl'}, 'u')
   hyper.triggered = true
 end)
 
+hyper:bind({}, 'i', function()
+  hs.eventtap.keyStroke({'cmd','alt','shift','ctrl'}, 'i')
+  hyper.triggered = true
+end)
 
-hyper:bind({}, 's', function()
-  hs.eventtap.keyStroke({'cmd','alt','shift','ctrl'}, 's')
+hyper:bind({}, 'o', function()
+  hs.eventtap.keyStroke({'cmd','alt','shift','ctrl'}, 'o')
+  hyper.triggered = true
+end)
+
+hyper:bind({}, 'p', function()
+  hs.eventtap.keyStroke({'cmd','alt','shift','ctrl'}, 'p')
+  hyper.triggered = true
+end)
+
+hyper:bind({}, 'l', function()
+  hs.eventtap.keyStroke({'cmd','alt','shift','ctrl'}, 'l')
   hyper.triggered = true
 end)
