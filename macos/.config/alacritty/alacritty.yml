@@ -9,7 +9,9 @@ font:
     # family: JetBrainsMono Nerd Font
     # family: Hasklug Nerd Font
     # family: LeagueMono Nerd Font
-    family: Hack Nerd Font
+    # family: Hack Nerd Font
+    # family: MonaspiceAr Nerd Font Propo #Monaspace Neon Nerd Font Version
+    family: GeistMono Nerd Font
   size: 14
 
 import:
@@ -54,7 +56,9 @@ key_bindings:
   - { key: W, mods: Command, chars: "\x01\x78" }
   - { key: X, mods: Command, chars: "\x01\x78" }
 
+  # https://donsnotes.com/tech/charsets/ascii.html
   # Remaps Command + Key to Control + Key
+  - { key: D, mods: Command, chars: "\x04" }
   - { key: E, mods: Command, chars: "\x05" }
   - { key: F, mods: Command, chars: "\x06" }
   - { key: F, mods: Command, chars: "\x08" }
