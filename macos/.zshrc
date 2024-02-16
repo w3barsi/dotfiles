@@ -38,7 +38,7 @@ alias nvimrc='cd ~/dotfiles/nvim/.config/nvim && nv'
 
 alias move='mv'
 alias ls='exa'
-alias la='ls -la'
+alias la='ls -la --group-directories-first'
 
 
 alias tls="tmux ls"
@@ -97,7 +97,7 @@ export USER_BIN="/home/barsi/bin/"
 export PATH="$USER_BIN:$PATH"
 export LOCAL_USER_BIN="/home/barsi/.local/bin/"
 export PATH="$LOCAL_USER_BIN:$PATH"
-export STARSHIP_CONFIG="/Users/kuya/.starship.toml"
+export STARSHIP_CONFIG="~/.starship.toml"
 
 # fnm
 export PATH="$HOME/.fnm:$PATH"
@@ -122,7 +122,18 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-clear
 
 # bun completions
 [ -s "/Users/barsi/.bun/_bun" ] && source "/Users/barsi/.bun/_bun"
+
+# pnpm
+export PNPM_HOME="/Users/barsi/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+clear
+
+eval "$(atuin init zsh)"
