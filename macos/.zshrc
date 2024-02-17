@@ -41,6 +41,7 @@ alias ls='exa'
 alias la='ls -la --group-directories-first'
 
 
+alias ts="~/dotfiles/scripts/tmux-sessionizer"
 alias tls="tmux ls"
 alias tatt="tmux attach -t"
 alias tnew="tmux new -s"
@@ -136,4 +137,7 @@ esac
 
 clear
 
+export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
+
+bindkey '^r' atuin-search
