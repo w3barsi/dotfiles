@@ -2,7 +2,7 @@
 #SingleInstance
 
 ; WinGetPos ,,&TaskbarWidth, &TaskbarHeight, "ahk_class Shell_TrayWnd"
-global WorkableScreenHeight := A_ScreenHeight - 48
+global WorkableScreenHeight := A_ScreenHeight - 49
 global WorkableScreenWidth := A_ScreenWidth
 
 ; Debug Commands
@@ -22,20 +22,31 @@ global WorkableScreenWidth := A_ScreenWidth
 
 ^!+l:: {
     WinRestore("A")
-    WinMoveEx(WorkableScreenWidth / 2, 0, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
+    WinMoveEx(WorkableScreenWidth / 2, 1, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
 }
 ^!+h:: {
     WinRestore("A")
-    WinMoveEx(0, 0, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
+    WinMoveEx(1, 1, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
 }
 ^!+k:: {
     WinRestore("A")
-    WinMoveEx(0, 0, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
+    WinMoveEx(1, 1, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
 }
 ^!+j:: {
     WinRestore("A")
-    WinMoveEx(0, WorkableScreenHeight / 2, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
+    WinMoveEx(1, WorkableScreenHeight / 2, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
 }
+
+^!+;:: {
+    WinRestore("A")
+    WinMoveEx(1, 1, 638, WorkableScreenHeight, "A")
+}
+
+^!+':: {
+    WinRestore("A")
+    WinMoveEx(641, 1, WorkableScreenWidth - 642, WorkableScreenHeight, "A")
+}
+
 
 ^!+c:: CenterToScreen()
 
@@ -57,7 +68,7 @@ CenterToScreen() {
     }
 
     if (H == 1401) {
-        WinMoveEx((WorkableScreenWidth - toWidth) / 2, -1, toWidth, toHeight, "A")
+        WinMoveEx((WorkableScreenWidth - toWidth) / 2, 1, toWidth, toHeight, "A")
     } else {
         WinMoveEx((WorkableScreenWidth - toWidth) / 2, (WorkableScreenHeight - toHeight) / 2, toWidth, toHeight, "A")
     }
@@ -66,7 +77,7 @@ CenterToScreen() {
 
 TerminalOrBrowser() {
     if ( not WinExist("ahk_exe WindowsTerminal.exe")) {
-        Run("WindowsTerminal.exe")
+        Run("wt.exe")
     }
     if ( not WinExist("ahk_exe chrome.exe")) {
         Run("chrome.exe")
