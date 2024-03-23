@@ -23,7 +23,6 @@ alias python="python3"
 alias v='nvim'
 alias vim='nvim'
 alias vi='nvim'
-alias bvim='nvim -u ~/.config/bvim/init.lua'
 alias p="pnpm"
 
 #RC Aliases
