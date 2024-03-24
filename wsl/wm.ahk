@@ -5,6 +5,10 @@
 global WorkableScreenHeight := A_ScreenHeight - 49
 global WorkableScreenWidth := A_ScreenWidth
 
+windowBanList := ["dota2.exe"]
+
+
+#HotIf not WinActive("ahk_exe dota2.exe")
 ; Debug Commands
 ^!+`:: Reload()
 ^!+e:: DisplayWinGetPos()
@@ -19,10 +23,9 @@ global WorkableScreenWidth := A_ScreenWidth
 
 ; Window Move commands
 ^!+f:: WinFullscreen()
-
 ^!+l:: {
     WinRestore("A")
-    WinMoveEx(WorkableScreenWidth / 2, 1, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
+    WinMoveEx(WorkableScreenWidth / 2, 1, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
 }
 ^!+h:: {
     WinRestore("A")
@@ -47,9 +50,7 @@ global WorkableScreenWidth := A_ScreenWidth
     WinMoveEx(641, 1, WorkableScreenWidth - 642, WorkableScreenHeight, "A")
 }
 
-
 ^!+c:: CenterToScreen()
-
 
 CenterToScreen() {
     WinGetPos &X, &Y, &W, &H, "A"
@@ -70,10 +71,11 @@ CenterToScreen() {
     if (H == 1401) {
         WinMoveEx((WorkableScreenWidth - toWidth) / 2, 1, toWidth, toHeight, "A")
     } else {
-        WinMoveEx((WorkableScreenWidth - toWidth) / 2, (WorkableScreenHeight - toHeight) / 2, toWidth, toHeight, "A")
+        WinMoveEx((WorkableScreenWidth - toWidth) / 2, ((WorkableScreenHeight - toHeight) / 2) + 1, toWidth, toHeight, "A")
     }
 
 }
+
 
 TerminalOrBrowser() {
     if ( not WinExist("ahk_exe WindowsTerminal.exe") or not WinExist("ahk_exe chrome.exe")) {
@@ -90,14 +92,18 @@ TerminalOrBrowser() {
     } else if (WinActive("ahk_exe chrome.exe")) {
         WinActivate("ahk_exe WindowsTerminal.exe")
     } else {
-        Return
+        WinActivate("ahk_exe WindowsTerminal.exe")
     }
 }
 
 DisplayWinGetPos() {
-
     WinGetPos &X, &Y, &W, &H, "A"
-    MsgBox(Format("X: {1}   Y: {2}   W: {3}   H: {4}", X, Y, W, H))
+    ;     "X:  " . X . " |  Y:  " . Y
+    ; variableString := (
+    ;     "W:  " . W . " |  H:  " . H
+    ; )
+    ; MsgBox(variableString)
+    MsgBox(Format("X: {1}`tY: {2}`nW: {3}`tH: {4} `n`nWindow Title:`n`t{5}`n{6}", X, Y, W, H, WinGetTitle("A"), WinGetID("A")))
 }
 
 ToggleFullAndCenter() {
@@ -198,4 +204,30 @@ WinMoveEx(X?, Y?, W?, H?, hwnd?) {
     IsSet(W) && nW := W + (xDiff + pixel) * 2
     IsSet(H) && nH := H + hDiff + (pixel * 2)
     WinMove(nX?, nY?, nW?, nH?, hwnd?)
+}
+
+class _ArrayEx extends Array {
+    static __New() {
+        super.Prototype.Sort := ObjBindMethod(this, "Sort")
+        super.Prototype.Contains := ObjBindMethod(this, "Contains")
+    }
+
+    static Sort(arr) {
+        tempMap := Map()
+        Loop (arr.length) {
+            tempMap[arr[A_Index]] := "placeholder"
+        }
+        for k, v in tempMap {
+            arr[A_Index] := k
+        }
+    }
+
+    static Contains(haystack, needle) {
+        for index, value in haystack {
+            if (value = needle) {
+                return index
+            }
+        }
+        return false
+    }
 }
