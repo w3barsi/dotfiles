@@ -76,11 +76,14 @@ CenterToScreen() {
 }
 
 TerminalOrBrowser() {
-    if ( not WinExist("ahk_exe WindowsTerminal.exe")) {
-        Run("wt.exe")
-    }
-    if ( not WinExist("ahk_exe chrome.exe")) {
-        Run("chrome.exe")
+    if ( not WinExist("ahk_exe WindowsTerminal.exe") or not WinExist("ahk_exe chrome.exe")) {
+        if ( not WinExist("ahk_exe WindowsTerminal.exe")) {
+            Run("wt.exe")
+        }
+        if ( not WinExist("ahk_exe chrome.exe")) {
+            Run("chrome.exe")
+        }
+        return
     }
     if (WinActive("ahk_exe WindowsTerminal.exe")) {
         WinActivate("ahk_exe chrome.exe")
