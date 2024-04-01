@@ -5,16 +5,41 @@
 global WorkableScreenHeight := A_ScreenHeight - 49
 global WorkableScreenWidth := A_ScreenWidth
 
+global PSMode := true
+TraySetIcon("C:\Users\Barsi\Documents\WinLogo.png")
+
+
+^!+MButton:: {
+    global PSMode := not PSMode
+    if (PSMode == true) {
+        TraySetIcon("C:\Users\Barsi\Documents\WinLogo.png")
+    } else {
+        TraySetIcon("C:\Users\Barsi\Documents\PSLogo.png")
+    }
+}
+#HotIf PSMode
+^!+LButton:: Send("{Enter}")
+#HotIf
+
 windowBanList := ["dota2.exe"]
 
 
 #HotIf not WinActive("ahk_exe dota2.exe")
+#HotIf not WinActive("ahk_exe BlackDessert64.exe")
 ; Debug Commands
 ^!+`:: Reload()
-^!+e:: DisplayWinGetPos()
+; ^!+e:: DisplayWinGetPos()
+^!+XButton1:: MsgBox("Mouse Forward")
+^!+XButton2:: MsgBox("Mouse Backward")
+^!+q:: Send("(")
+^!+a:: Send(")")
+^!+w:: Send("{{}")
+^!+s:: Send("{}}")
+^!+e:: Send("[")
+^!+d:: Send("]")
 
 !`:: CycleApp()
-^!+q:: WinClose("A")
+<#q:: WinClose("A")
 ^!+r:: ToggleFullAndCenter()
 
 ; Workflows
@@ -48,6 +73,11 @@ windowBanList := ["dota2.exe"]
 ^!+':: {
     WinRestore("A")
     WinMoveEx(641, 1, WorkableScreenWidth - 642, WorkableScreenHeight, "A")
+}
+
+^!+\:: {
+    WinRestore("A")
+    WinMoveEx(640, 1, 1920, 1080, "A")
 }
 
 ^!+c:: CenterToScreen()
