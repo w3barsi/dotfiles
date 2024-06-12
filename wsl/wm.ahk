@@ -10,29 +10,18 @@ global SpeakerMode := true
 TraySetIcon("C:\Users\Barsi\Documents\WinLogo.png")
 
 
-^!+MButton:: {
-    global PSMode := not PSMode
-    if (PSMode == true) {
-        TraySetIcon("C:\Users\Barsi\Documents\WinLogo.png")
-    } else {
-        TraySetIcon("C:\Users\Barsi\Documents\PSLogo.png")
+F15:: {
+    if(SpeakerMode == true){
+        SetDefaultEndpoint(GetDeviceID(List, "Speakers (PD200X Podcast Microphone)"))
+        global SpeakerMode := false
+        TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
+    }else{
+        SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
+        global SpeakerMode := true
+        TraySetIcon("C:\Users\Barsi\Documents\Speakers.png")
     }
-}
-#HotIf PSMode
-^!+Space:: Send("^{Enter}")
-#HotIf
 
-#HotIf SpeakerMode == true
-F15:: {
-    SetDefaultEndpoint(GetDeviceID(List, "Speakers (PD200X Podcast Microphone)"))
-    global SpeakerMode := false
 }
-#HotIf SpeakerMode == false
-F15:: {
-    SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
-    global SpeakerMode := true
-}
-#HotIf
 
 windowBanList := ["dota2.exe"]
 
@@ -63,15 +52,15 @@ windowBanList := ["dota2.exe"]
 ^!+f:: WinFullscreen()
 ^!+l:: {
     WinRestore("A")
-    WinMoveEx(WorkableScreenWidth / 2, 1, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
+    WinMoveEx(WorkableScreenWidth / 2, 2, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
 }
 ^!+h:: {
     WinRestore("A")
-    WinMoveEx(1, 1, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
+    WinMoveEx(1, 2, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
 }
 ^!+k:: {
     WinRestore("A")
-    WinMoveEx(1, 1, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
+    WinMoveEx(1, 2, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
 }
 ^!+j:: {
     WinRestore("A")
@@ -80,17 +69,22 @@ windowBanList := ["dota2.exe"]
 
 ^!+;:: {
     WinRestore("A")
-    WinMoveEx(1, 1, 638, WorkableScreenHeight, "A")
+    WinMoveEx(1, 2, 638, WorkableScreenHeight, "A")
 }
 
 ^!+':: {
     WinRestore("A")
-    WinMoveEx(641, 1, WorkableScreenWidth - 642, WorkableScreenHeight, "A")
+    WinMoveEx(641, 2, WorkableScreenWidth - 642, WorkableScreenHeight, "A")
 }
 
 ^!+\:: {
-    WinRestore("A")
-    WinMoveEx(640, 1, 1920, 1080, "A")
+    WinGetPos &X, &Y, &W, &H, "A"
+    if (H > 1080 and H < 1100) {
+        WinMoveEx(640, 1082, 1920, WorkableScreenHeight-1082, "A")
+    } else {
+        WinRestore("A")
+        WinMoveEx(640, 1, 1920, 1080, "A")
+    }
 }
 
 ^!+c:: CenterToScreen()
