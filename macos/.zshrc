@@ -1,9 +1,13 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+# start typing + [Up-Arrow] - fuzzy find history forward
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
 plugins=(
     git
     extract
-    # zsh-completions
+    zsh-completions
     # zsh-syntax-highlighting
     # zsh-autosuggestions
 )
@@ -20,25 +24,25 @@ alias ld="lazydocker"
 alias python="python3"
  
 # Vim aliases
-alias v='nvim'
-alias vim='nvim'
-alias vi='nvim'
+alias v="nvim"
+alias vim="nvim"
+alias vi="nvim"
 alias p="pnpm"
 
 #RC Aliases
 alias dots="~/dotfiles/scripts/edit-dotfiles.sh"
-alias krc='vim ~/.config/karabiner/karabiner.json'
-alias hrc='vim ~/.hammerspoon/'
-alias alacrc='vim ~/.config/alacritty/alacritty.yml'
-alias zshrc='vim ~/.zshrc'
-alias cdcfg='cd ~/dotfiles/arch/ && nvim .'
-alias vimrc='cd ~/.config/nvim && nvim .'
-alias nvimrc='cd ~/dotfiles/nvim/.config/nvim && nv'
+alias arc="cd ~/dotfiles && vim ./wsl/wm.ahk"
+alias krc="vim ~/.config/karabiner/karabiner.json"
+alias hrc="vim ~/.hammerspoon/"
+alias alacrc="vim ~/.config/alacritty/alacritty.yml"
+alias zshrc="vim ~/.zshrc"
+alias cdcfg="cd ~/dotfiles/arch/ && nvim ."
+alias vimrc="cd ~/.config/nvim && nvim ."
+alias nvimrc="cd ~/dotfiles/nvim/.config/nvim && nv"
 
-alias move='mv'
-alias ls='exa'
-alias la='ls -la --group-directories-first'
-
+alias move="mv"
+alias ls="exa"
+alias la="ls -la --group-directories-first"
 
 alias ts="~/dotfiles/scripts/tmux-sessionizer"
 alias tls="tmux ls"
@@ -56,40 +60,6 @@ mkcd() {
 	command mkdir "$1" && cd "$1"
 }
 
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-
-runc ()
-{
-    command gcc $@.c -o $@ && ./$@
-}
-
-rmv () {
-        command rm -rv $1 | pv -l -s $( du -a $1 | wc -l ) > /dev/null
-}
-
 export DISCORD=false
 
 export SUDO_EDITOR="nvim"
@@ -99,7 +69,7 @@ export LOCAL_USER_BIN="/home/barsi/.local/bin/"
 export PATH="$LOCAL_USER_BIN:$PATH"
 export STARSHIP_CONFIG="~/.starship.toml"
 
-# fnm
+# fnm for macos
 export PATH="$HOME/.fnm:$PATH"
 eval "`fnm env`"
 
@@ -138,5 +108,8 @@ clear
 
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
-
 bindkey '^r' atuin-search
+
+# fnm for wsl
+export PATH="/home/barsi/.local/share/fnm:$PATH"
+eval "`fnm env`"

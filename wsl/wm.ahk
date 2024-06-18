@@ -8,14 +8,15 @@ global WorkableScreenWidth := A_ScreenWidth
 global PSMode := true
 global SpeakerMode := true
 TraySetIcon("C:\Users\Barsi\Documents\WinLogo.png")
+global DefaultBrowser := "chrome.exe"
 
 
 F15:: {
-    if(SpeakerMode == true){
+    if (SpeakerMode == true) {
         SetDefaultEndpoint(GetDeviceID(List, "Speakers (PD200X Podcast Microphone)"))
         global SpeakerMode := false
         TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
-    }else{
+    } else {
         SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
         global SpeakerMode := true
         TraySetIcon("C:\Users\Barsi\Documents\Speakers.png")
@@ -30,7 +31,7 @@ windowBanList := ["dota2.exe"]
 #HotIf not WinActive("ahk_exe BlackDessert64.exe")
 ; Debug Commands
 ^!+`:: Reload()
-; ^!+e:: DisplayWinGetPos()
+^!+g:: DisplayWinGetPos()
 ^!+XButton1:: MsgBox("Mouse Forward")
 ^!+XButton2:: MsgBox("Mouse Backward")
 ^!+q:: Send("(")
@@ -45,18 +46,59 @@ windowBanList := ["dota2.exe"]
 ^!+r:: ToggleFullAndCenter()
 
 ; Workflows
-^!+b:: OpenOrMinimize("chrome.exe")
+^!+b:: OpenOrMinimize(DefaultBrowser)
 ^!+Enter:: TerminalOrBrowser()
 
 ; Window Move commands
 ^!+f:: WinFullscreen()
+
+IsHalf(W) {
+    half := WorkableScreenWidth / 2
+    if (W > half - 20 and W < half + 40) {
+        return True
+    }
+    return False
+}
+
+IsFourth(W) {
+    fourth := WorkableScreenWidth / 4
+    if (W > fourth - 20 and W < fourth + 40) {
+        return True
+    }
+    return False
+}
+
+IsThird(W) {
+    third := WorkableScreenWidth / 4 * 3
+    if (W > third - 20 and W < third + 40) {
+        return True
+    }
+    return False
+}
+
 ^!+l:: {
+    WinGetPos &X, &Y, &W, &H, "A"
     WinRestore("A")
-    WinMoveEx(WorkableScreenWidth / 2, 2, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
+
+    if (IsFourth(X) and IsThird(W)) {
+        WinMoveEx(WorkableScreenWidth / 4 * 3, 2, (WorkableScreenWidth / 4) - 1, WorkableScreenHeight, "A")
+    } else if (IsHalf(X) and IsHalf(W)) {
+        WinMoveEx(WorkableScreenWidth / 4, 2, (WorkableScreenWidth / 4 * 3) - 1, WorkableScreenHeight, "A")
+    } else if ( not IsHalf(X)) {
+        WinMoveEx(WorkableScreenWidth / 2, 2, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
+    }
 }
 ^!+h:: {
+    WinGetPos &X, &Y, &W, &H, "A"
     WinRestore("A")
-    WinMoveEx(1, 2, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
+
+    if ( not (X > -8 and X <= 0) or ((X > -8 and X <= 0) and (W > 620 and W < 660))) {
+        WinMoveEx(1, 2, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
+    } else if ((X > -8 and X <= 0) and (W > 1260 and W < 1300)) {
+        WinMoveEx(1, 2, WorkableScreenWidth - (WorkableScreenWidth / 4), WorkableScreenHeight, "A")
+    } else {
+        WinMoveEx(1, 2, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
+    }
 }
 ^!+k:: {
     WinRestore("A")
@@ -69,64 +111,61 @@ windowBanList := ["dota2.exe"]
 
 ^!+;:: {
     WinRestore("A")
-    WinMoveEx(1, 2, 638, WorkableScreenHeight, "A")
+    WinMoveEx(1, 2, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
 }
 
 ^!+':: {
     WinRestore("A")
-    WinMoveEx(641, 2, WorkableScreenWidth - 642, WorkableScreenHeight, "A")
+    WinMoveEx(641, 2, WorkableScreenWidth / 4 * 3, WorkableScreenHeight, "A")
 }
 
 ^!+\:: {
     WinGetPos &X, &Y, &W, &H, "A"
     if (H > 1080 and H < 1100) {
-        WinMoveEx(640, 1082, 1920, WorkableScreenHeight-1082, "A")
+        WinMoveEx(640, 1082, 1920, WorkableScreenHeight - 1082, "A")
     } else {
         WinRestore("A")
         WinMoveEx(640, 1, 1920, 1080, "A")
     }
 }
 
-^!+c:: CenterToScreen()
+^!+c:: {
+    ; Checks if fullscreen and return if it is
+    WinState := WinGetMinMax("A")
+    if (WinState == 1) {
+        return 0
+    }
 
-CenterToScreen() {
     WinGetPos &X, &Y, &W, &H, "A"
     toHeight := 0
     toWidth := 0
-    if (H > WorkableScreenHeight) {
+    if (H > WorkableScreenHeight + 20) {
         toHeight := WorkableScreenHeight
-    } else {
-        toHeight := H
     }
-
-    if (W > WorkableScreenWidth) {
+    if (W > WorkableScreenWidth + 20) {
         toWidth := WorkableScreenWidth
-    } else {
-        toWidth := W
     }
-
-    if (H == 1401) {
-        WinMoveEx((WorkableScreenWidth - toWidth) / 2, 1, toWidth, toHeight, "A")
+    if (toWidth == 0 and toHeight == 0) {
+        WinMoveEx((WorkableScreenWidth - W) / 2, ((WorkableScreenHeight - H) / 2) + 1, , , "A")
     } else {
         WinMoveEx((WorkableScreenWidth - toWidth) / 2, ((WorkableScreenHeight - toHeight) / 2) + 1, toWidth, toHeight, "A")
     }
-
 }
 
 
 TerminalOrBrowser() {
-    if ( not WinExist("ahk_exe WindowsTerminal.exe") or not WinExist("ahk_exe chrome.exe")) {
+    if ( not WinExist("ahk_exe WindowsTerminal.exe") or not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
         if ( not WinExist("ahk_exe WindowsTerminal.exe")) {
             Run("wt.exe")
         }
-        if ( not WinExist("ahk_exe chrome.exe")) {
-            Run("chrome.exe")
+        if ( not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
+            Run(DefaultBrowser)
         }
         return
     }
     if (WinActive("ahk_exe WindowsTerminal.exe")) {
-        WinActivate("ahk_exe chrome.exe")
-    } else if (WinActive("ahk_exe chrome.exe")) {
+        WinActivate(Format("ahk_exe {1}", DefaultBrowser))
+    } else if (WinActive(Format("ahk_exe {1}", DefaultBrowser))) {
         WinActivate("ahk_exe WindowsTerminal.exe")
     } else {
         WinActivate("ahk_exe WindowsTerminal.exe")
