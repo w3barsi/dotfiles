@@ -52,7 +52,7 @@ windowBanList := ["dota2.exe"]
 ; Window Move commands
 ^!+f:: WinFullscreen()
 
-IsHalf(W) {
+isHalf(W) {
     half := WorkableScreenWidth / 2
     if (W > half - 20 and W < half + 40) {
         return True
@@ -60,7 +60,7 @@ IsHalf(W) {
     return False
 }
 
-IsFourth(W) {
+isFourth(W) {
     fourth := WorkableScreenWidth / 4
     if (W > fourth - 20 and W < fourth + 40) {
         return True
@@ -68,7 +68,7 @@ IsFourth(W) {
     return False
 }
 
-IsThird(W) {
+isThird(W) {
     third := WorkableScreenWidth / 4 * 3
     if (W > third - 20 and W < third + 40) {
         return True
@@ -80,19 +80,22 @@ IsThird(W) {
     WinGetPos &X, &Y, &W, &H, "A"
     WinRestore("A")
 
-    if (IsFourth(X) and IsThird(W)) {
+    if (isFourth(X) and isThird(W)) {
         WinMoveEx(WorkableScreenWidth / 4 * 3, 2, (WorkableScreenWidth / 4) - 1, WorkableScreenHeight, "A")
-    } else if (IsHalf(X) and IsHalf(W)) {
+    } else if (isHalf(X) and isHalf(W)) {
         WinMoveEx(WorkableScreenWidth / 4, 2, (WorkableScreenWidth / 4 * 3) - 1, WorkableScreenHeight, "A")
-    } else if ( not IsHalf(X)) {
+    } else if ( not isHalf(X)) {
         WinMoveEx(WorkableScreenWidth / 2, 2, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
     }
 }
+
+
 ^!+h:: {
     WinGetPos &X, &Y, &W, &H, "A"
     WinRestore("A")
 
-    if ( not (X > -8 and X <= 0) or ((X > -8 and X <= 0) and (W > 620 and W < 660))) {
+    ;is window in left or window in left and size is 
+    if ( not (X > -8 and X <= 0) or ((X > -8 and X <= 0) and (W > 620 and W < 1260))) {
         WinMoveEx(1, 2, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
     } else if ((X > -8 and X <= 0) and (W > 1260 and W < 1300)) {
         WinMoveEx(1, 2, WorkableScreenWidth - (WorkableScreenWidth / 4), WorkableScreenHeight, "A")
