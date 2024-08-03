@@ -7,8 +7,15 @@ global WorkableScreenWidth := A_ScreenWidth
 
 global PSMode := true
 global SpeakerMode := true
-TraySetIcon("C:\Users\Barsi\Documents\WinLogo.png")
+TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
 global DefaultBrowser := "chrome.exe"
+
+F12:: {  ; F12 = Auto-click
+    Static on := False
+    If on := !on
+        SetTimer(Click, 1), Click(), SoundBeep(1500)
+    Else SetTimer(Click, 0), SoundBeep(1000)
+}
 
 
 F15:: {
@@ -159,7 +166,7 @@ isThird(W) {
 TerminalOrBrowser() {
     if ( not WinExist("ahk_exe WindowsTerminal.exe") or not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
         if ( not WinExist("ahk_exe WindowsTerminal.exe")) {
-            Run("wt.exe")
+            Run("WindowsTerminal.exe")
         }
         if ( not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
             Run(DefaultBrowser)
