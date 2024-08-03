@@ -88,11 +88,11 @@ isThird(W) {
     WinRestore("A")
 
     if (isFourth(X) and isThird(W)) {
-        WinMoveEx(WorkableScreenWidth / 4 * 3, 2, (WorkableScreenWidth / 4) - 1, WorkableScreenHeight, "A")
+        WinMoveEx(WorkableScreenWidth / 4 * 3, 1, (WorkableScreenWidth / 4) - 1, WorkableScreenHeight, "A")
     } else if (isHalf(X) and isHalf(W)) {
-        WinMoveEx(WorkableScreenWidth / 4, 2, (WorkableScreenWidth / 4 * 3) - 1, WorkableScreenHeight, "A")
+        WinMoveEx(WorkableScreenWidth / 4, 1, (WorkableScreenWidth / 4 * 3) - 1, WorkableScreenHeight, "A")
     } else if ( not isHalf(X)) {
-        WinMoveEx(WorkableScreenWidth / 2, 2, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
+        WinMoveEx(WorkableScreenWidth / 2, 1, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
     }
 }
 
@@ -101,13 +101,13 @@ isThird(W) {
     WinGetPos &X, &Y, &W, &H, "A"
     WinRestore("A")
 
-    ;is window in left or window in left and size is 
+    ;is window in left or window in left and size is
     if ( not (X > -8 and X <= 0) or ((X > -8 and X <= 0) and (W > 620 and W < 1260))) {
-        WinMoveEx(1, 2, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
+        WinMoveEx(1, 1, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
     } else if ((X > -8 and X <= 0) and (W > 1260 and W < 1300)) {
-        WinMoveEx(1, 2, WorkableScreenWidth - (WorkableScreenWidth / 4), WorkableScreenHeight, "A")
+        WinMoveEx(1, 1, WorkableScreenWidth - (WorkableScreenWidth / 4), WorkableScreenHeight, "A")
     } else {
-        WinMoveEx(1, 2, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
+        WinMoveEx(1, 1, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
     }
 }
 ^!+k:: {
@@ -156,9 +156,9 @@ isThird(W) {
         toWidth := WorkableScreenWidth
     }
     if (toWidth == 0 and toHeight == 0) {
-        WinMoveEx((WorkableScreenWidth - W) / 2, ((WorkableScreenHeight - H) / 2) + 1, , , "A")
+        WinMoveEx((WorkableScreenWidth - W) / 2, ((WorkableScreenHeight - H) / 2) + 4, , , "A")
     } else {
-        WinMoveEx((WorkableScreenWidth - toWidth) / 2, ((WorkableScreenHeight - toHeight) / 2) + 1, toWidth, toHeight, "A")
+        WinMoveEx((WorkableScreenWidth - toWidth) / 2, ((WorkableScreenHeight - toHeight) / 2) + 4, toWidth, toHeight, "A")
     }
 }
 
