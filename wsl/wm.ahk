@@ -12,9 +12,12 @@ global DefaultBrowser := "chrome.exe"
 
 F12:: {  ; F12 = Auto-click
     Static on := False
+    master_volume := SoundGetVolume()
+    SoundSetVolume(20)
     If on := !on
         SetTimer(Click, 1), Click(), SoundBeep(1500)
     Else SetTimer(Click, 0), SoundBeep(1000)
+    SoundSetVolume(master_volume)
 }
 
 
