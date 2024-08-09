@@ -7,7 +7,7 @@ global WorkableScreenWidth := A_ScreenWidth
 
 global PSMode := true
 global SpeakerMode := true
-TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
+
 global DefaultBrowser := "chrome.exe"
 
 F12:: {  ; F12 = Auto-click
@@ -169,7 +169,7 @@ isThird(W) {
 TerminalOrBrowser() {
     if ( not WinExist("ahk_exe WindowsTerminal.exe") or not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
         if ( not WinExist("ahk_exe WindowsTerminal.exe")) {
-            Run("WindowsTerminal.exe")
+            Run("C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.20.11781.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe")
         }
         if ( not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
             Run(DefaultBrowser)
@@ -327,6 +327,14 @@ List := EnumAudioEndpoints()
 Devices := ""
 for Device in List
     Devices .= Format("{} ({})`n`n", Device["Name"], Device["ID"])
+
+; Sets default audio device on startup
+; Options:
+;   - Speakers
+;   - Microphone 3.5 Port
+; SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
+SetDefaultEndpoint(GetDeviceID(List, "Speakers (PD200X Podcast Microphone)"))
+TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
 
 ; F6::
 ; {
