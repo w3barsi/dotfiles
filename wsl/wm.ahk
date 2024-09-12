@@ -18,16 +18,6 @@ If !FileExist(FileName) {
     IniWrite("Speakers (PD200X Podcast Microphone)", FileName, "Audio", "default")
 }
 
-F12:: {  ; F12 = Auto-click
-    Static on := False
-    master_volume := SoundGetVolume()
-    SoundSetVolume(20)
-    If on := !on
-        SetTimer(Click, 1), Click(), SoundBeep(1500)
-    Else SetTimer(Click, 0), SoundBeep(1000)
-    SoundSetVolume(master_volume)
-}
-
 
 F15:: {
     if (SpeakerMode == true) {
@@ -496,3 +486,13 @@ class PropVariant
         return StrGet(NumGet(this.ptr, 8, "UPtr"))  ; LPWSTR PROPVARIANT.pwszVal
     }
 }
+
+; F12:: {  ; F12 = Auto-click
+;     Static on := False
+;     master_volume := SoundGetVolume()
+;     SoundSetVolume(20)
+;     If on := !on
+;         SetTimer(Click, 1), Click(), SoundBeep(1500)
+;     Else SetTimer(Click, 0), SoundBeep(1000)
+;     SoundSetVolume(master_volume)
+; }
