@@ -113,3 +113,8 @@ bindkey '^r' atuin-search
 # fnm for wsl
 export PATH="/home/barsi/.local/share/fnm:$PATH"
 eval "`fnm env`"
+
+# Turso
+export PATH="$PATH:/home/barsi/.turso"
+# Laravel
+export PATH=~/.config/composer/vendor/bin:$PATH
