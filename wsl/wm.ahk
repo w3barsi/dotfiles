@@ -5,10 +5,18 @@
 global WorkableScreenHeight := A_ScreenHeight - 49
 global WorkableScreenWidth := A_ScreenWidth
 
-global PSMode := true
 global SpeakerMode := true
 
 global DefaultBrowser := "chrome.exe"
+
+FolderPath := "C:\temp"
+FileName := "C:\temp\count.ini"
+If !DirExist(FolderPath) {
+    DirCreate(FolderPath)
+}
+If !FileExist(FileName) {
+    IniWrite("Speakers (PD200X Podcast Microphone)", FileName, "Audio", "default")
+}
 
 F12:: {  ; F12 = Auto-click
     Static on := False
@@ -26,10 +34,13 @@ F15:: {
         SetDefaultEndpoint(GetDeviceID(List, "Speakers (PD200X Podcast Microphone)"))
         global SpeakerMode := false
         TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
+        IniWrite("Speakers (PD200X Podcast Microphone)", FileName, "Audio", "default")
     } else {
         SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
         global SpeakerMode := true
         TraySetIcon("C:\Users\Barsi\Documents\Speakers.png")
+
+        IniWrite("Speakers (Realtek(R) Audio)", FileName, "Audio", "default")
     }
 
 }
@@ -333,9 +344,13 @@ for Device in List
 ;   - Speakers
 ;   - Microphone 3.5 Port
 ; SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
-SetDefaultEndpoint(GetDeviceID(List, "Speakers (PD200X Podcast Microphone)"))
-TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
-
+DefaultAudio := IniRead(FileName, "Audio", "default")
+SetDefaultEndpoint(GetDeviceID(List, DefaultAudio))
+if (DefaultAudio == "Speakers (PD200X Podcast Microphone)") {
+    TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
+} else {
+    TraySetIcon("C:\Users\Barsi\Documents\Speakers.png")
+}
 ; F6::
 ; {
 ;     SetDefaultEndpoint(GetDeviceID(List, "DENON-AVR (NVIDIA High Definition Audio)"))
