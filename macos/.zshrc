@@ -46,11 +46,20 @@ alias la="ls -la --group-directories-first"
 
 alias ts="~/dotfiles/scripts/tmux-sessionizer"
 alias tls="tmux ls"
-alias tatt="tmux attach -t"
+# alias tatt="tmux attach -t"
 alias tnew="tmux new -s"
 alias tkill="tmux kill-session -t"
+alias tnuke="tmux kill-server"
 
 alias ytdl-a="youtube-dl "
+
+tatt() {
+    if [ -n "$1" ]; then
+        tmux attach -t "$1"
+    else
+        tmux attach
+    fi
+}
 
 t-rnm() {
     command tmux rename-session -t "$1" "$2"
