@@ -28,6 +28,7 @@ alias v="nvim"
 alias vim="nvim"
 alias vi="nvim"
 alias p="pnpm"
+alias ytdl-a="youtube-dl "
 
 #RC Aliases
 alias dots="~/dotfiles/scripts/edit-dotfiles.sh"
@@ -52,7 +53,6 @@ alias tnew="tmux new -s"
 alias tkill="tmux kill-session -t"
 alias tnuke="tmux kill-server"
 
-alias ytdl-a="youtube-dl "
 
 tatt() {
     if [ -n "$1" ]; then
@@ -91,8 +91,7 @@ export PATH="$LOCAL_USER_BIN:$PATH"
 export STARSHIP_CONFIG="~/.starship.toml"
 
 # fnm for macos
-export PATH="$HOME/.fnm:$PATH"
-eval "`fnm env`"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -139,3 +138,10 @@ eval "`fnm env`"
 export PATH="$PATH:/home/barsi/.turso"
 # Laravel
 export PATH=~/.config/composer/vendor/bin:$PATH
+
+# fnm
+FNM_PATH="/home/barsi/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/barsi/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
