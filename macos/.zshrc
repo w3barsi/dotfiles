@@ -53,7 +53,6 @@ alias tnew="tmux new -s"
 alias tkill="tmux kill-session -t"
 alias tnuke="tmux kill-server"
 
-
 tatt() {
     if [ -n "$1" ]; then
         tmux attach -t "$1"
@@ -104,8 +103,6 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 
-# bun completions
-[ -s "/Users/kuya/.bun/_bun" ] && source "/Users/kuya/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -114,8 +111,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-# bun completions
-[ -s "/Users/barsi/.bun/_bun" ] && source "/Users/barsi/.bun/_bun"
+# Auto Completes
+# - Bun
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+[ -s "$HOME/.zfunc/_bob" ] && source "$HOME/.zfunc/_bob"
+[ -s "$HOME/.zfunc/_pnpm" ] && source "$HOME/.zfunc/_pnpm"
 
 # pnpm
 export PNPM_HOME="/Users/barsi/Library/pnpm"
@@ -146,3 +146,5 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="/home/barsi/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+
+. "$HOME/.atuin/bin/env"
