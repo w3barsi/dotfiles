@@ -35,26 +35,27 @@ F15:: {
 
 }
 
-windowBanList := ["dota2.exe"]
-
+Komorebic(cmd) {
+    RunWait(format("komorebic.exe {}", cmd), , "Hide")
+}
+^!+1:: Komorebic("move-to-workspace 0")
+^!+2:: Komorebic("move-to-workspace 1")
+^!+3:: Komorebic("move-to-workspace 2")
+^!+q:: Komorebic("focus-workspace 0")
+^!+w:: Komorebic("focus-workspace 1")
+^!+e:: Komorebic("focus-workspace 2")
 
 #HotIf not WinActive("ahk_exe dota2.exe")
 #HotIf not WinActive("ahk_exe BlackDessert64.exe")
 ; Debug Commands
-^!+`:: Reload()
+^!+r:: Reload()
 ^!+g:: DisplayWinGetPos()
 ^!+XButton1:: MsgBox("Mouse Forward")
 ^!+XButton2:: MsgBox("Mouse Backward")
-^!+q:: Send("(")
-^!+a:: Send(")")
-^!+w:: Send("{{}")
-^!+s:: Send("{}}")
-^!+e:: Send("[")
-^!+d:: Send("]")
 
 !`:: CycleApp()
 <#q:: WinClose("A")
-^!+r:: ToggleFullAndCenter()
+; ^!+r:: ToggleFullAndCenter()
 
 ; Workflows
 ^!+b:: OpenOrMinimize(DefaultBrowser)
