@@ -32,6 +32,8 @@ zinit cdreplay -q
 # bindkey "^[0B" history-search-forward
 bindkey "$key[Up]" history-search-backward
 bindkey "$key[Down]" history-search-forward
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 # History
 HISTSIZE=5000
@@ -109,6 +111,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 # Completions Setup
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+# bun completions
 [ -s "$HOME/.zfunc/_bob" ]  && source "$HOME/.zfunc/_bob"
 # bob complete zsh > ~/.zfunc/_bob
 [ -s "$HOME/.zfunc/_pnpm" ] && source "$HOME/.zfunc/_pnpm"
