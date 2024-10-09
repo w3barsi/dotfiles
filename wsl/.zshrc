@@ -74,6 +74,9 @@ alias vim="nvim"
 alias vi="nvim"
 # - tmux
 source "$HOME/dotfiles/scripts/tmux.zsh"
+# - wsl aliases
+alias komorebic="komorebic.exe"
+alias open="explorer.exe"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fzf --zsh)"
@@ -108,6 +111,10 @@ export PATH="$BOB:$USER_BIN:$PATH"
 
 # Golang
 export PATH=$PATH:/usr/local/go/bin
+
+# Fly.io
+export FLYCTL_INSTALL="/home/barsi/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 # Completions Setup
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
