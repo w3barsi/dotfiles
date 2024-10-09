@@ -91,26 +91,35 @@ Komorebic(cmd) {
 ^!+k:: {
     WinRestore("A")
     WinMoveEx(0, 0, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
+
+    global LastCommand := "k"
 }
 ^!+j:: {
     WinRestore("A")
     WinMoveEx(0, WorkableScreenHeight / 2, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
+
+    global LastCommand := "j"
 }
 
 ^!+;:: {
     WinRestore("A")
     WinMoveEx(0, 0, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
+
+    global LastCommand := ";"
 }
 
 ^!+':: {
     WinRestore("A")
     WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, WorkableScreenHeight, "A")
+
+    global LastCommand := "'"
 }
 
 ^!+\:: {
     WinGetPos &X, &Y, &W, &H, "A"
-
     WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, 1080, "A")
+
+    global LastCommand := "\"
 }
 
 ^!+c:: {
@@ -119,7 +128,7 @@ Komorebic(cmd) {
     if (WinState == 1) {
         return 0
     }
-    WinGetPos &X, &Y, &W, &H, "A"
+    WinGetPosEx &X, &Y, &W, &H, "A"
 
     toX := ((WorkableScreenWidth - W) / 2) < 0 ? 0 : ((WorkableScreenWidth - W) / 2)
     toY := ((WorkableScreenHeight - H) / 2) < 0 ? 0 : ((WorkableScreenHeight - H) / 2)
@@ -128,15 +137,7 @@ Komorebic(cmd) {
 
     WinMoveEx(toX, toY, , , "A")
 
-    ; def := 1
-    ; toHeight := H > WorkableScreenHeight + 20 ? WorkableScreenHeight : def
-    ; toWidth := H > WorkableScreenWidth + 20 ? WorkableScreenWidth : def
-    ; MsgBox(Format("WSH: {1}`tWSW: {2}`nH: {3}`t`tW: {4}`ntoH: {5}`ttoW: {6}", WorkableScreenHeight, WorkableScreenWidth, H, W, (WorkableScreenWidth - W) / 2, ((WorkableScreenHeight - H) / 2)))
-    ; if (toWidth == def and toHeight == def) {
-    ;     WinMoveEx((WorkableScreenWidth - W) / 2, ((WorkableScreenHeight - H) / 2), , , "A")
-    ; } else {
-    ;     WinMoveEx((WorkableScreenWidth - toWidth) / 2, ((WorkableScreenHeight - toHeight) / 2) + 4, toWidth, toHeight, "A")
-    ; }
+    global LastCommand := "c"
 }
 
 
