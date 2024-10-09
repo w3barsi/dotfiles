@@ -54,15 +54,6 @@ DisplayWinGetPos() {
     MsgBox(Format("X:`t{1}`tY:`t{2}`nW:`t{3}`tH:`t{4}`nWSW:`t{5}`tWSH:`t{6} `n`nWindow Title:`t{7}`n{8} `n {9} ", X, Y, W, H, WorkableScreenWidth, WorkableScreenHeight, WinGetTitle("A"), WinGetID("A"), A_ScriptDir))
 }
 
-ToggleFullAndCenter() {
-    WinGetPos &X, &Y, &W, &H, "A"
-    if (X == -8 and Y == -8) {
-        WinRestore("A")
-    } else {
-        WinMaximize("A")
-    }
-}
-
 WinFullscreen() {
     WinState := WinGetMinMax("A")
     if (WinState == 1) {
