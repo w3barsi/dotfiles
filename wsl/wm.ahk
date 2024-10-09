@@ -6,6 +6,7 @@
 
 global DefaultBrowser := "chrome.exe"
 
+global LastCommand := ""
 
 F15:: {
     if (SpeakerMode == true) {
@@ -22,6 +23,7 @@ F15:: {
     }
 
 }
+
 
 Komorebic(cmd) {
     RunWait(format("komorebic.exe {}", cmd), , "Hide")
@@ -56,56 +58,59 @@ Komorebic(cmd) {
     WinGetPos &X, &Y, &W, &H, "A"
     WinRestore("A")
 
-    if (isFourth(X) and isThird(W)) {
-        WinMoveEx(WorkableScreenWidth / 4 * 3, 1, (WorkableScreenWidth / 4) - 1, WorkableScreenHeight, "A")
-    } else if (isHalf(X) and isHalf(W)) {
-        WinMoveEx(WorkableScreenWidth / 4, 1, (WorkableScreenWidth / 4 * 3) - 1, WorkableScreenHeight, "A")
-    } else if ( not isHalf(X)) {
-        WinMoveEx(WorkableScreenWidth / 2, 1, (WorkableScreenWidth / 2) - 1, WorkableScreenHeight, "A")
+    if ( not LastCommand == "l") {
+        WinMoveEx(WorkableScreenWidth / 2, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
+    } else if (LastCommand == "l" and isHalf(W)) {
+        WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, WorkableScreenHeight, "A")
+    } else if (LastCommand == "l" and isThird(W)) {
+        WinMoveEx((WorkableScreenWidth / 4) * 3, 0, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
+    } else if (LastCommand == "l" and isFourth(W)) {
+        WinMoveEx(WorkableScreenWidth / 2, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
     }
-}
 
+    global LastCommand := "l"
+}
 
 ^!+h:: {
     WinGetPos &X, &Y, &W, &H, "A"
     WinRestore("A")
 
-    ;is window in left or window in left and size is
-    if ( not (X > -8 and X <= 0) or ((X > -8 and X <= 0) and (W > 620 and W < 1260))) {
-        WinMoveEx(1, 1, WorkableScreenWidth / 2, WorkableScreenHeight, "A")
-    } else if ((X > -8 and X <= 0) and (W > 1260 and W < 1300)) {
-        WinMoveEx(1, 1, WorkableScreenWidth - (WorkableScreenWidth / 4), WorkableScreenHeight, "A")
-    } else {
-        WinMoveEx(1, 1, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
+    if ( not LastCommand == "h") {
+        WinMoveEx(0, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
+    } else if (LastCommand == "h" and isHalf(W)) {
+        WinMoveEx(0, 0, (WorkableScreenWidth / 4) * 3, WorkableScreenHeight, "A")
+    } else if (LastCommand == "h" and isThird(W)) {
+        WinMoveEx(0, 0, (WorkableScreenWidth / 4), WorkableScreenHeight, "A")
+    } else if (LastCommand == "h" and isFourth(W)) {
+        WinMoveEx(0, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
     }
+
+    global LastCommand := "h"
 }
+
 ^!+k:: {
     WinRestore("A")
-    WinMoveEx(1, 2, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
+    WinMoveEx(0, 0, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
 }
 ^!+j:: {
     WinRestore("A")
-    WinMoveEx(1, WorkableScreenHeight / 2, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
+    WinMoveEx(0, WorkableScreenHeight / 2, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
 }
 
 ^!+;:: {
     WinRestore("A")
-    WinMoveEx(1, 2, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
+    WinMoveEx(0, 0, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
 }
 
 ^!+':: {
     WinRestore("A")
-    WinMoveEx(641, 2, WorkableScreenWidth / 4 * 3, WorkableScreenHeight, "A")
+    WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, WorkableScreenHeight, "A")
 }
 
 ^!+\:: {
     WinGetPos &X, &Y, &W, &H, "A"
-    if (H > 1080 and H < 1100) {
-        WinMoveEx(640, 1082, 1920, WorkableScreenHeight - 1082, "A")
-    } else {
-        WinRestore("A")
-        WinMoveEx(640, 1, 1920, 1080, "A")
-    }
+
+    WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, 1080, "A")
 }
 
 ^!+c:: {
@@ -114,21 +119,24 @@ Komorebic(cmd) {
     if (WinState == 1) {
         return 0
     }
-
     WinGetPos &X, &Y, &W, &H, "A"
-    toHeight := 0
-    toWidth := 0
-    if (H > WorkableScreenHeight + 20) {
-        toHeight := WorkableScreenHeight
-    }
-    if (W > WorkableScreenWidth + 20) {
-        toWidth := WorkableScreenWidth
-    }
-    if (toWidth == 0 and toHeight == 0) {
-        WinMoveEx((WorkableScreenWidth - W) / 2, ((WorkableScreenHeight - H) / 2) + 4, , , "A")
-    } else {
-        WinMoveEx((WorkableScreenWidth - toWidth) / 2, ((WorkableScreenHeight - toHeight) / 2) + 4, toWidth, toHeight, "A")
-    }
+
+    toX := ((WorkableScreenWidth - W) / 2) < 0 ? 0 : ((WorkableScreenWidth - W) / 2)
+    toY := ((WorkableScreenHeight - H) / 2) < 0 ? 0 : ((WorkableScreenHeight - H) / 2)
+    toHeight := H > WorkableScreenHeight ? WorkableScreenHeight : H
+    toWidth := W > WorkableScreenWidth ? WorkableScreenWidth : W
+
+    WinMoveEx(toX, toY, , , "A")
+
+    ; def := 1
+    ; toHeight := H > WorkableScreenHeight + 20 ? WorkableScreenHeight : def
+    ; toWidth := H > WorkableScreenWidth + 20 ? WorkableScreenWidth : def
+    ; MsgBox(Format("WSH: {1}`tWSW: {2}`nH: {3}`t`tW: {4}`ntoH: {5}`ttoW: {6}", WorkableScreenHeight, WorkableScreenWidth, H, W, (WorkableScreenWidth - W) / 2, ((WorkableScreenHeight - H) / 2)))
+    ; if (toWidth == def and toHeight == def) {
+    ;     WinMoveEx((WorkableScreenWidth - W) / 2, ((WorkableScreenHeight - H) / 2), , , "A")
+    ; } else {
+    ;     WinMoveEx((WorkableScreenWidth - toWidth) / 2, ((WorkableScreenHeight - toHeight) / 2) + 4, toWidth, toHeight, "A")
+    ; }
 }
 
 
@@ -158,7 +166,7 @@ DisplayWinGetPos() {
     ;     "W:  " . W . " |  H:  " . H
     ; )
     ; MsgBox(variableString)
-    MsgBox(Format("X: {1}`tY: {2}`nW: {3}`tH: {4} `n`nWindow Title:`n`t{5}`n{6}", X, Y, W, H, WinGetTitle("A"), WinGetID("A")))
+    MsgBox(Format("X:`t{1}`tY:`t{2}`nW:`t{3}`tH:`t{4}`nWSW:`t{5}`tWSH:`t{6} `n`nWindow Title:`t{7}`n{8} `n {9} ", X, Y, W, H, WorkableScreenWidth, WorkableScreenHeight, WinGetTitle("A"), WinGetID("A"), A_ScriptDir))
 }
 
 ToggleFullAndCenter() {
