@@ -7,6 +7,10 @@
 global DefaultBrowser := "chrome.exe"
 
 global LastCommand := ""
+setLastCommand(cmd) {
+    global LastCommand := cmd
+}
+
 global RESIZE_BY := 15
 
 F15:: {
@@ -50,7 +54,18 @@ Komorebic(cmd) {
 ^!+Enter:: TerminalOrBrowser()
 
 ; Window Move commands
-^!+f:: WinFullscreen()
+^!+f:: {
+    WinState := WinGetMinMax("A")
+    if (WinState == 1) {
+        WinRestore("A")
+    } else if (WinState == 0) {
+        WinMaximize("A")
+    } else {
+        Return
+    }
+
+    setLastCommand("f")
+}
 
 ^!+l:: {
     WinGetPosEx &X, &Y, &W, &H, "A"
@@ -66,7 +81,7 @@ Komorebic(cmd) {
         WinMoveEx(WorkableScreenWidth / 2, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
     }
 
-    global LastCommand := "l"
+    setLastCommand("l")
 }
 
 ^!+h:: {
@@ -83,34 +98,34 @@ Komorebic(cmd) {
         WinMoveEx(0, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
     }
 
-    global LastCommand := "h"
+    setLastCommand("h")
 }
 
 ^!+k:: {
     WinRestore("A")
     WinMoveEx(0, 0, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
 
-    global LastCommand := "k"
+    setLastCommand("k")
 }
 ^!+j:: {
     WinRestore("A")
     WinMoveEx(0, WorkableScreenHeight / 2, WorkableScreenWidth, WorkableScreenHeight / 2, "A")
 
-    global LastCommand := "j"
+    setLastCommand("j")
 }
 
 ^!+;:: {
     WinRestore("A")
     WinMoveEx(0, 0, WorkableScreenWidth / 4, WorkableScreenHeight, "A")
 
-    global LastCommand := ";"
+    setLastCommand(";")
 }
 
 ^!+':: {
     WinRestore("A")
     WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, WorkableScreenHeight, "A")
 
-    global LastCommand := "'"
+    setLastCommand("'")
 }
 
 ^!+\:: {
@@ -118,7 +133,7 @@ Komorebic(cmd) {
     WinRestore("A")
     WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, 1080, "A")
 
-    global LastCommand := "\"
+    setLastCommand("\")
 }
 
 ^!+c:: {
@@ -136,7 +151,7 @@ Komorebic(cmd) {
 
     WinMoveEx(toX, toY, , , "A")
 
-    global LastCommand := "c"
+    setLastCommand("c")
 }
 
 ^!+-:: {
@@ -146,16 +161,27 @@ Komorebic(cmd) {
         WinRestore("A")
     }
 
+    if (LastCommand == "f") {
+        WinMoveEx(0, 0, WorkableScreenWidth, WorkableScreenHeight, "A")
+    }
+
     WinGetPosEx &X, &Y, &W, &H, "A"
     WinMoveEx(X + RESIZE_BY, Y + RESIZE_BY, W - (RESIZE_BY * 2), H - (RESIZE_BY * 2), "A")
+
+    setLastCommand("-")
 }
 
 ^!++:: {
+    if (LastCommand == "f") {
+        return
+    }
+
     ; Checks if fullscreen
     WinState := WinGetMinMax("A")
     if (WinState == 1) {
         WinRestore("A")
     }
+
 
     WinGetPosEx &X, &Y, &W, &H, "A"
 
@@ -165,6 +191,8 @@ Komorebic(cmd) {
     changeHeightTo := H + RESIZE_BY > WorkableScreenHeight ? WorkableScreenHeight : H + (RESIZE_BY * 2)
 
     WinMoveEx(moveXBy, moveYBy, changeWidthTo, changeHeightTo, "A")
+
+    setLastCommand("+")
 }
 
 
