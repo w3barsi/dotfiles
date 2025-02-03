@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+session="$HOME/.sessionizer"
+# Session will have
+# - prev_session
+# - curr_session
+source "$session"
+
+to=$prev_state
+echo "prev_state=$curr_state" > "$session"
+echo "curr_state=$to" >> "$session"
+
+selected_name=$(basename "$to" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+    exit 0
+fi
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+if [[ -n $TMUX ]]; then
+    tmux switch-client -t $selected_name
+else
+    tmux attach -t $selected_name
+fi
+

@@ -37,10 +37,8 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
 fi
 
 if [[ -n $TMUX ]]; then
-    echo "INSIDE"
     tmux switch-client -t $selected_name
 else
-    echo "OUTSIDE"
     tmux attach -t $selected_name
 fi
 
