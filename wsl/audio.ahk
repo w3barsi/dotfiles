@@ -5,7 +5,7 @@ If !DirExist(FolderPath) {
     DirCreate(FolderPath)
 }
 If !FileExist(FileName) {
-    IniWrite("Speakers (PD200X Podcast Microphone)", FileName, "Audio", "default")
+    IniWrite("Headphones (USB-C to 3.5mm Headphone Jack Adapter)", FileName, "Audio", "default")
 }
 
 List := EnumAudioEndpoints()
@@ -14,6 +14,8 @@ Devices := ""
 for Device in List
     Devices .= Format("{} ({})`n`n", Device["Name"], Device["ID"])
 
+; MsgBox(Devices)
+
 ; Sets default audio device on startup
 ; Options:
 ;   - Speakers
@@ -21,7 +23,7 @@ for Device in List
 ; SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
 DefaultAudio := IniRead(FileName, "Audio", "default")
 SetDefaultEndpoint(GetDeviceID(List, DefaultAudio))
-if (DefaultAudio == "Speakers (PD200X Podcast Microphone)") {
+if (DefaultAudio == "Headphones (USB-C to 3.5mm Headphone Jack Adapter)") {
     TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
 } else {
     TraySetIcon("C:\Users\Barsi\Documents\Speakers.png")
