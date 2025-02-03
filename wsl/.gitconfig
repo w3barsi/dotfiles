@@ -1,0 +1,6 @@
+[user]
+	email = darcybalaga@gmail.com
+	name = w3barsi
+[push]
+	autoSetupRemote = true
+	default = current

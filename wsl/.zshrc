@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc..zshrc
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -77,6 +77,7 @@ source "$HOME/dotfiles/scripts/tmux.zsh"
 # - wsl aliases
 alias komorebic="komorebic.exe"
 alias open="explorer.exe"
+alias wezrc="nvim /mnt/c/Users/Barsi/.wezterm.lua"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fzf --zsh)"
@@ -115,6 +116,8 @@ export PATH=$PATH:/usr/local/go/bin
 # Fly.io
 export FLYCTL_INSTALL="/home/barsi/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+export EDITOR="nvim"
 
 # Completions Setup
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
