@@ -2,9 +2,14 @@
 #SingleInstance
 #Include "%A_ScriptDir%/audio.ahk"
 #Include "%A_ScriptDir%/utils.ahk"
+; #Include "%A_ScriptDir%/id.ahk"
 
 
-global DefaultBrowser := "chrome.exe"
+global DefaultBrowserName := "zen.exe"
+global DefaultBrowser := Format("ahk_exe {1}", DefaultBrowserName)
+; global DefaultTerminal := "WindowsTerminal.exe"
+global DefaultTerminalName := "wezterm-gui.exe"
+global DefaultTerminal := Format("ahk_exe {1}", DefaultTerminalName)
 
 global LastCommand := ""
 setLastCommand(cmd) {
@@ -15,10 +20,10 @@ global RESIZE_BY := 15
 
 F15:: {
     if (SpeakerMode == true) {
-        SetDefaultEndpoint(GetDeviceID(List, "Speakers (PD200X Podcast Microphone)"))
+        SetDefaultEndpoint(GetDeviceID(List, "Headphones (USB-C to 3.5mm Headphone Jack Adapter)"))
         global SpeakerMode := false
         TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
-        IniWrite("Speakers (PD200X Podcast Microphone)", FileName, "Audio", "default")
+        IniWrite("Headphones (USB-C to 3.5mm Headphone Jack Adapter)", FileName, "Audio", "default")
     } else {
         SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
         global SpeakerMode := true
@@ -71,7 +76,11 @@ Komorebic(cmd) {
     WinGetPosEx &X, &Y, &W, &H, "A"
     WinRestore("A")
 
-    if ( not LastCommand == "l") {
+    if (LastCommand == "k") {
+        WinMoveEx(WorkableScreenWidth / 2, 0, WorkableScreenWidth / 2, WorkableScreenHeight / 2, "A")
+    } else if (LastCommand == "j") {
+        WinMoveEx(WorkableScreenWidth / 2, WorkableScreenHeight / 2, WorkableScreenWidth / 2, WorkableScreenHeight / 2, "A")
+    } else if ( not LastCommand == "l") {
         WinMoveEx(WorkableScreenWidth / 2, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
     } else if (LastCommand == "l" and isHalf(W)) {
         WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, WorkableScreenHeight, "A")
@@ -81,6 +90,7 @@ Komorebic(cmd) {
         WinMoveEx(WorkableScreenWidth / 2, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
     }
 
+
     setLastCommand("l")
 }
 
@@ -88,7 +98,11 @@ Komorebic(cmd) {
     WinGetPosEx &X, &Y, &W, &H, "A"
     WinRestore("A")
 
-    if ( not LastCommand == "h") {
+    if (LastCommand == "k") {
+        WinMoveEx(0, 0, WorkableScreenWidth / 2, WorkableScreenHeight / 2, "A")
+    } else if (LastCommand == "j") {
+        WinMoveEx(0, WorkableScreenHeight / 2, WorkableScreenWidth / 2, WorkableScreenHeight / 2, "A")
+    } else if ( not LastCommand == "h") {
         WinMoveEx(0, 0, (WorkableScreenWidth / 2), WorkableScreenHeight, "A")
     } else if (LastCommand == "h" and isHalf(W)) {
         WinMoveEx(0, 0, (WorkableScreenWidth / 4) * 3, WorkableScreenHeight, "A")
@@ -182,7 +196,6 @@ Komorebic(cmd) {
         WinRestore("A")
     }
 
-
     WinGetPosEx &X, &Y, &W, &H, "A"
 
     moveXBy := X - RESIZE_BY <= 0 ? 0 : X - RESIZE_BY
@@ -195,13 +208,23 @@ Komorebic(cmd) {
     setLastCommand("+")
 }
 
+Click() {
+    MouseClick("Left")
+}
 
-; F12:: {  ; F12 = Auto-click
-;     Static on := False
-;     master_volume := SoundGetVolume()
-;     SoundSetVolume(20)
-;     If on := !on
-;         SetTimer(Click, 1), Click(), SoundBeep(1500)
-;     Else SetTimer(Click, 0), SoundBeep(1000)
-;     SoundSetVolume(master_volume)
-; }
+F12:: {  ; F12 = Auto-click
+    Static on := False
+    master_volume := SoundGetVolume()
+    SoundSetVolume(20)
+    If on := !on
+        SetTimer(Click, 1), Click(), SoundBeep(1500)
+    Else SetTimer(Click, 0), SoundBeep(1000)
+    SoundSetVolume(master_volume)
+}
+
+; Move the active window to the next monitor
+; Move the active window to the next monitor
+; Move the active window to the next monitor
+!^+Space:: {
+    Send "{LWin down}{Shift down}{Left}{Shift up}{LWin up}"
+}
