@@ -26,21 +26,21 @@ isFourth(width) {
 }
 
 TerminalOrBrowser() {
-    if ( not WinExist("ahk_exe WindowsTerminal.exe") or not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
-        if ( not WinExist("ahk_exe WindowsTerminal.exe")) {
-            Run("C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.20.11781.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe")
+    if ( not WinExist(DefaultTerminal) or not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
+        if ( not WinExist(DefaultTerminal)) {
+            Run(DefaultTerminalName)
         }
         if ( not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
-            Run(DefaultBrowser)
+            Run(DefaultBrowserName)
         }
         return
     }
-    if (WinActive("ahk_exe WindowsTerminal.exe")) {
-        WinActivate(Format("ahk_exe {1}", DefaultBrowser))
-    } else if (WinActive(Format("ahk_exe {1}", DefaultBrowser))) {
-        WinActivate("ahk_exe WindowsTerminal.exe")
+    if (WinActive(DefaultTerminal)) {
+        WinActivate(Format(DefaultBrowser))
+    } else if (WinActive(DefaultBrowser)) {
+        WinActivate(DefaultTerminal)
     } else {
-        WinActivate("ahk_exe WindowsTerminal.exe")
+        WinActivate(DefaultTerminal)
     }
 }
 
