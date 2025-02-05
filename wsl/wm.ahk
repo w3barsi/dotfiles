@@ -16,6 +16,30 @@ setLastCommand(cmd) {
     global LastCommand := cmd
 }
 
+F3:: MsgBox(MonitorFromWindow())
+
+MonitorFromWindow(WinTitle := "A", Mode := 2) {
+    if (!Hwnd := WinExist(WinTitle)) {
+        return
+    }
+
+    MonitorInfo := Buffer(40), NumPut("UInt", MonitorInfo.Size, MonitorInfo)
+    hMonitor := DllCall("MonitorFromWindow", "UInt", Hwnd, "UInt", Mode)
+    DllCall("GetMonitorInfo", "Ptr", hMonitor, "Ptr", MonitorInfo)
+    MonitorLeft := NumGet(MonitorInfo, 4, "Int"), MonitorTop := NumGet(MonitorInfo, 8, "Int")
+    MonitorRight := NumGet(MonitorInfo, 12, "Int"), MonitorBottom := NumGet(MonitorInfo, 16, "Int")
+    Loop (MonitorGetCount()) {
+        MonitorGet(A_Index, &Left, &Top, &Right, &Bottom)
+        if (MonitorLeft = Left && MonitorTop = Top && MonitorRight = Right && MonitorBottom = Bottom) {
+            MsgBox(A_Index)
+            MsgBox(Left)
+            MsgBox(Right)
+            MsgBox(Top)
+            MsgBox(Bottom)
+        }
+    }
+}
+
 global RESIZE_BY := 15
 
 F15:: {
@@ -220,11 +244,4 @@ F12:: {  ; F12 = Auto-click
         SetTimer(Click, 1), Click(), SoundBeep(1500)
     Else SetTimer(Click, 0), SoundBeep(1000)
     SoundSetVolume(master_volume)
-}
-
-; Move the active window to the next monitor
-; Move the active window to the next monitor
-; Move the active window to the next monitor
-!^+Space:: {
-    Send "{LWin down}{Shift down}{Left}{Shift up}{LWin up}"
 }
