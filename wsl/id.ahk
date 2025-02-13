@@ -1,5 +1,5 @@
-F1:: PrintID("front")
-F2:: PrintID("back")
+; F1:: PrintID("front")
+; F2:: PrintID("back")
 ; F1:: EncodeBogoGlass(true)
 ; F2:: EncodeBogoGlass(false)
 ; F1:: {
@@ -10,7 +10,46 @@ F2:: PrintID("back")
 ; F1:: EncodeBorbonPix()
 ; F1:: EncodeBorbonSig()
 ; F2:: EncodeBorobnPixP2()
-; F3:: MoveFirstItem()
+F3:: MoveFirstItem()
+F1:: TemplateFull()
+
+TemplateFull() {
+	time := 200
+
+	CoordMode("Mouse", "Screen")
+	WinActivate("ahk_exe IDFlow.exe")
+	LeftClick(1322, 64) ; New
+	Sleep(time)
+
+	LeftClick(1603, 374) ; Photo Button
+	LeftClick(1652, 389) ; Browse
+	LeftClick(1260, 535) ; Double Click Picture
+	LeftClick(1260, 535) ; Double Click Picture
+
+	MoveFirstItem()
+
+	LeftClick(1603, 695) ; Sig Button
+	LeftClick(1652, 720) ; Browse
+	LeftClick(1260, 535) ; Double Click Picture
+	LeftClick(1260, 535) ; Double Click Picture
+
+	MoveFirstItem()
+
+	WinActivate("ahk_exe IDFlow.exe")
+	LeftClick(1318, 63) ; Double Click Picture
+}
+MoveFirstItem() {
+	CoordMode("Mouse", "Screen")
+	MouseMove(475, 244)
+	Sleep(200)
+	SendInput "{LButton down}"
+	MouseMove(400, 205)
+	Sleep(200)
+	MouseMove(800, 205)
+	Sleep(200)
+	MouseMove(218, 205)
+	SendInput "{LButton up}"
+}
 
 EncodeBorbonSig() {
 	time := 650
@@ -66,17 +105,6 @@ EncodeBorbonPix() {
 ; 	LeftClick(1409, 101)
 ; 	LeftClick(1323, 121)
 ; }
-MoveFirstItem() {
-	CoordMode("Mouse", "Screen")
-	MouseMove(346, 227)
-	Sleep(200)
-	SendInput "{LButton down}"
-	MouseMove(400, 205)
-	MouseMove(800, 205)
-	Sleep(200)
-	MouseMove(218, 205)
-	SendInput "{LButton up}"
-}
 
 LeftClick(x, y) {
 	MouseClick("left", x, y)
