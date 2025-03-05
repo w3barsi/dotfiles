@@ -26,18 +26,30 @@ isFourth(width) {
 }
 
 TerminalOrBrowser() {
-    if ( not WinExist(DefaultTerminal) or not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
+    Browser := ""
+    BrowserName := ""
+
+    if (DevMode == true) {
+        Browser := Format("ahk_exe {1}", DevModeBrowserName)
+        BrowserName := DevModeBrowserName
+    } else {
+        Browser := Format("ahk_exe {1}", DefaultBrowserName)
+        BrowserName := DefaultBrowserName
+    }
+
+
+    if ( not WinExist(DefaultTerminal) or not WinExist(Browser)) {
         if ( not WinExist(DefaultTerminal)) {
             Run(DefaultTerminalName)
         }
-        if ( not WinExist(Format("ahk_exe {1}", DefaultBrowser))) {
-            Run(DefaultBrowserName)
+        if ( not WinExist(Format(Browser))) {
+            Run(BrowserName)
         }
         return
     }
     if (WinActive(DefaultTerminal)) {
-        WinActivate(Format(DefaultBrowser))
-    } else if (WinActive(DefaultBrowser)) {
+        WinActivate(Format(Browser))
+    } else if (WinActive(Browser)) {
         WinActivate(DefaultTerminal)
     } else {
         WinActivate(DefaultTerminal)
@@ -70,16 +82,16 @@ WinInvisible() {
 }
 
 OpenOrMinimize(class?) {
-    if (WinExist("ahk_exe" class)) {
-        if ( not WinActive("ahk_exe" class)) {
-            WinActivate("ahk_exe" class)
+    if (WinExist(DefaultBrowser)) {
+        if ( not WinActive(DefaultBrowser)) {
+            WinActivate(DefaultBrowser)
         } else {
-            WinActivate("ahk_exe" class)
+            WinActivate(DefaultBrowser)
             WinMinimize("A")
             ; WinActivate("ahk_class Shell_TrayWnd")
         }
     } else {
-        Run(class)
+        Run(DefaultBrowserName)
     }
 }
 

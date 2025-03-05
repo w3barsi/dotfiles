@@ -1,12 +1,14 @@
 #Requires AutoHotkey v2.0
 #SingleInstance
-#Include "%A_ScriptDir%/audio.ahk"
-#Include "%A_ScriptDir%/utils.ahk"
-; #Include "%A_ScriptDir%/id.ahk"
 
+global DevMode := false
 
-global DefaultBrowserName := "zen.exe"
+; global DefaultBrowserName := "zen.exe"
+global DefaultBrowserName := "chrome.exe"
+global DevModeBrowserName := "chrome.exe"
 global DefaultBrowser := Format("ahk_exe {1}", DefaultBrowserName)
+global DevModeBrowser := Format("ahk_exe {1}", DevModeBrowserName)
+
 ; global DefaultTerminal := "WindowsTerminal.exe"
 global DefaultTerminalName := "wezterm-gui.exe"
 global DefaultTerminal := Format("ahk_exe {1}", DefaultTerminalName)
@@ -17,6 +19,10 @@ setLastCommand(cmd) {
 }
 
 F3:: MsgBox(MonitorFromWindow())
+
+#Include "%A_ScriptDir%/audio.ahk"
+#Include "%A_ScriptDir%/utils.ahk"
+; #Include "%A_ScriptDir%/id.ahk"
 
 MonitorFromWindow(WinTitle := "A", Mode := 2) {
     if (!Hwnd := WinExist(WinTitle)) {
@@ -56,18 +62,22 @@ F15:: {
         IniWrite("Speakers (Realtek(R) Audio)", FileName, "Audio", "default")
     }
 
+
 }
 
-
-Komorebic(cmd) {
-    RunWait(format("komorebic.exe {}", cmd), , "Hide")
+^!+F15:: {
+    volume := SoundGetVolume()
+    SoundSetVolume(5)
+    if (DevMode == true) {
+        global DevMode := false
+        SoundBeep(2500)
+    } else {
+        global DevMode := true
+        SoundBeep(500)
+    }
+    SoundSetVolume(volume)
 }
-^!+1:: Komorebic("move-to-workspace 0")
-^!+2:: Komorebic("move-to-workspace 1")
-^!+3:: Komorebic("move-to-workspace 2")
-^!+q:: Komorebic("focus-workspace 0")
-^!+w:: Komorebic("focus-workspace 1")
-^!+e:: Komorebic("focus-workspace 2")
+
 
 ; Debug Commands
 ^!+r:: Reload()

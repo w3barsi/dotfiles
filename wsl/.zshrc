@@ -68,10 +68,12 @@ alias lg="lazygit"
 alias ld="lazydocker"
 alias python="python3"
 alias p="pnpm"
+alias d="pnpm dev"
 # - vim aliases
 alias v="nvim"
 alias vim="nvim"
-alias vi="nvim"
+alias _vim="/usr/bin/vim"
+#alias vi="nvim"
 # - tmux
 source "$HOME/dotfiles/scripts/tmux.zsh"
 # - wsl aliases
@@ -96,12 +98,12 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
-# pnpm
-export PNPM_HOME="/Users/barsi/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+# # pnpm
+# export PNPM_HOME="/Users/barsi/Library/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
 
 # Turso
 export PATH="$PATH:/home/barsi/.turso"
@@ -128,3 +130,4 @@ export EDITOR="nvim"
 # pnpm completion zsh > ~/.zfunc/_pnpm
 [ -s "$HOME/.zfunc/_fnm" ] && source "$HOME/.zfunc/_fnm"
 # fnm completions --shell zsh > $HOME/.zfunc/_fnm
+
