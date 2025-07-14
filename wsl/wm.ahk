@@ -1,6 +1,10 @@
 #Requires AutoHotkey v2.0
 #SingleInstance
 
+#Include "%A_ScriptDir%/audio.ahk"
+#Include "%A_ScriptDir%/utils.ahk"
+#Include "%A_ScriptDir%/id.ahk"
+
 global DevMode := false
 
 ; global DefaultBrowserName := "zen.exe"
@@ -11,18 +15,17 @@ global DevModeBrowser := Format("ahk_exe {1}", DevModeBrowserName)
 
 ; global DefaultTerminal := "WindowsTerminal.exe"
 global DefaultTerminalName := "wezterm-gui.exe"
+; global DefaultTerminalName := "Cursor.exe"
 global DefaultTerminal := Format("ahk_exe {1}", DefaultTerminalName)
 
 global LastCommand := ""
 setLastCommand(cmd) {
     global LastCommand := cmd
 }
+global RESIZE_BY := 15
+; global IEM_LOCATION := "Speakers (PD200X Podcast Microphone)"
+global IEM_LOCATION := "Headphones (USB-C to 3.5mm Headphone Jack Adapter)"
 
-F3:: MsgBox(MonitorFromWindow())
-
-#Include "%A_ScriptDir%/audio.ahk"
-#Include "%A_ScriptDir%/utils.ahk"
-; #Include "%A_ScriptDir%/id.ahk"
 
 MonitorFromWindow(WinTitle := "A", Mode := 2) {
     if (!Hwnd := WinExist(WinTitle)) {
@@ -46,14 +49,14 @@ MonitorFromWindow(WinTitle := "A", Mode := 2) {
     }
 }
 
-global RESIZE_BY := 15
 
 F15:: {
     if (SpeakerMode == true) {
-        SetDefaultEndpoint(GetDeviceID(List, "Headphones (USB-C to 3.5mm Headphone Jack Adapter)"))
+        SetDefaultEndpoint(GetDeviceID(List, IEM_LOCATION))
         global SpeakerMode := false
         TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
-        IniWrite("Headphones (USB-C to 3.5mm Headphone Jack Adapter)", FileName, "Audio", "default")
+        ; IniWrite("Headphones (USB-C to 3.5mm Headphone Jack Adapter)", FileName, "Audio", "default")
+        IniWrite(IEM_LOCATION, FileName, "Audio", "default")
     } else {
         SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
         global SpeakerMode := true
@@ -179,7 +182,7 @@ F15:: {
 ^!+\:: {
     WinGetPosEx &X, &Y, &W, &H, "A"
     WinRestore("A")
-    WinMoveEx(WorkableScreenWidth / 4, 0, (WorkableScreenWidth / 4) * 3, 1080, "A")
+    WinMoveEx(0, 0, 2055, WorkableScreenHeight, "A")
 
     setLastCommand("\")
 }
@@ -251,7 +254,149 @@ F12:: {  ; F12 = Auto-click
     master_volume := SoundGetVolume()
     SoundSetVolume(20)
     If on := !on
-        SetTimer(Click, 1), Click(), SoundBeep(1500)
+        SetTimer(Click, 50), Click(), SoundBeep(1500)
     Else SetTimer(Click, 0), SoundBeep(1000)
     SoundSetVolume(master_volume)
+}
+
+
+; F12:: {  ; F12 = Auto-click
+;     Static on := False
+;     If on := !on
+;         SendInput("{s down}{d down}")
+;     Else
+;         SendInput("{s up}{d up}")
+; }
+
+; F12:: {
+;     MouseGetPos &xpos, &ypos
+;     LeftClick(xpos, ypos)
+;     ; Sleep(200)
+;     LeftClick(xpos, ypos + 150)
+;     MouseMove(xpos, ypos)
+; }
+
+; F1:: {
+;     CoordMode("Mouse", "Screen")
+;     MouseGetPos &xpos, &ypos
+;     RightClick(xpos, ypos)
+;     LeftClick(xpos + 20, ypos + 270)
+;     SendInput("{Enter}")
+;     MouseMove(xpos, ypos)
+; }
+
+; F1:: MoveWindowToNextMonitor()
+
+MoveWindowToNextMonitor() {
+    ; Get the active window
+    activeWindow := WinGetID("A")
+
+    ; Get window position and size
+    WinGetPos(&winX, &winY, &winWidth, &winHeight, activeWindow)
+
+    ; Get monitor count
+    monitorCount := MonitorGetCount()
+
+    ; If only one monitor, do nothing
+    if (monitorCount <= 1) {
+        return
+    }
+
+    ; Find which monitor the window is currently on
+    currentMonitor := GetMonitorFromWindow(winX, winY)
+
+    ; Calculate next monitor (wrap around to 1 if at the end)
+    nextMonitor := currentMonitor >= monitorCount ? 1 : currentMonitor + 1
+
+    WinState := WinGetMinMax(activeWindow)
+    if (WinState == 1) {
+        WinRestore(activeWindow)
+    }
+
+    ; Move window to the next monitor
+    MoveWindowToMonitor(activeWindow, currentMonitor, nextMonitor, winX, winY, winWidth, winHeight)
+
+    ; Focus on window
+    WinActivate(activeWindow)
+
+    ;If it was previously fullscreened, fullscreen it again
+    if (WinState == 1) {
+        WinMaximize(activeWindow)
+    }
+}
+
+MoveWindowToPrevMonitor() {
+    ; Get the active window
+    activeWindow := WinGetID("A")
+
+    ; Get window position and size
+    WinGetPos(&winX, &winY, &winWidth, &winHeight, activeWindow)
+
+    ; Get monitor count
+    monitorCount := MonitorGetCount()
+
+    ; If only one monitor, do nothing
+    if (monitorCount <= 1) {
+        return
+    }
+
+    ; Find which monitor the window is currently on
+    currentMonitor := GetMonitorFromWindow(winX, winY)
+
+    ; Calculate previous monitor (wrap around to last if at the beginning)
+    prevMonitor := currentMonitor <= 1 ? monitorCount : currentMonitor - 1
+
+    ; Move window to the previous monitor
+    MoveWindowToMonitor(activeWindow, currentMonitor, prevMonitor, winX, winY, winWidth, winHeight)
+}
+
+MoveWindowToMonitor(windowID, currentMonitor, targetMonitor, winX, winY, winWidth, winHeight) {
+    ; Get work areas for both monitors
+    MonitorGetWorkArea(currentMonitor, &currentLeft, &currentTop, &currentRight, &currentBottom)
+    MonitorGetWorkArea(targetMonitor, &targetLeft, &targetTop, &targetRight, &targetBottom)
+
+    ; Calculate relative position on current monitor
+    currentWidth := currentRight - currentLeft
+    currentHeight := currentBottom - currentTop
+    targetWidth := targetRight - targetLeft
+    targetHeight := targetBottom - targetTop
+
+    relativeX := (winX - currentLeft) / currentWidth
+    relativeY := (winY - currentTop) / currentHeight
+
+    ; Calculate new position on target monitor
+    newX := targetLeft + (relativeX * targetWidth)
+    newY := targetTop + (relativeY * targetHeight)
+
+    ; Ensure window fits within the target monitor
+    if (newX + winWidth > targetRight) {
+        newX := targetRight - winWidth
+    }
+    if (newY + winHeight > targetBottom) {
+        newY := targetBottom - winHeight
+    }
+    if (newX < targetLeft) {
+        newX := targetLeft
+    }
+    if (newY < targetTop) {
+        newY := targetTop
+    }
+
+    ; Move the window
+    WinMove(newX, newY, , , windowID)
+}
+
+GetMonitorFromWindow(winX, winY) {
+    monitorCount := MonitorGetCount()
+
+    Loop monitorCount {
+        MonitorGetWorkArea(A_Index, &left, &top, &right, &bottom)
+
+        if (winX >= left && winX < right && winY >= top && winY < bottom) {
+            return A_Index
+        }
+    }
+
+    ; If not found, return monitor 1
+    return 1
 }

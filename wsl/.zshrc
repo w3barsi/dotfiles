@@ -63,19 +63,32 @@ export PATH="$LOCAL_USER_BIN:$PATH"
 alias ls="exa"
 alias la="exa -la --group-directories-first"
 alias src="source ~/.zshrc"
+alias clip-i="win32yank.exe -i"
+alias clip-o="win32yank.exe -o"
+
 # - application aliases
 alias lg="lazygit"
 alias ld="lazydocker"
 alias python="python3"
+
 alias p="pnpm"
 alias d="pnpm dev"
+
+alias _npx="/home/barsi/.local/share/fnm/node-versions/v22.14.0/installation/bin/npx"
+alias npx="pnpm dlx"
+
+alias _npm="/home/barsi/.local/share/fnm/node-versions/v22.14.0/installation/bin/npm"
+alias npm="pnpm"
+
 # - vim aliases
 alias v="nvim"
 alias vim="nvim"
 alias _vim="/usr/bin/vim"
 #alias vi="nvim"
+
 # - tmux
 source "$HOME/dotfiles/scripts/tmux.zsh"
+
 # - wsl aliases
 alias komorebic="komorebic.exe"
 alias open="explorer.exe"
@@ -131,3 +144,6 @@ export EDITOR="nvim"
 [ -s "$HOME/.zfunc/_fnm" ] && source "$HOME/.zfunc/_fnm"
 # fnm completions --shell zsh > $HOME/.zfunc/_fnm
 
+
+# opencode
+export PATH=/home/barsi/.opencode/bin:$PATH
