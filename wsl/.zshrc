@@ -72,19 +72,15 @@ alias ld="lazydocker"
 alias python="python3"
 
 alias p="pnpm"
+alias pi="pnpm install"
+alias pid="pnpm install --save-dev"
 alias d="pnpm dev"
-
-alias _npx="/home/barsi/.local/share/fnm/node-versions/v22.14.0/installation/bin/npx"
-alias npx="pnpm dlx"
-
-alias _npm="/home/barsi/.local/share/fnm/node-versions/v22.14.0/installation/bin/npm"
-alias npm="pnpm"
 
 # - vim aliases
 alias v="nvim"
 alias vim="nvim"
 alias _vim="/usr/bin/vim"
-#alias vi="nvim"
+alias nv="nvim -u ~/.config/nvim-new/init.lua"
 
 # - tmux
 source "$HOME/dotfiles/scripts/tmux.zsh"
@@ -147,3 +143,4 @@ export EDITOR="nvim"
 
 # opencode
 export PATH=/home/barsi/.opencode/bin:$PATH
+alias oc="opencode"

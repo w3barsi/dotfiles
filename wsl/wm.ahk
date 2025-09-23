@@ -4,11 +4,12 @@
 #Include "%A_ScriptDir%/audio.ahk"
 #Include "%A_ScriptDir%/utils.ahk"
 #Include "%A_ScriptDir%/id.ahk"
+; #Include "%A_ScriptDir%/momot.ahk"
 
 global DevMode := false
 
 ; global DefaultBrowserName := "zen.exe"
-global DefaultBrowserName := "chrome.exe"
+global DefaultBrowserName := "vivaldi.exe"
 global DevModeBrowserName := "chrome.exe"
 global DefaultBrowser := Format("ahk_exe {1}", DefaultBrowserName)
 global DevModeBrowser := Format("ahk_exe {1}", DevModeBrowserName)
@@ -93,6 +94,20 @@ F15:: {
 
 ; Workflows
 ^!+b:: OpenOrMinimize(DefaultBrowser)
+^!+d:: {
+    window := "ahk_exe Discord.exe"
+    if (WinExist(window)) {
+        if ( not WinActive(window)) {
+            WinActivate(window)
+        } else {
+            WinActivate(window)
+            WinMinimize("A")
+            ; WinActivate("ahk_class Shell_TrayWnd")
+        }
+    } else {
+        Run(window)
+    }
+}
 ^!+Enter:: TerminalOrBrowser()
 
 ; Window Move commands
@@ -249,15 +264,15 @@ Click() {
     MouseClick("Left")
 }
 
-F12:: {  ; F12 = Auto-click
-    Static on := False
-    master_volume := SoundGetVolume()
-    SoundSetVolume(20)
-    If on := !on
-        SetTimer(Click, 50), Click(), SoundBeep(1500)
-    Else SetTimer(Click, 0), SoundBeep(1000)
-    SoundSetVolume(master_volume)
-}
+; F12:: {  ; F12 = Auto-click
+;     Static on := False
+;     master_volume := SoundGetVolume()
+;     SoundSetVolume(20)
+;     If on := !on
+;         SetTimer(Click, 50), Click(), SoundBeep(1500)
+;     Else SetTimer(Click, 0), SoundBeep(1000)
+;     SoundSetVolume(master_volume)
+; }
 
 
 ; F12:: {  ; F12 = Auto-click

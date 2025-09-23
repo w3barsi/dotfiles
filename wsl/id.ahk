@@ -198,6 +198,7 @@ EncodeBorbonPixNoEdit() {
 	MoveFirstItem()
 	WinActivate("ahk_exe IDFlow.exe")
 	LeftClick(1319, 65)
+	LeftClick(2165, 65)
 }
 ; EncodeBorobnPixP2() {
 ; 	CoordMode("Mouse", "Screen")
