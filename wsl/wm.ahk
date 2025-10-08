@@ -1,7 +1,7 @@
 #Requires AutoHotkey v2.0
 #SingleInstance
 
-#Include "%A_ScriptDir%/audio.ahk"
+; #Include "%A_ScriptDir%/audio.ahk"
 #Include "%A_ScriptDir%/utils.ahk"
 #Include "%A_ScriptDir%/id.ahk"
 ; #Include "%A_ScriptDir%/momot.ahk"
@@ -9,7 +9,8 @@
 global DevMode := false
 
 ; global DefaultBrowserName := "zen.exe"
-global DefaultBrowserName := "vivaldi.exe"
+; global DefaultBrowserName := "vivaldi.exe"
+global DefaultBrowserName := "chrome.exe"
 global DevModeBrowserName := "chrome.exe"
 global DefaultBrowser := Format("ahk_exe {1}", DefaultBrowserName)
 global DevModeBrowser := Format("ahk_exe {1}", DevModeBrowserName)
@@ -51,23 +52,23 @@ MonitorFromWindow(WinTitle := "A", Mode := 2) {
 }
 
 
-F15:: {
-    if (SpeakerMode == true) {
-        SetDefaultEndpoint(GetDeviceID(List, IEM_LOCATION))
-        global SpeakerMode := false
-        TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
-        ; IniWrite("Headphones (USB-C to 3.5mm Headphone Jack Adapter)", FileName, "Audio", "default")
-        IniWrite(IEM_LOCATION, FileName, "Audio", "default")
-    } else {
-        SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
-        global SpeakerMode := true
-        TraySetIcon("C:\Users\Barsi\Documents\Speakers.png")
-
-        IniWrite("Speakers (Realtek(R) Audio)", FileName, "Audio", "default")
-    }
-
-
-}
+; F15:: {
+;     if (SpeakerMode == true) {
+;         SetDefaultEndpoint(GetDeviceID(List, IEM_LOCATION))
+;         global SpeakerMode := false
+;         TraySetIcon("C:\Users\Barsi\Documents\IEM.png")
+;         ; IniWrite("Headphones (USB-C to 3.5mm Headphone Jack Adapter)", FileName, "Audio", "default")
+;         IniWrite(IEM_LOCATION, FileName, "Audio", "default")
+;     } else {
+;         SetDefaultEndpoint(GetDeviceID(List, "Speakers (Realtek(R) Audio)"))
+;         global SpeakerMode := true
+;         TraySetIcon("C:\Users\Barsi\Documents\Speakers.png")
+;
+;         IniWrite("Speakers (Realtek(R) Audio)", FileName, "Audio", "default")
+;     }
+;
+;
+; }
 
 ^!+F15:: {
     volume := SoundGetVolume()

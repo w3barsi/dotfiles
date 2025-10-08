@@ -32,3 +32,11 @@ rs() {
     tmux send-keys -t "$SESSION:$WINDOW.$PANE" 'clear; pnpm dev' C-m
 }
 
+dev() {
+    CURRENT_WINDOW=$(tmux display-message -p '#I')
+    tmux send-keys 'nvim' C-m
+    tmux new-window -c "$(pwd)" "pnpm dev"
+    tmux new-window -c "$(pwd)" "opencode"
+    tmux select-window -t $CURRENT_WINDOW
+}
+
