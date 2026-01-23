@@ -74,7 +74,11 @@ alias python="python3"
 alias p="pnpm"
 alias pi="pnpm install"
 alias pid="pnpm install --save-dev"
-alias d="pnpm dev"
+alias pd="pnpm dev"
+
+alias b="bun"
+alias bd="bun dev"
+alias bi="bun install"
 
 # - vim aliases
 alias v="nvim"
