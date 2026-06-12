@@ -72,8 +72,8 @@ alias ld="lazydocker"
 alias python="python3"
 
 alias p="pnpm"
-alias pi="pnpm install"
-alias pid="pnpm install --save-dev"
+# alias pi="pnpm install"
+# alias pid="pnpm install --save-dev"
 alias pd="pnpm dev"
 
 alias b="bun"
@@ -148,3 +148,5 @@ export EDITOR="nvim"
 # opencode
 export PATH=/home/barsi/.opencode/bin:$PATH
 alias oc="opencode"
+
+alias gac="/home/barsi/dev/terminal-commit/terminal-commit"
