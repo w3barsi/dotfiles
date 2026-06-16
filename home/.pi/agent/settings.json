@@ -1,0 +1,9 @@
+{
+  "lastChangelogVersion": "0.78.0",
+  "packages": [
+  ],
+  "defaultProvider": "opencode-go",
+  "defaultModel": "kimi-k2.6",
+  "theme": "opencode",
+  "defaultThinkingLevel": "high"
+}

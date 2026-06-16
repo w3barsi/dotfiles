@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
+  "name": "opencode",
+  "vars": {
+    "neutral": "#0a0a0a",
+    "surface": "#141414",
+    "ink": "#eeeeee",
+    "textWeak": "#808080",
+    "primary": "#fab283",
+    "accent": "#9d7cd8",
+    "success": "#7fd88f",
+    "warning": "#f5a742",
+    "error": "#e06c75",
+    "info": "#56b6c2",
+    "diffAdd": "#b8db87",
+    "diffDelete": "#e26a75",
+    "gold": "#e5c07b"
+  },
+  "colors": {
+    "accent": "accent",
+    "border": "#1a1a1a",
+    "borderAccent": "primary",
+    "borderMuted": "#141414",
+    "success": "success",
+    "error": "error",
+    "warning": "warning",
+    "muted": "textWeak",
+    "dim": "#606060",
+    "text": "",
+    "thinkingText": "textWeak",
+
+    "selectedBg": "surface",
+    "userMessageBg": "surface",
+    "userMessageText": "",
+    "customMessageBg": "surface",
+    "customMessageText": "",
+    "customMessageLabel": "accent",
+    "toolPendingBg": "neutral",
+    "toolSuccessBg": "#0f1a0f",
+    "toolErrorBg": "#1a0f0f",
+    "toolTitle": "accent",
+    "toolOutput": "",
+
+    "mdHeading": "accent",
+    "mdLink": "primary",
+    "mdLinkUrl": "info",
+    "mdCode": "success",
+    "mdCodeBlock": "",
+    "mdCodeBlockBorder": "#1a1a1a",
+    "mdQuote": "gold",
+    "mdQuoteBorder": "gold",
+    "mdHr": "textWeak",
+    "mdListBullet": "primary",
+
+    "toolDiffAdded": "diffAdd",
+    "toolDiffRemoved": "diffDelete",
+    "toolDiffContext": "textWeak",
+
+    "syntaxComment": "textWeak",
+    "syntaxKeyword": "accent",
+    "syntaxFunction": "primary",
+    "syntaxVariable": "error",
+    "syntaxString": "success",
+    "syntaxNumber": "warning",
+    "syntaxType": "gold",
+    "syntaxOperator": "info",
+    "syntaxPunctuation": "ink",
+
+    "thinkingOff": "#505050",
+    "thinkingMinimal": "#707070",
+    "thinkingLow": "info",
+    "thinkingMedium": "accent",
+    "thinkingHigh": "primary",
+    "thinkingXhigh": "error",
+
+    "bashMode": "warning"
+  },
+  "export": {
+    "pageBg": "#0a0a0a",
+    "cardBg": "#141414",
+    "infoBg": "#1a1a1a"
+  }
+}
