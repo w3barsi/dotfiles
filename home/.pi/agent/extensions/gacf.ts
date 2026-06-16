@@ -22,13 +22,13 @@ Steps:
    Format: \`prefix(scope): description\`. Always include a scope that describes the affected module, package, or area (e.g., \`feat(auth): add OAuth login\`, \`fix(ui): correct button alignment\`).
    Use imperative mood ("add" not "added"). Keep the subject under 72 characters.
 6. Commit that group with its message, then move on to the next group until all changes are committed.
-7. After committing all groups, output the last commit message as your very last line, prefixed with \`[commit]\`. Example: \`[commit] feat(ui): lorem ipsum dolor sit amet\`.
 
 If there is only one logical change across all files, a single commit is fine. Otherwise, create multiple commits.`;
 
 export default function (pi: ExtensionAPI) {
   pi.registerCommand("gacf", {
-    description: "Git add all and commit full: stage everything and commit generatively with full splitting logic",
+    description:
+      "Git add all and commit full: stage everything and commit generatively with full splitting logic",
     handler: async (args, ctx) => {
       const prompt = args?.trim()
         ? `${GACF_PROMPT}\n\nAdditional instructions from the user:\n${args.trim()}`

@@ -22,7 +22,6 @@ Steps:
      area (e.g., feat(auth): add OAuth login, fix(ui): correct button alignment).
      Use imperative mood ("add" not "added"). Keep the subject under 72 characters.
 4. Commit the changes with that message.
-5. After committing, output the commit message as your very last line, prefixed with \`[commit]\`. Example: \`[commit] feat(ui): lorem ipsum dolor sit amet\` Make sure to send it in a new line so that the message can be parsed.
 
 Keep the commit message concise.`;
 

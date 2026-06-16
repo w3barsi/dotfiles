@@ -1,5 +1,6 @@
 ---
 description: Create todos for building
+disable: true
 mode: primary
 model: opencode/grok-code
 temperature: 0.1
