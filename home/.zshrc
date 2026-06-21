@@ -60,8 +60,8 @@ export LOCAL_USER_BIN="/home/barsi/.local/bin/"
 export PATH="$LOCAL_USER_BIN:$PATH"
 
 # aliases
-alias ls="exa"
-alias la="exa -la --group-directories-first"
+alias ls="eza"
+alias la="eza -la --group-directories-first"
 alias src="source ~/.zshrc"
 alias clip-i="win32yank.exe -i"
 alias clip-o="win32yank.exe -o"
@@ -125,6 +125,7 @@ export PATH="$PATH:/home/barsi/.turso"
 export BOB="/home/barsi/.local/share/bob/nvim-bin"
 export PATH="$BOB:$USER_BIN:$PATH"
 
+
 # Golang
 export PATH=$PATH:/usr/local/go/bin
 
@@ -150,3 +151,11 @@ export PATH=/home/barsi/.opencode/bin:$PATH
 alias oc="opencode"
 
 alias gac="/home/barsi/dev/terminal-commit/terminal-commit"
+
+
+# MacOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export PATH="$PATH:/Users/Kuya/.local/bin"
+  export PATH="$PATH:/Users/Kuya/.local/share/bob/nvim-bin"
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
