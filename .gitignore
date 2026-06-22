@@ -1,1 +1,6 @@
 .DS_store
+
+.config/.pi/agent/auth.json
+home/.pi/agent/auth.json
+home/.pi/agent/bin/
+home/.pi/agent/sessions/
